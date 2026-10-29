@@ -669,6 +669,7 @@ function initGalleryFilters() {
 
   function switchTo(filter) {
     if (filter === activeFilter) return;
+    const previousFilter = activeFilter;
     activeFilter = filter;
 
     if (!canAnimate) {
@@ -700,31 +701,39 @@ function initGalleryFilters() {
     setDisplay(filter);
     const after = measure();
     const newHeight = grid ? grid.offsetHeight : 0;
-    setDisplay(activePreviousFilter);
+    setDisplay(previousFilter);
 
     const leaving  = cards.filter(c => before.has(c) && !after.has(c));
     const arriving = cards.filter(c => !before.has(c) && after.has(c));
     const staying  = cards.filter(c => before.has(c) && after.has(c));
 
-    // Split survivors by travel distance: short hops glide, long ones crossfade.
+    // Split survivors by travel distance. Short hops slide to their new slot;
+    // long haulers would have to cross the whole grid, so they are re-entered
+    // exactly like a card that was not on screen before.
     const gliding = [];
-    const crossing = [];
+    const reEntering = [];
     staying.forEach(card => {
       const b = before.get(card);
       const a = after.get(card);
       const dx = Math.round(b.left - a.left);
       const dy = Math.round(b.top - a.top);
       if (dx === 0 && dy === 0) return;
-      (Math.hypot(dx, dy) > GLIDE_MAX ? crossing : gliding).push([card, dx, dy]);
+      if (Math.hypot(dx, dy) > GLIDE_MAX) reEntering.push(card);
+      else gliding.push([card, dx, dy]);
     });
 
-    const swapAt = leaving.length ? SWAP : 0;
+    // Everything that does not slide away has to be invisible *before* the swap,
+    // otherwise the layout jump is visible for a frame.
+    const entering = cards.filter(c => arriving.includes(c) || reEntering.includes(c));
+    const swapAt = (leaving.length || reEntering.length) ? SWAP : 0;
+    const fadingOut = leaving.concat(reEntering);
+
     const tl = gsap.timeline();
     running = tl;
 
     // 1. Outgoing cards fade out where they stand.
-    if (leaving.length) {
-      tl.to(leaving, {
+    if (fadingOut.length) {
+      tl.to(fadingOut, {
         opacity: 0,
         scale: 0.96,
         duration: OUT,
@@ -739,8 +748,7 @@ function initGalleryFilters() {
     tl.add(() => {
       setDisplay(filter);
       gliding.forEach(([card, dx, dy]) => gsap.set(card, { x: dx, y: dy }));
-      crossing.forEach(([card]) => gsap.set(card, { opacity: 0, scale: 0.97 }));
-      if (arriving.length) gsap.set(arriving, { opacity: 0, scale: 0.97 });
+      if (entering.length) gsap.set(entering, { opacity: 0, scale: 0.97 });
       if (grid && Math.abs(newHeight - oldHeight) > 1) gsap.set(grid, { height: oldHeight });
     }, swapAt);
 
@@ -765,19 +773,10 @@ function initGalleryFilters() {
         clearProps: 'transform'
       }, swapAt);
     }
-    if (crossing.length) {
-      tl.to(crossing.map(c => c[0]), {
-        opacity: 1,
-        scale: 1,
-        duration: FADE_IN,
-        ease: 'power2.out',
-        clearProps: 'opacity,transform'
-      }, swapAt + 0.04);
-    }
 
-    // 5. New cards fade in just after the swap.
-    if (arriving.length) {
-      tl.to(arriving, {
+    // 5. New cards — and survivors that re-enter from a far slot — fade in.
+    if (entering.length) {
+      tl.to(entering, {
         opacity: 1,
         scale: 1,
         duration: FADE_IN,
