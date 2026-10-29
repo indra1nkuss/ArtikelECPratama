@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><pre id="log"></pre>
+<script>
+const L=document.getElementById('log');
+let frames=0; const t0=performance.now();
+(function tick(){ frames++; if(performance.now()-t0<500) requestAnimationFrame(tick); else L.textContent='FRAMES='+frames; })();
+setTimeout(()=>{ if(!L.textContent) L.textContent='FRAMES=0 (timeout)'; }, 2500);
+</script></body></html>

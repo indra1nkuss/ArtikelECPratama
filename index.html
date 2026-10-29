@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Conservation Department | Profil Departemen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- FLOATING CHAPTER NAVIGATOR -->
+  <nav class="floating-nav" id="floatingNav" aria-label="Navigasi Bab Perjalanan">
+    <div class="fnav-dot active" data-target="ch-hero" data-label="01 Hero">
+      <span class="fnav-tooltip">01 Awal Perjalanan</span>
+    </div>
+    <div class="fnav-dot" data-target="ch-opening" data-label="02 Filosofi">
+      <span class="fnav-tooltip">02 Filosofi &amp; Komitmen</span>
+    </div>
+    <div class="fnav-dot" data-target="ch-pillars" data-label="03 Alur Kerja">
+      <span class="fnav-tooltip">03 Siklus Transformasi</span>
+    </div>
+    <div class="fnav-dot" data-target="ch-journey" data-label="04 Milestone">
+      <span class="fnav-tooltip">04 Rekam Jejak</span>
+    </div>
+    <div class="fnav-dot" data-target="ch-gallery" data-label="05 Dokumentasi">
+      <span class="fnav-tooltip">05 Dokumentasi &amp; Bukti</span>
+    </div>
+    <div class="fnav-dot" data-target="ch-numbers" data-label="06 Metrik">
+      <span class="fnav-tooltip">06 Angka &amp; Dampak</span>
+    </div>
+    <div class="fnav-dot" data-target="ch-visi" data-label="07 Visi">
+      <span class="fnav-tooltip">07 Visi Menuju Net Zero</span>
+    </div>
+    <button class="fnav-top-btn" id="backToTop" title="Kembali ke atas">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </nav>
+
+  <!-- LIGHTBOX MODAL UNTUK PREVIEW FOTO -->
+  <div class="lightbox-overlay" id="lightboxModal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" title="Tutup">&times;</button>
+      <img id="lightboxImg" src="" alt="Pratinjau Foto" />
+      <div class="lightbox-caption">
+        <span class="lightbox-badge" id="lightboxBadge"></span>
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIXED SCROLL COUNTER (00% - 100%) -->
+  <div class="sx-scroll-counter" id="sxScrollCounter" aria-live="polite">
+    <span class="sx-counter-val" id="sxCounterVal">00</span>
+    <span class="sx-counter-unit">%</span>
+  </div>
+
+  <!-- ===== MASTER CINEMATIC STAGE: SATU PERJALANAN SCROLL (±700% PINNED) ===== -->
+  <div class="sx-stage-container" id="ch-hero">
+    <div class="sx-stage" id="sxStage">
+
+      <!-- LAYER 1: Background layer (ambient glow, rings, geometric accents) -->
+      <div class="sx-layer sx-layer-bg">
+        <div class="ambient-glow g1"></div>
+        <div class="ambient-glow g2"></div>
+        <div class="hero-ring r1"></div>
+        <div class="hero-ring r2"></div>
+        <div class="sx-bg-grid"></div>
+      </div>
+
+      <!-- LAYER 2: Teks outline raksasa + abstract orbit rings di belakang -->
+      <div class="sx-layer sx-layer-outline" aria-hidden="true">
+        <div class="sx-giant-outline">CONSERVATION</div>
+        <!-- Abstract orbit lines -->
+        <svg class="sx-orbit-svg" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="400" cy="400" rx="320" ry="120" stroke="rgba(232,102,10,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
+          <ellipse cx="400" cy="400" rx="220" ry="80" stroke="rgba(201,150,42,0.1)" stroke-width="1" stroke-dasharray="2 6"/>
+          <circle cx="400" cy="400" r="380" stroke="rgba(232,102,10,0.06)" stroke-width="1"/>
+          <!-- Ticker marks -->
+          <line x1="400" y1="20" x2="400" y2="50" stroke="rgba(232,102,10,0.25)" stroke-width="2"/>
+          <line x1="400" y1="750" x2="400" y2="780" stroke="rgba(232,102,10,0.25)" stroke-width="2"/>
+          <line x1="20" y1="400" x2="50" y2="400" stroke="rgba(232,102,10,0.25)" stroke-width="2"/>
+          <line x1="750" y1="400" x2="780" y2="400" stroke="rgba(232,102,10,0.25)" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <!-- LAYER 3: Headline besar -->
+      <div class="sx-layer sx-layer-headline">
+        <div class="chapter-eyebrow sx-eyebrow">Profil Departemen</div>
+        <h1 class="hero-headline sx-headline">
+          <span class="sx-mask-line"><span class="sx-line-inner">Energy</span></span>
+          <span class="sx-mask-line"><span class="sx-line-inner stroke-text">Conservation</span></span>
+        </h1>
+      </div>
+
+      <!-- LAYER 4: Visual utama — Pure Typography Stack (no photo) -->
+      <div class="sx-layer sx-layer-visual">
+        <div class="sx-typo-visual">
+          <!-- Top label -->
+          <div class="sx-tv-eyebrow">Departemen &#x2022; Energy Conservation</div>
+
+          <!-- Giant ENERGY word -->
+          <div class="sx-tv-word-wrap">
+            <span class="sx-tv-word sx-tv-solid">ENERGY</span>
+          </div>
+
+          <!-- Giant CONSERVATION word outline -->
+          <div class="sx-tv-word-wrap sx-tv-secondary">
+            <span class="sx-tv-word sx-tv-outline">CONSERVATION</span>
+          </div>
+
+          <!-- Abstract energy bar -->
+          <div class="sx-tv-ebar">
+            <div class="sx-tv-ebar-fill"></div>
+          </div>
+
+          <!-- Bottom glow line -->
+          <div class="sx-tv-glow-line"></div>
+        </div>
+      </div>
+
+      <!-- LAYER 6: Foreground band di bawah (cert pills + pulsing scroll hint) -->
+      <div class="sx-layer sx-layer-band">
+        <div class="hero-cert-row sx-cert-row">
+          <span class="cert-pill"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1l2 4.5L15 6.3l-3.5 3.4.8 4.8L8 12.1 3.7 14.5l.8-4.8L1 6.3l5-.8z" fill="currentColor"/></svg>ISO 50001</span>
+          <span class="cert-pill"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2L5 8h6z" fill="currentColor"/><rect x="3" y="9" width="10" height="5" rx="1" fill="currentColor" opacity=".5"/></svg>REC PLN</span>
+          <span class="cert-pill cert-gold"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3.5" fill="currentColor"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Solar PV</span>
+        </div>
+        <!-- Scroll indicator with pulsing line (CSS keyframes) -->
+        <div class="scroll-hint sx-scroll-hint" id="heroScrollHint">
+          <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+          <div class="sx-pulse-line"></div>
+          <span>Gulir untuk memulai perjalanan</span>
+        </div>
+      </div>
+
+      <!-- LAYER 7: Scrim gelap (opacity 0 di awal, naik di Adegan 04) -->
+      <div class="sx-layer sx-layer-scrim"></div>
+
+      <!-- LAYER 8: Teks adegan (teks pendukung, info block, teks pernyataan) -->
+      <div class="sx-layer sx-layer-texts">
+        <!-- Adegan 01 -> 02: Teks Pendukung -->
+        <div class="sx-support-text">
+          <p class="hero-tagline">Merawat Bumi. Menghemat Energi. Memimpin Perubahan.</p>
+        </div>
+
+        <!-- Adegan 03: Blok Info Baru dari Kiri -->
+        <div class="sx-info-block" id="ch-opening">
+          <div class="chapter-number sx-chapter-num">02</div>
+          <div class="chapter-label">Inisiatif Strategis</div>
+          <div class="dept-intro">
+            <div class="dept-dot"></div>
+            <p>Departemen <strong>Energy Conservation</strong> adalah garda terdepan perusahaan dalam mengelola energi secara cerdas, efisien, dan bertanggung jawab.</p>
+          </div>
+        </div>
+
+        <!-- Adegan 04: Teks Pernyataan Besar per baris dari balik mask -->
+        <div class="sx-statement-wrap">
+          <blockquote class="big-quote sx-statement-quote">
+            <div class="sx-mask-line"><span class="sx-line-inner">&ldquo;Kami hadir untuk memastikan</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner">setiap kilowatt yang dikonsumsi</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner">memberi dampak positif &mdash;</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner highlight-orange">bagi bisnis dan bagi bumi.&rdquo;</span></div>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- LAYER 9: Panel transisi (naik dari bawah di Adegan 05 & 06) -->
+      <div class="sx-layer sx-layer-panel">
+        <div class="sx-panel" id="sxPanel">
+          <div class="container-wide sx-panel-inner">
+            <div class="chapter-label">Fondasi Keberlanjutan</div>
+            <h3 class="chapter-heading sx-panel-heading">Tiga Pilar <em>Utama Inovasi</em></h3>
+            <div class="sx-panel-cols">
+              <!-- Kolom 1 (Offset vertikal: 0) -->
+              <div class="pillar-card spotlight-card sx-panel-col col-1">
+                <div class="spotlight-overlay"></div>
+                <div class="pillar-num">01</div>
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" rx="6" stroke="currentColor" stroke-width="2"/><path d="M13 20l5 5 9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="pillar-name">ISO 50001</div>
+                <div class="pillar-sub">Energy Management System</div>
+                <p class="pillar-desc">Sertifikasi manajemen energi berstandar internasional dengan surveillance audit tahunan yang konsisten.</p>
+              </div>
+
+              <!-- Kolom 2 (Offset vertikal: 7vh) -->
+              <div class="pillar-card spotlight-card sx-panel-col col-2">
+                <div class="spotlight-overlay"></div>
+                <div class="pillar-num">02</div>
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 40 40" fill="none"><path d="M20 6L8 18h8v16h8V18h8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="pillar-name">REC PLN</div>
+                <div class="pillar-sub">Renewable Energy Certificate</div>
+                <p class="pillar-desc">Bukti nyata komitmen penggunaan energi listrik dari sumber terbarukan bersertifikat PLN.</p>
+              </div>
+
+              <!-- Kolom 3 (Offset vertikal: 14vh) -->
+              <div class="pillar-card spotlight-card sx-panel-col col-3">
+                <div class="spotlight-overlay"></div>
+                <div class="pillar-num">03</div>
+                <div class="pillar-icon gold-icon">
+                  <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 5v4M20 31v4M5 20h4M31 20h4M9.4 9.4l2.8 2.8M27.8 27.8l2.8 2.8M30.6 9.4l-2.8 2.8M12.2 27.8l-2.8 2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="pillar-name">Solar PV Rooftop</div>
+                <div class="pillar-sub">6,2 MWp Terpasang</div>
+                <p class="pillar-desc">Pembangkit listrik tenaga surya atap di dua site operasional sebagai sumber energi bersih on-site.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CHAPTER 3: SCOPE IMPLEMENTASI (INTERACTIVE SPLIT STEPPER) ===== -->
+  <section class="chapter sx-ops-section" id="ch-pillars">
+    <div class="container-wide">
+
+      <!-- Header -->
+      <div class="sx-ops-head">
+        <div class="chapter-label">Scope Implementasi</div>
+        <h2 class="chapter-heading">Siklus Transformasi <br/><em>Energi Hijau</em></h2>
+        <p class="sx-ops-intro">
+          Tiga pilar utama yang kami jalankan secara terpadu: memastikan sumber energi sepenuhnya terbarukan, membangun pembangkit hijau di lokasi sendiri, dan menekan konsumsi energi melalui konversi peralatan produksi.
+        </p>
+      </div>
+
+      <!-- Accordion Pilar -->
+      <div class="scope-accordion" id="scopeAccordion">
+
+        <!-- Pilar 01: Energy Source -->
+        <article class="scope-acc is-open" data-step="0">
+          <button class="scope-acc-head" type="button" aria-expanded="true" aria-controls="scope-panel-0">
+            <span class="scope-acc-num">01</span>
+            <span class="scope-acc-title">
+              <span class="scope-acc-kicker">Energy Source</span>
+              <span class="scope-acc-name">100% REC dari PLN</span>
+            </span>
+            <span class="scope-acc-summary">Renewable Energy Certificate &bull; 4 Site</span>
+            <span class="scope-acc-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="scope-acc-panel" id="scope-panel-0" role="region">
+            <div class="scope-acc-panel-inner">
+              <div class="scope-detail">
+                <figure class="scope-detail-media">
+                  <img src="doc-rec.jpg" alt="Serah terima sertifikat Renewable Energy Certificate (REC) dari PLN" loading="lazy" />
+                  <span class="scope-media-badge">&#x26A1; REC &bull; PLN Indonesia</span>
+                  <div class="scope-media-stat">
+                    <strong>100%</strong>
+                    <span>Renewable Energy Certified</span>
+                  </div>
+                </figure>
+                <div class="scope-detail-body">
+                  <p class="scope-desc">Seluruh konsumsi energi listrik Pratama Group telah tersertifikasi <strong>100% Renewable Energy Certificate (REC)</strong> dari PT PLN (Persero) Indonesia. Setiap kWh yang kami gunakan terverifikasi berasal dari pembangkit energi terbarukan &mdash; bukan sekadar klaim, melainkan bukti resmi yang dapat diaudit.</p>
+                  <div class="scope-sites">
+                    <span class="scope-sites-label">Cakupan Sertifikasi</span>
+                    <div class="scope-site-chips">
+                      <span class="scope-chip">Pratama (IR)</span>
+                      <span class="scope-chip">Pratama (JX)</span>
+                      <span class="scope-chip">Pratama (JX2)</span>
+                      <span class="scope-chip">Sumber Masanda Jaya (PM)</span>
+                    </div>
+                  </div>
+                  <div class="scope-foot">
+                    <span class="scope-foot-tag">Renewable Energy Certificate</span>
+                    <span class="scope-foot-metric">100% Energi Hijau</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pilar 02: Solar PV Rooftop -->
+        <article class="scope-acc" data-step="1">
+          <button class="scope-acc-head" type="button" aria-expanded="false" aria-controls="scope-panel-1">
+            <span class="scope-acc-num">02</span>
+            <span class="scope-acc-title">
+              <span class="scope-acc-kicker">Solar PV Rooftop</span>
+              <span class="scope-acc-name">6,2 MWp Terpasang</span>
+            </span>
+            <span class="scope-acc-summary">Pratama (IR) &amp; Pratama (JX2)</span>
+            <span class="scope-acc-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="scope-acc-panel" id="scope-panel-1" role="region">
+            <div class="scope-acc-panel-inner">
+              <div class="scope-detail">
+                <figure class="scope-detail-media">
+                  <img src="doc-audit.jpg" alt="Inspeksi panel distribusi PV dan inverter solar rooftop" loading="lazy" />
+                  <span class="scope-media-badge">&#x2600; Solar PV Rooftop</span>
+                  <div class="scope-media-stat">
+                    <strong>6,2 MWp</strong>
+                    <span>Total Kapasitas Terpasang</span>
+                  </div>
+                </figure>
+                <div class="scope-detail-body">
+                  <p class="scope-desc">Pembangunan pembangkit listrik tenaga surya atap (rooftop) sebagai sumber energi terbarukan on-site. Listrik hijau diproduksi langsung di lokasi pabrik sehingga menurunkan ketergantungan pada pasokan grid dan memperkuat dekarbonisasi operasional.</p>
+                  <div class="scope-metrics">
+                    <div class="scope-metric">
+                      <span class="sm-val">1,6</span><span class="sm-unit">MWp</span>
+                      <span class="sm-name">Pratama (IR)</span>
+                    </div>
+                    <div class="scope-metric">
+                      <span class="sm-val">4,6</span><span class="sm-unit">MWp</span>
+                      <span class="sm-name">Pratama (JX2)</span>
+                    </div>
+                    <div class="scope-metric is-gold">
+                      <span class="sm-val">6,2</span><span class="sm-unit">MWp</span>
+                      <span class="sm-name">Total 2 Site</span>
+                    </div>
+                  </div>
+                  <div class="scope-foot">
+                    <span class="scope-foot-tag">Energi Terbarukan On-Site</span>
+                    <span class="scope-foot-metric">2 Site Operasional</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pilar 03: Efisiensi Program -->
+        <article class="scope-acc" data-step="2">
+          <button class="scope-acc-head" type="button" aria-expanded="false" aria-controls="scope-panel-2">
+            <span class="scope-acc-num">03</span>
+            <span class="scope-acc-title">
+              <span class="scope-acc-kicker">Efisiensi Program</span>
+              <span class="scope-acc-name">Konversi Hydraulic Press</span>
+            </span>
+            <span class="scope-acc-summary">Gas &rarr; Elektrik &bull; 2 Site</span>
+            <span class="scope-acc-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="scope-acc-panel" id="scope-panel-2" role="region">
+            <div class="scope-acc-panel-inner">
+              <div class="scope-detail">
+                <figure class="scope-detail-media">
+                  <img src="doc-workshop.jpg" alt="Sosialisasi dan koordinasi teknis program efisiensi energi" loading="lazy" />
+                  <span class="scope-media-badge">&#x2699; Efisiensi Peralatan</span>
+                  <div class="scope-media-stat">
+                    <strong>2 Site</strong>
+                    <span>Konversi Hydraulic Press</span>
+                  </div>
+                </figure>
+                <div class="scope-detail-body">
+                  <p class="scope-desc">Konversi <em>Hydraulic Press</em> dari penggerak gas menjadi penggerak listrik di lini produksi. Langkah ini menghilangkan emisi pembakaran gas secara langsung, menurunkan intensitas energi per unit produksi, serta memangkas biaya energi dan pemeliharaan.</p>
+                  <div class="scope-convert">
+                    <div class="scope-convert-side">
+                      <span class="sc-kicker">Sebelum</span>
+                      <strong>Hydraulic Press TDL Gas</strong>
+                    </div>
+                    <div class="scope-convert-arrow" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="scope-convert-side is-after">
+                      <span class="sc-kicker">Sesudah</span>
+                      <strong>Hydraulic Press TDL Elektrik</strong>
+                    </div>
+                  </div>
+                  <div class="scope-sites">
+                    <span class="scope-sites-label">Lokasi Implementasi</span>
+                    <div class="scope-site-chips">
+                      <span class="scope-chip">Pratama (IR)</span>
+                      <span class="scope-chip">Pratama (JX)</span>
+                    </div>
+                  </div>
+                  <div class="scope-foot">
+                    <span class="scope-foot-tag">Konversi Energi</span>
+                    <span class="scope-foot-metric">Gas &rarr; Elektrik</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Jembatan Transisi Menuju Chapter 4 -->
+      <div class="sx-ops-bridge">
+        <span class="sx-ops-bridge-label">Kelanjutan Kinerja</span>
+        <h4 class="sx-ops-bridge-title">Dari Scope Implementasi Menjadi <em>Bukti Nyata</em></h4>
+        <p class="sx-ops-bridge-desc">Ketiga pilar di atas telah membuktikan rekam jejak sertifikasi, energi terbarukan on-site, dan efisiensi peralatan yang terukur.</p>
+        <div class="sx-ops-bridge-cue">
+          <span>Lihat Rekam Jejak Pencapaian</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CHAPTER 4: JOURNEY TIMELINE ===== -->
+  <section class="chapter chapter-journey" id="ch-journey">
+    <div class="container-narrow">
+      <div class="chapter-label jo-item">Rekam Jejak Kami</div>
+      <h2 class="chapter-heading jo-item">Perjalanan <br/><em>Pencapaian</em></h2>
+
+      <div class="timeline" id="timelineContainer">
+        <!-- BACKGROUND BASE LINE -->
+        <div class="timeline-line"></div>
+        <!-- DYNAMIC FILL LINE YANG BERGERAK SAAT SCROLL -->
+        <div class="timeline-line-progress" id="timelineProgress"></div>
+
+        <div class="tl-item tl-left jo-item" data-tl-step="1">
+          <div class="tl-dot"><span class="tl-pulse"></span></div>
+          <div class="tl-card spotlight-card">
+            <div class="tl-badge">Aktif</div>
+            <div class="tl-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>ISO 50001</h4>
+            <p>Sertifikasi Energy Management System internasional dengan surveillance tahunan yang membuktikan komitmen peningkatan berkelanjutan.</p>
+            <div class="tl-tags"><span>Internasional</span><span>Surveillance Tahunan</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item tl-right jo-item" data-tl-step="2">
+          <div class="tl-dot tl-dot-green"><span class="tl-pulse"></span></div>
+          <div class="tl-card spotlight-card">
+            <div class="tl-badge">Sukses</div>
+            <div class="tl-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <h4>FEM</h4>
+            <p>Implementasi Facility Environment Module yang memastikan seluruh fasilitas beroperasi sesuai standar lingkungan ketat untuk sustainability jangka panjang.</p>
+            <div class="tl-tags"><span>Environment</span><span>Facility</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item tl-left jo-item" data-tl-step="3">
+          <div class="tl-dot"><span class="tl-pulse"></span></div>
+          <div class="tl-card spotlight-card">
+            <div class="tl-badge">Sukses</div>
+            <div class="tl-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>MCAP</h4>
+            <p>Berhasil menyelesaikan Manufacturing Climate Action Program &mdash; program pengurangan emisi karbon manufaktur yang terstruktur dan berdampak nyata.</p>
+            <div class="tl-tags"><span>Carbon Reduction</span><span>Manufacturing</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item tl-right jo-item" data-tl-step="4">
+          <div class="tl-dot"><span class="tl-pulse"></span></div>
+          <div class="tl-card spotlight-card">
+            <div class="tl-badge">Aktif</div>
+            <div class="tl-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h4>POME</h4>
+            <p>Sistem Pelaporan Manajemen Energi yang transparan dan komprehensif untuk pemantauan intensitas energi secara berkala.</p>
+            <div class="tl-tags"><span>Reporting</span><span>Compliance</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item tl-left jo-item" data-tl-step="5">
+          <div class="tl-dot tl-dot-green"><span class="tl-pulse"></span></div>
+          <div class="tl-card spotlight-card">
+            <div class="tl-badge tl-badge-green">Aktif</div>
+            <div class="tl-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>REC PLN</h4>
+            <p>Pemegang Renewable Energy Certificate dari PT PLN &mdash; bukti resmi konsumsi energi dari sumber terbarukan untuk mendukung dekarbonisasi nasional.</p>
+            <div class="tl-tags"><span>PLN</span><span>Energi Terbarukan</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item tl-right jo-item tl-gold-item" data-tl-step="6">
+          <div class="tl-dot tl-dot-gold"><span class="tl-pulse pulse-gold"></span></div>
+          <div class="tl-card tl-card-gold spotlight-card">
+            <div class="tl-badge tl-badge-gold">&#x2600; On-Site</div>
+            <div class="tl-icon tl-icon-gold"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h4>Solar PV</h4>
+            <p>Pembangkit listrik tenaga surya atap (Solar PV Rooftop) terpasang di dua site &mdash; Pratama (IR) 1,6 MWp dan Pratama (JX2) 4,6 MWp &mdash; total 6,2 MWp energi hijau on-site.</p>
+            <div class="tl-tags tl-tags-gold"><span>1,6 MWp &bull; IR</span><span>4,6 MWp &bull; JX2</span><span>6,2 MWp</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHAPTER 5: DOKUMENTASI & GALERI RESMI ===== -->
+  <section class="chapter chapter-gallery" id="ch-gallery">
+    <div class="container-wide">
+      <div class="gallery-header-row">
+        <div>
+          <div class="chapter-label jo-item">Dokumentasi Nyata</div>
+          <h2 class="chapter-heading jo-item">Galeri Kegiatan &amp; <br/><em>Sertifikasi Resmi</em></h2>
+        </div>
+        <!-- FILTER TABS -->
+        <div class="gallery-filters jo-item">
+          <button class="gfilter-btn active" data-filter="all">Semua</button>
+          <button class="gfilter-btn" data-filter="award">Penghargaan</button>
+          <button class="gfilter-btn" data-filter="cert">Sertifikat</button>
+          <button class="gfilter-btn" data-filter="activity">Kegiatan</button>
+        </div>
+      </div>
+
+      <!-- GALLERY GRID -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- FOTO 1: GREEN ENERGY PARTNERSHIP (assets/penghargaan) -->
+        <div class="gallery-card spotlight-card" data-category="award" data-title="Green Energy Partnership Forum" data-badge="Penghargaan &bull; PLN Indonesia" data-desc="Piagam apresiasi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri sebagai mitra dalam transisi energi — &ldquo;Thank you for being our partner in the energy transition&rdquo;.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/penghargaan/Green%20Energy%20Partnership%20by%20PLN.jpg" alt="Piagam Green Energy Partnership Forum" loading="lazy" />
+            <div class="gcard-badge badge-gold">&#x1F91D; Partnership Award</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Penghargaan &bull; Green Energy Partnership</span>
+            <h4 class="gcard-title">Green Energy Partnership Forum</h4>
+            <p class="gcard-snippet">Pengakuan atas peran aktif perusahaan sebagai mitra dalam percepatan transisi energi bersih bersama PLN.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 2: REC BY PLN (assets/penghargaan) -->
+        <div class="gallery-card spotlight-card" data-category="award" data-title="Penghargaan Renewable Energy Certificate PLN" data-badge="Penghargaan &bull; PT PLN (Persero)" data-desc="Trofi Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Garut dari PT PLN (Persero) sebagai bukti penggunaan pasokan listrik dari sumber energi terbarukan.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/penghargaan/REC%20by%20PLN.jpg" alt="Trofi Renewable Energy Certificate dari PLN" loading="lazy" />
+            <div class="gcard-badge badge-green">&#x26A1; REC PLN</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Penghargaan &bull; Renewable Energy Certificate</span>
+            <h4 class="gcard-title">Trofi Renewable Energy Certificate</h4>
+            <p class="gcard-snippet">Bukti resmi komitmen emisi rendah melalui pemanfaatan energi listrik hijau bersertifikasi PLN.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 3: ISO 50001 (assets/sertifikat) -->
+        <div class="gallery-card spotlight-card" data-category="cert" data-title="Sertifikat ISO 50001:2018" data-badge="Sertifikat &bull; ISO 50001:2018" data-desc="Sertifikat sistem manajemen energi ISO 50001:2018 untuk PT Pratama Abadi Industri yang diterbitkan setelah memenuhi seluruh persyaratan audit sistem manajemen energi.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/sertifikat/iso%2050001.jpg" alt="Sertifikat ISO 50001:2018" loading="lazy" />
+            <div class="gcard-badge">&#x2714; ISO 50001 Certified</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Sertifikat &bull; Sistem Manajemen Energi</span>
+            <h4 class="gcard-title">Sertifikasi ISO 50001:2018</h4>
+            <p class="gcard-snippet">Penerapan sistem kendali energi standar global untuk efisiensi operasional terpadu.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 4: MCAP (assets/sertifikat) -->
+        <div class="gallery-card spotlight-card" data-category="cert" data-title="Certificate of Completion — MCAP 2026" data-badge="Sertifikat &bull; MCAP" data-desc="Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 dari Cascale bagi PT Pratama Abadi Industri.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/sertifikat/mcap.png" alt="Certificate of Completion MCAP" loading="lazy" />
+            <div class="gcard-badge">&#x1F30D; MCAP Completed</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Sertifikat &bull; Manufacturer Climate Action Program</span>
+            <h4 class="gcard-title">Certificate of Completion MCAP</h4>
+            <p class="gcard-snippet">Penyelesaian program aksi iklim manufaktur periode Oktober 2024 &ndash; Maret 2026.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 5: POME 2025 (assets/sertifikat) -->
+        <div class="gallery-card spotlight-card" data-category="cert" data-title="Sertifikat POME 2025" data-badge="Sertifikat &bull; POME 2025" data-desc="Sertifikat penghargaan POME 2025 atas keberhasilan pengelolaan dan penghematan energi pada fasilitas produksi PT Pratama Abadi Industri.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/sertifikat/pome%202025.jpg" alt="Sertifikat POME 2025" loading="lazy" />
+            <div class="gcard-badge">&#x1F4DC; POME 2025</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Sertifikat &bull; Pengelolaan Energi</span>
+            <h4 class="gcard-title">Sertifikat POME 2025</h4>
+            <p class="gcard-snippet">Pengakuan atas capaian penghematan energi melalui tata kelola dan pelaporan yang terukur.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 6: TRAINING ENERGY AWARENESS (assets/kegiatan) -->
+        <div class="gallery-card spotlight-card" data-category="activity" data-title="Training Energy Awareness" data-badge="Kegiatan &bull; Edukasi Karyawan" data-desc="Pelatihan dan sosialisasi internal kepada karyawan operasional mengenai target penurunan intensitas energi serta kebiasaan ramah lingkungan sehari-hari.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap">
+            <img src="assets/kegiatan/Training%20Energy%20Awereness.jpg" alt="Training Energy Awareness untuk karyawan" loading="lazy" />
+            <div class="gcard-badge">&#x1F393; Training &amp; Edukasi</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Kegiatan &bull; Budaya Hemat Energi</span>
+            <h4 class="gcard-title">Training Energy Awareness</h4>
+            <p class="gcard-snippet">Membangun kepedulian bersama agar seluruh unit kerja aktif menghemat energi di setiap aktivitas.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHAPTER 6: NUMBERS ===== -->
+  <section class="chapter chapter-numbers" id="ch-numbers">
+    <div class="numbers-bg-glow"></div>
+    <div class="container-wide">
+      <div class="chapter-label jo-item" style="color:rgba(255,255,255,0.6)">Dampak Terukur</div>
+      <h2 class="chapter-heading white-heading jo-item">Angka yang <br/><em>Berbicara</em></h2>
+      <p class="numbers-intro jo-item">Indikator nyata dari scope implementasi energi hijau yang telah berjalan di lingkungan Pratama Group.</p>
+      <div class="numbers-grid">
+        <div class="number-block jo-item" data-delay="0">
+          <div class="num-value num-gold" data-target="6.2" data-decimals="1" data-sep="," data-suffix=" MWp"><span class="nv-num">0</span><span class="nv-suffix"> MWp</span></div>
+          <div class="num-label">Kapasitas Solar PV Rooftop</div>
+          <div class="num-bar gold-bar"><div class="num-fill gold-fill" data-w="100"></div></div>
+        </div>
+        <div class="number-block jo-item" data-delay="100">
+          <div class="num-value" data-target="100" data-suffix="%"><span class="nv-num">0</span><span class="nv-suffix">%</span></div>
+          <div class="num-label">REC Certified dari PLN</div>
+          <div class="num-bar"><div class="num-fill" data-w="100"></div></div>
+        </div>
+        <div class="number-block jo-item" data-delay="200">
+          <div class="num-value" data-target="4" data-suffix=" Site"><span class="nv-num">0</span><span class="nv-suffix"> Site</span></div>
+          <div class="num-label">Cakupan REC</div>
+          <div class="num-bar"><div class="num-fill" data-w="80"></div></div>
+        </div>
+        <div class="number-block jo-item" data-delay="300">
+          <div class="num-value num-gold" data-target="100" data-suffix="%"><span class="nv-num">0</span><span class="nv-suffix">%</span></div>
+          <div class="num-label">Compliance</div>
+          <div class="num-bar gold-bar"><div class="num-fill gold-fill" data-w="100"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHAPTER 7: VISI ===== -->
+  <section class="chapter chapter-visi" id="ch-visi">
+    <div class="container-narrow">
+      <div class="chapter-label jo-item">Ke Mana Kami Menuju</div>
+      <h2 class="chapter-heading jo-item">Visi &amp; <em>Misi</em></h2>
+      <div class="visi-wrap jo-item">
+        <div class="visi-eye-icon">
+          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#E8660A" stroke-width="1.5" stroke-dasharray="6 4"/><path d="M10 32s11-14 22-14 22 14 22 14S43 46 32 46 10 32 10 32z" stroke="#E8660A" stroke-width="2"/><circle cx="32" cy="32" r="8" fill="#E8660A" opacity=".15"/><circle cx="32" cy="32" r="5" fill="#E8660A"/></svg>
+        </div>
+        <blockquote class="visi-text">
+          Menjadi departemen konservasi energi terdepan yang mendorong transformasi perusahaan menuju operasional <span class="highlight-orange">Net Zero Carbon</span> melalui inovasi, efisiensi, dan pemanfaatan energi terbarukan yang berkelanjutan.
+        </blockquote>
+      </div>
+      <div class="misi-list-wrap jo-item">
+        <div class="misi-title">Misi Kami</div>
+        <ul class="misi-journey-list">
+          <li class="jo-item"><span class="mj-num">01</span><span>Implementasi sistem manajemen energi ISO 50001 berstandar internasional</span></li>
+          <li class="jo-item"><span class="mj-num">02</span><span>Maksimalkan penggunaan energi terbarukan melalui REC PLN</span></li>
+          <li class="jo-item"><span class="mj-num">03</span><span>Kurangi intensitas energi berkelanjutan via POME dan MCAP</span></li>
+          <li class="jo-item"><span class="mj-num">04</span><span>Kepatuhan lingkungan melalui Facility Environment Module (FEM)</span></li>
+          <li class="jo-item"><span class="mj-num">05</span><span>Bangun budaya hemat energi di seluruh lapisan organisasi</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHAPTER 8: CLOSING ===== -->
+  <section class="chapter chapter-closing" id="ch-closing">
+    <div class="closing-bg">
+      <img src="doc-iso.jpg" alt="" />
+      <div class="closing-veil"></div>
+      <div class="ambient-glow g1"></div>
+    </div>
+    <div class="container-narrow closing-body">
+      <div class="closing-cert-row jo-item">
+        <div class="closing-cert"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ISO 50001</span></div>
+        <div class="closing-cert"><svg viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>REC PLN</span></div>
+        <div class="closing-cert"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>MCAP</span></div>
+        <div class="closing-cert"><svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>FEM</span></div>
+        <div class="closing-cert"><svg viewBox="0 0 24 24" fill="none"><path d="M17 15a5 5 0 10-10 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 3v2M2.5 8.5l1.7 1M21.5 8.5l-1.7 1M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>POME</span></div>
+        <div class="closing-cert closing-cert-gold"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Solar PV</span></div>
+      </div>
+      <h2 class="closing-headline jo-item">
+        Bersama Menuju<br/>
+        <span class="closing-accent">Masa Depan Energi</span><br/>
+        yang Berkelanjutan
+      </h2>
+      <p class="closing-sub jo-item">Departemen Energy Conservation &mdash; berkomitmen pada inovasi, standar, dan keberlanjutan setiap hari.</p>
+    </div>
+  </section>
+
+  <!-- GSAP 3.12.5 + ScrollTrigger (Pinned CDNJS) & Lenis Smooth Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

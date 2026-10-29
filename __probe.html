@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head><body>
+<div class="gallery-grid" id="galleryGrid"><div class="gallery-card" data-category="award"><div class="gcard-content"><h4 class="gcard-title">A</h4></div></div></div>
+<div class="gallery-filters"><button class="gfilter-btn active" data-filter="all">All</button><button class="gfilter-btn" data-filter="cert">Cert</button></div>
+<pre id="log"></pre>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const L=document.getElementById('log');
+let frames=0;
+const t0=performance.now();
+(function tick(){ frames++; if(performance.now()-t0<1000) requestAnimationFrame(tick); else L.textContent='frames in 1000ms: '+frames; })();
+</script></body></html>
