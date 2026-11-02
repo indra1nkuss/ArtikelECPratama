@@ -392,16 +392,16 @@ body { font-family: var(--font); background: var(--off); color: var(--gray-dark)
    CHAPTER 2.5: CARBON PERFORMANCE DASHBOARD & CHART
    ============================================= */
 .chapter-carbon {
+  display: block !important;
+  min-height: auto !important;
+  width: 100%;
+  position: relative !important;
   background: #0d0f12;
   color: #ffffff;
   padding: 120px 0 110px;
-  position: relative;
-  overflow: visible; /* Allows popovers to overflow without clipping */
+  overflow: visible !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  /* GSAP transition readiness */
-  transform-origin: top center;
-  will-change: transform, opacity;
 }
 
 /* Cinematic Bridge Glow from Chapter 2 to Carbon */

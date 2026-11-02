@@ -1150,26 +1150,27 @@ function initCarbonPerformanceChart() {
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
     /* ── A. CINEMATIC SCROLL TRANSITION FROM CHAPTER 2 TO CHAPTER 3 / CARBON ── */
-    // Smooth scrub parallax glide-in connecting the end of Chapter 2 directly into Carbon
-    gsap.fromTo(section,
-      {
-        opacity: 0.15,
-        y: 65,
-        scale: 0.985
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 95%',
-          end: 'top 65%',
-          scrub: 0.4
+    // Smooth scrub parallax glide-in on inner container (prevents trigger jitter)
+    const carbonInner = section.querySelector('.container-wide');
+    if (carbonInner) {
+      gsap.fromTo(carbonInner,
+        {
+          opacity: 0.25,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 92%',
+            end: 'top 60%',
+            scrub: 0.4
+          }
         }
-      }
-    );
+      );
+    }
 
     if (transGlow) {
       gsap.fromTo(transGlow,
