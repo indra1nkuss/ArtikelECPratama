@@ -465,6 +465,7 @@ function initScrollUI() {
 const chapters = [
   { id: 'ch-hero',    dot: null },
   { id: 'ch-opening', dot: null },
+  { id: 'ch-carbon',  dot: null },
   { id: 'ch-pillars', dot: null },
   { id: 'ch-journey', dot: null },
   { id: 'ch-gallery', dot: null },
@@ -489,7 +490,7 @@ function updateActiveChapter(scrollY) {
   } else if (scrollY < stageHeight * 0.95) {
     currentActive = 'ch-opening';
   } else {
-    const lowerSectionIds = ['ch-pillars', 'ch-journey', 'ch-gallery', 'ch-numbers', 'ch-visi'];
+    const lowerSectionIds = ['ch-carbon', 'ch-pillars', 'ch-journey', 'ch-gallery', 'ch-numbers', 'ch-visi'];
     for (const id of lowerSectionIds) {
       const el = document.getElementById(id);
       if (el) {
@@ -1126,6 +1127,326 @@ function initJourneyAndLowerAnimations() {
 }
 
 /* ════════════════════════════════════════════════
+   8.5. CHAPTER 2.5: CARBON PERFORMANCE CHART & SCROLL ENGINE
+   ════════════════════════════════════════════════ */
+function initCarbonPerformanceChart() {
+  const section = document.getElementById('ch-carbon');
+  if (!section) return;
+
+  const kpiVals     = section.querySelectorAll('.ckpi-val');
+  const kpiCards    = section.querySelectorAll('.ckpi-card');
+  const explainer   = section.querySelector('.carbon-calc-explainer');
+  const expNodes    = section.querySelectorAll('.cce-node');
+  const chartWrap   = section.querySelector('.carbon-chart-wrap');
+  const chartCols   = section.querySelectorAll('.chart-col');
+  const deltaTags   = section.querySelectorAll('.col-delta-tag');
+  const bars        = section.querySelectorAll('.bar');
+  const trendPath   = document.getElementById('trendPath');
+  const trendDots   = section.querySelectorAll('.trend-dot');
+  const stepCards   = section.querySelectorAll('.cstep-card');
+  const transGlow   = section.querySelector('.carbon-transition-glow');
+
+  // GSAP & ScrollTrigger Animations
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+
+    /* ── A. CINEMATIC SCROLL TRANSITION FROM CHAPTER 2 TO CHAPTER 3 / CARBON ── */
+    // Smooth scrub parallax glide-in connecting the end of Chapter 2 directly into Carbon
+    gsap.fromTo(section,
+      {
+        opacity: 0.15,
+        y: 65,
+        scale: 0.985
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 95%',
+          end: 'top 65%',
+          scrub: 0.4
+        }
+      }
+    );
+
+    if (transGlow) {
+      gsap.fromTo(transGlow,
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 0.95,
+          scale: 1.1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 92%',
+            end: 'top 45%',
+            scrub: true
+          }
+        }
+      );
+    }
+
+    /* ── B. CONTENT ORCHESTRATION TIMELINE ── */
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 68%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    // 1. Header & Formula Explainer Entry
+    if (explainer) {
+      tl.fromTo(explainer,
+        { opacity: 0, y: 30, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' },
+        0
+      );
+    }
+    if (expNodes.length) {
+      tl.fromTo(expNodes,
+        { opacity: 0, y: 15, scale: 0.92 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12, ease: 'back.out(1.7)' },
+        0.18
+      );
+    }
+
+    // 2. KPI Cards & Counter rollups
+    if (kpiCards.length) {
+      tl.fromTo(kpiCards,
+        { opacity: 0, y: 35, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.1, ease: 'power3.out' },
+        0.25
+      );
+    }
+
+    kpiVals.forEach(el => {
+      const target = parseFloat(el.getAttribute('data-target') || '0');
+      const suffix = el.getAttribute('data-suffix') || '';
+      const counter = { val: 0 };
+      tl.to(counter, {
+        val: target,
+        duration: 1.8,
+        ease: 'power2.out',
+        onUpdate: () => {
+          const formatted = Math.floor(counter.val).toLocaleString('en-US');
+          el.textContent = formatted + suffix;
+        }
+      }, 0.3);
+    });
+
+    // 3. Chart Container entrance
+    if (chartWrap) {
+      tl.fromTo(chartWrap,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.85, ease: 'power2.out' },
+        0.35
+      );
+    }
+
+    // 4. Bars scaleY entrance (staggered by year)
+    tl.fromTo(bars,
+      { scaleY: 0, transformOrigin: 'bottom' },
+      {
+        scaleY: 1,
+        duration: 1.15,
+        stagger: 0.08,
+        ease: 'power3.out'
+      },
+      0.5
+    );
+
+    // 5. Delta Tags bounce in
+    if (deltaTags.length) {
+      tl.fromTo(deltaTags,
+        { opacity: 0, y: -18, scale: 0.7 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'back.out(2.2)'
+        },
+        0.7
+      );
+    }
+
+    // 6. SVG Trendline Draw & Dots Pop
+    if (trendPath) {
+      try {
+        const length = trendPath.getTotalLength ? trendPath.getTotalLength() : 1000;
+        gsap.set(trendPath, { strokeDasharray: length, strokeDashoffset: length });
+        tl.to(trendPath, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: 'power2.inOut'
+        }, 0.55);
+      } catch (e) {
+        gsap.to(trendPath, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' });
+      }
+    }
+
+    if (trendDots.length) {
+      tl.fromTo(trendDots,
+        { scale: 0, transformOrigin: 'center' },
+        {
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.12,
+          ease: 'back.out(2.5)'
+        },
+        0.8
+      );
+    }
+
+    // 7. Step-by-Step YoY Cards entrance
+    if (stepCards.length) {
+      tl.fromTo(stepCards,
+        { opacity: 0, y: 30, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power2.out'
+        },
+        0.85
+      );
+    }
+
+    /* ── C. INTERACTIVE TOUCH & HOVER SYSTEM (ALWAYS FOREGROUND, NEVER COVERED) ── */
+    function activateColumn(col, idx) {
+      const year = col.getAttribute('data-year');
+      const matchingStep = section.querySelector(`.cstep-card[data-step-year="${year}"]`);
+
+      // Deactivate all others first
+      chartCols.forEach(otherCol => {
+        if (otherCol !== col) {
+          otherCol.classList.remove('active-col');
+          gsap.to(otherCol, { opacity: 0.35, duration: 0.2 });
+        } else {
+          otherCol.classList.add('active-col');
+          gsap.to(otherCol, { opacity: 1, duration: 0.2 });
+        }
+      });
+
+      // Pulse matching trend dot
+      trendDots.forEach((dot, dIdx) => {
+        if (dIdx === idx) {
+          gsap.to(dot, { scale: 2.3, filter: 'drop-shadow(0 0 14px #FF9347)', duration: 0.25 });
+        } else {
+          gsap.to(dot, { scale: 1, filter: 'drop-shadow(0 0 6px rgba(232, 102, 10, 0.8))', duration: 0.25 });
+        }
+      });
+
+      // Highlight matching step card
+      stepCards.forEach(sc => {
+        if (sc === matchingStep) {
+          sc.classList.add('active-step');
+        } else {
+          sc.classList.remove('active-step');
+        }
+      });
+    }
+
+    function resetColumns() {
+      chartCols.forEach(col => {
+        col.classList.remove('active-col');
+        gsap.to(col, { opacity: 1, duration: 0.25 });
+      });
+      trendDots.forEach(dot => {
+        gsap.to(dot, { scale: 1, filter: 'drop-shadow(0 0 6px rgba(232, 102, 10, 0.8))', duration: 0.25 });
+      });
+      stepCards.forEach(sc => {
+        sc.classList.remove('active-step');
+      });
+    }
+
+    // Attach Click / Touch and Hover to Columns
+    chartCols.forEach((col, idx) => {
+      // Mouse events (Desktop)
+      col.addEventListener('mouseenter', () => {
+        activateColumn(col, idx);
+      });
+      col.addEventListener('mouseleave', () => {
+        // If not locked by touch click, reset
+        if (!col.classList.contains('locked-active')) {
+          resetColumns();
+        }
+      });
+
+      // Click / Touch events (Mobile & Desktop)
+      col.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const wasActive = col.classList.contains('locked-active');
+        chartCols.forEach(c => c.classList.remove('locked-active'));
+
+        if (!wasActive) {
+          col.classList.add('locked-active');
+          activateColumn(col, idx);
+        } else {
+          resetColumns();
+        }
+      });
+
+      // Keyboard accessibility
+      col.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          col.click();
+        }
+      });
+    });
+
+    // Step cards click & hover triggers matching column popover
+    stepCards.forEach(sc => {
+      const stepYear = sc.getAttribute('data-step-year');
+      const matchingCol = section.querySelector(`.chart-col[data-year="${stepYear}"]`);
+      const colIdx = Array.from(chartCols).indexOf(matchingCol);
+
+      sc.addEventListener('mouseenter', () => {
+        if (matchingCol) {
+          activateColumn(matchingCol, colIdx);
+        }
+      });
+      sc.addEventListener('mouseleave', () => {
+        resetColumns();
+      });
+      sc.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (matchingCol) {
+          activateColumn(matchingCol, colIdx);
+          matchingCol.classList.add('locked-active');
+        }
+      });
+    });
+
+    // Tap outside to close popovers
+    document.addEventListener('click', (e) => {
+      if (!section.contains(e.target)) {
+        chartCols.forEach(c => c.classList.remove('locked-active'));
+        resetColumns();
+      }
+    });
+
+  } else {
+    // Non-GSAP fallback
+    kpiVals.forEach(el => {
+      const target = parseFloat(el.getAttribute('data-target') || '0');
+      const suffix = el.getAttribute('data-suffix') || '';
+      el.textContent = Math.floor(target).toLocaleString('en-US') + suffix;
+    });
+    bars.forEach(b => {
+      b.style.transform = 'scaleY(1)';
+    });
+  }
+}
+
+/* ════════════════════════════════════════════════
    9. BOOT SEQUENCE
    ════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1143,6 +1464,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     buildMasterTimeline();
     initOpsSectionAnimations();
+    initCarbonPerformanceChart();
     initJourneyAndLowerAnimations();
 
     // Refresh after all fonts + images load
