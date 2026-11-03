@@ -809,39 +809,220 @@ function initGalleryFilters() {
   });
 }
 
-/* Lightbox */
-function initLightbox() {
-  const modal   = document.getElementById('lightboxModal');
-  const img     = document.getElementById('lightboxImg');
-  const badge   = document.getElementById('lightboxBadge');
-  const title   = document.getElementById('lightboxTitle');
-  const desc    = document.getElementById('lightboxDesc');
-  const closeBtn = document.getElementById('lightboxClose');
+/* Lightbox — Enhanced with Navigation, Slide Counter, & Structured Narasi */
+const GALLERY_ITEMS_DATA = [
+  {
+    title: "Green Energy Partnership Forum",
+    badge: "Penghargaan • PLN Indonesia",
+    badgeClass: "badge-gold",
+    img: "assets/penghargaan/Green%20Energy%20Partnership%20by%20PLN.jpg",
+    alt: "Piagam Green Energy Partnership Forum",
+    summary: "Piagam apresiasi resmi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri sebagai mitra aktif dalam percepatan transisi energi hijau — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
+    points: [
+      "Bentuk apresiasi atas inisiatif dekarbonisasi industri manufaktur berkelanjutan.",
+      "Penguatan kemitraan strategis dalam pemanfaatan energi bersih bersama PLN."
+    ]
+  },
+  {
+    title: "Penghargaan Renewable Energy Certificate PLN",
+    badge: "Penghargaan • PT PLN (Persero)",
+    badgeClass: "badge-green",
+    img: "assets/penghargaan/REC%20by%20PLN.jpeg",
+    alt: "Trofi Renewable Energy Certificate dari PLN",
+    summary: "Trofi Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Garut dari PT PLN (Persero) sebagai bukti penggunaan pasokan listrik dari sumber energi terbarukan.",
+    points: [
+      "Verifikasi resmi atas pasokan daya listrik operasional berbasis Energi Baru Terbarukan (EBT).",
+      "Menurunkan jejak emisi karbon Scope 2 secara signifikan dan terdata transparan."
+    ]
+  },
+  {
+    title: "Sertifikat ISO 50001:2018",
+    badge: "Sertifikat • ISO 50001:2018",
+    badgeClass: "",
+    img: "assets/sertifikat/iso%2050001.png",
+    alt: "Sertifikat ISO 50001:2018",
+    summary: "Sertifikat Sistem Manajemen Energi ISO 50001:2018 yang mengonfirmasi bahwa perusahaan telah memenuhi seluruh persyaratan audit internasional dalam efisiensi energi.",
+    points: [
+      "Implementasi tata kelola konsumsi energi berbasis siklus PDCA (Plan - Do - Check - Act).",
+      "Audit kepatuhan berkala untuk memastikan penurunan intensitas energi tahunan secara konsisten."
+    ]
+  },
+  {
+    title: "Certificate of Completion — MCAP 2026",
+    badge: "Sertifikat • MCAP",
+    badgeClass: "",
+    img: "assets/sertifikat/mcap.jpeg",
+    alt: "Certificate of Completion MCAP",
+    summary: "Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 yang diinisiasi oleh Cascale bagi PT Pratama Abadi Industri.",
+    points: [
+      "Validasi target penurunan emisi berbasis sains (Science-Based Targets).",
+      "Integrasi langkah dekarbonisasi operasional dengan tolok ukur rantai pasok global."
+    ]
+  },
+  {
+    title: "Sertifikat POME 2025",
+    badge: "Sertifikat • POME 2025",
+    badgeClass: "",
+    img: "assets/sertifikat/pome%202025.png",
+    alt: "Sertifikat POME 2025",
+    summary: "Sertifikat penghargaan Pelaporan dan Optimalisasi Manajemen Energi (POME) 2025 atas keberhasilan tata kelola efisiensi energi terpadu pada fasilitas produksi perusahaan.",
+    points: [
+      "Konsistensi audit energi internal dan pelaporan kinerja berkala.",
+      "Realisasi proyek konservasi energi yang berdampak langsung pada efisiensi biaya dan reduksi emisi."
+    ]
+  },
+  {
+    title: "Sertifikasi Pelatihan UK-PACT (EnB &amp; EnPI)",
+    badge: "Sertifikat • UK-PACT Energy Performance",
+    badgeClass: "badge-blue",
+    img: "assets/sertifikat/uk-pact.jpg",
+    alt: "Sertifikat Pelatihan UK-PACT EnB dan EnPI",
+    summary: "Telah berpartisipasi dalam program pelatihan yang diselenggarakan oleh UK-PACT terkait Energy Baseline (EnB) dan Energy Performance Indicator (EnPI) guna memperkuat kompetensi tim energi.",
+    points: [
+      "Peningkatan kompetensi dalam penyusunan baseline energi serta penetapan indikator kinerja energi yang akurat.",
+      "Evaluasi performa penggunaan energi sebagai dasar dalam mengidentifikasi peluang penghematan riil di lini operasional.",
+      "Mendukung penerapan Sistem Manajemen Energi berdasarkan standar ISO 50001:2018 secara konsisten dan berkelanjutan."
+    ]
+  },
+  {
+    title: "Program SETI (Sustainable Energy Transition in Indonesia)",
+    badge: "Sertifikat • Kemitraan SETI",
+    badgeClass: "badge-green",
+    img: "assets/sertifikat/SETI.png",
+    alt: "Sertifikat Kemitraan Program SETI",
+    summary: "Sustainable Energy Transition in Indonesia (SETI) merupakan proyek kolaboratif untuk mengakselerasi pencapaian target Net-Zero dan transisi energi industri di Indonesia.",
+    points: [
+      "Proyek kerja sama Pemerintah Jerman dan Indonesia yang dipimpin DJEBTKE KESDM serta Pusat Industri Hijau Kemenperin.",
+      "Mendukung implementasi efisiensi energi dan energi terbarukan pada sektor industri dengan konsumsi energi besar.",
+      "Partisipasi aktif perusahaan sebagai wujud komitmen nyata terhadap keberlanjutan dan penurunan emisi karbon."
+    ]
+  },
+  {
+    title: "Forum &amp; Workshop Proyek SETI",
+    badge: "Kegiatan • Kolaborasi Transisi Energi",
+    badgeClass: "",
+    img: "assets/kegiatan/SETI.jpeg",
+    alt: "Kegiatan Forum dan Workshop Program SETI",
+    summary: "Dokumentasi keterlibatan aktif tim Energy Conservation dalam agenda forum konsultasi dan lokakarya proyek SETI bersama Kementerian ESDM dan Kementerian Perindustrian.",
+    points: [
+      "Diskusi strategis percepatan transisi energi industri manufaktur nasional bersama mitra internasional.",
+      "Harmonisasi roadmap penurunan emisi gas rumah kaca perusahaan dengan target dekarbonisasi nasional."
+    ]
+  },
+  {
+    title: "Training Energy Awareness",
+    badge: "Kegiatan • Edukasi Karyawan",
+    badgeClass: "",
+    img: "assets/kegiatan/Training%20Energy%20Awereness.jpeg",
+    alt: "Training Energy Awareness untuk karyawan",
+    summary: "Pelatihan dan sosialisasi berkala budaya hemat energi kepada seluruh karyawan operasional di fasilitas produksi perusahaan.",
+    points: [
+      "Membangun pemahaman dan kepedulian terhadap target penurunan intensitas energi fasilitas.",
+      "Mendorong kebiasaan hemat energi dan pengurangan pemborosan daya dalam rutinitas kerja harian."
+    ]
+  }
+];
 
-  document.querySelectorAll('.gallery-card').forEach(card => {
+function initLightbox() {
+  const modal      = document.getElementById('lightboxModal');
+  const img        = document.getElementById('lightboxImg');
+  const badge      = document.getElementById('lightboxBadge');
+  const title      = document.getElementById('lightboxTitle');
+  const desc       = document.getElementById('lightboxDesc');
+  const counter    = document.getElementById('lightboxCounter');
+  const closeBtn   = document.getElementById('lightboxClose');
+  const prevBtn    = document.getElementById('lightboxPrev');
+  const nextBtn    = document.getElementById('lightboxNext');
+
+  const cards = Array.from(document.querySelectorAll('.gallery-card'));
+  let currentIndex = 0;
+
+  function renderItem(idx) {
+    if (idx < 0) idx = GALLERY_ITEMS_DATA.length - 1;
+    if (idx >= GALLERY_ITEMS_DATA.length) idx = 0;
+    currentIndex = idx;
+
+    const data = GALLERY_ITEMS_DATA[idx];
+    if (!data) return;
+
+    if (img) {
+      img.style.opacity = '0';
+      img.src = data.img;
+      img.alt = data.alt || data.title;
+      img.onload = () => { img.style.opacity = '1'; };
+    }
+
+    if (badge) {
+      badge.innerHTML = data.badge;
+      badge.className = 'lightbox-badge ' + (data.badgeClass || '');
+    }
+
+    if (title) {
+      title.innerHTML = data.title;
+    }
+
+    if (counter) {
+      counter.textContent = (idx + 1) + ' / ' + GALLERY_ITEMS_DATA.length;
+    }
+
+    if (desc) {
+      let html = '<p class="lb-summary">' + data.summary + '</p>';
+      if (data.points && data.points.length > 0) {
+        html += '<div class="lb-points-card">';
+        html += '  <div class="lb-points-title">';
+        html += '    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
+        html += '    <span>Poin Kunci &amp; Sasaran Strategis</span>';
+        html += '  </div>';
+        html += '  <ul class="lb-points-list">';
+        data.points.forEach(pt => {
+          html += '    <li>' + pt + '</li>';
+        });
+        html += '  </ul>';
+        html += '</div>';
+      }
+      desc.innerHTML = html;
+    }
+  }
+
+  // Event listener per card
+  cards.forEach((card, index) => {
     card.addEventListener('click', () => {
-      const cardImg = card.querySelector('img');
-      if (img && cardImg)  img.src         = cardImg.src;
-      if (title)           title.textContent  = card.getAttribute('data-title') || '';
-      if (badge)           badge.textContent  = card.getAttribute('data-badge') || '';
-      if (desc)            desc.textContent   = card.getAttribute('data-desc')  || '';
-      if (modal)           modal.classList.add('active');
-      // Lenis drives the scroll position itself, so `overflow:hidden` on <body>
-      // alone does not stop the page behind the modal from scrolling.
-      if (lenis) lenis.stop();
+      renderItem(index);
+      if (modal) modal.classList.add('active');
+      if (typeof lenis !== 'undefined' && lenis) lenis.stop();
       document.body.style.overflow = 'hidden';
     });
   });
 
+  // Navigasi Prev & Next
+  function showPrev() {
+    renderItem(currentIndex - 1);
+  }
+  function showNext() {
+    renderItem(currentIndex + 1);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
   function closeLightbox() {
     if (modal) modal.classList.remove('active');
     document.body.style.overflow = '';
-    if (lenis) lenis.start();
+    if (typeof lenis !== 'undefined' && lenis) lenis.start();
   }
+
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-  if (modal)    modal.addEventListener('click', e => { if (e.target === modal) closeLightbox(); });
+  if (modal) {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeLightbox();
+    });
+  }
+
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal?.classList.contains('active')) closeLightbox();
+    if (!modal || !modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') showPrev();
+    else if (e.key === 'ArrowRight') showNext();
   });
 }
 

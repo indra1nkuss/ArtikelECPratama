@@ -1515,6 +1515,7 @@ body { font-family: var(--font); background: var(--off); color: var(--gray-dark)
 }
 .badge-gold { background: rgba(201,150,42,0.9); color: white; }
 .badge-green { background: rgba(22,163,74,0.9); color: white; }
+.badge-blue { background: rgba(56,189,248,0.85); color: #fff; }
 
 .gcard-zoom-icon {
   position: absolute; right: 14px; bottom: 14px;
@@ -1543,13 +1544,14 @@ body { font-family: var(--font); background: var(--off); color: var(--gray-dark)
 }
 
 /* ==============================
-   LIGHTBOX MODAL
+   LIGHTBOX MODAL (ENHANCED)
    ============================== */
 .lightbox-overlay {
   position: fixed; inset: 0; z-index: 9999;
-  background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);
+  background: rgba(10,10,10,0.88); backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   display: flex; align-items: center; justify-content: center;
-  padding: 24px;
+  padding: 20px;
   opacity: 0; pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -1557,39 +1559,131 @@ body { font-family: var(--font); background: var(--off); color: var(--gray-dark)
   opacity: 1; pointer-events: auto;
 }
 .lightbox-content {
-  position: relative; max-width: 860px; width: 100%;
-  background: var(--dark); border-radius: 20px; overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+  position: relative; max-width: 880px; width: 100%;
+  max-height: 90vh;
+  background: #141416; border-radius: 20px; overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);
   display: flex; flex-direction: column;
   transform: translateY(20px) scale(0.96);
   transition: transform 0.35s var(--ease);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+.lightbox-content::-webkit-scrollbar {
+  width: 6px;
+}
+.lightbox-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
 }
 .lightbox-overlay.active .lightbox-content {
   transform: translateY(0) scale(1);
 }
 .lightbox-close {
   position: absolute; top: 16px; right: 16px;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(255,255,255,0.15); border: none; color: white;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2); color: white;
   font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  z-index: 10; transition: background 0.2s;
+  z-index: 20; transition: all 0.2s ease;
 }
-.lightbox-close:hover { background: rgba(255,255,255,0.3); }
+.lightbox-close:hover {
+  background: rgba(232,102,10,0.9);
+  border-color: rgba(232,102,10,1);
+  transform: rotate(90deg) scale(1.05);
+}
+
+/* Lightbox Media & Nav */
+.lightbox-media {
+  position: relative; width: 100%; background: #080809;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 280px; max-height: 520px; overflow: hidden;
+}
 #lightboxImg {
-  width: 100%; max-height: 520px; object-fit: contain; background: #000;
+  max-width: 100%; max-height: 500px; object-fit: contain;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
+.lightbox-counter-pill {
+  position: absolute; bottom: 14px; left: 16px;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85); font-size: 0.75rem; font-weight: 700;
+  padding: 4px 12px; border-radius: 99px; letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+/* Nav Buttons */
+.lightbox-nav-btn {
+  position: absolute; top: 38%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2); color: white;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  z-index: 15; transition: all 0.2s ease;
+}
+.lightbox-nav-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 20px rgba(232,102,10,0.4);
+}
+.lightbox-nav-btn.lb-prev { left: 16px; }
+.lightbox-nav-btn.lb-next { right: 16px; }
+
+/* Lightbox Caption */
 .lightbox-caption {
-  padding: 24px 30px; background: #161616;
+  padding: 26px 32px 30px; background: #131316;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.lightbox-header-meta {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
 }
 .lightbox-badge {
   font-size: 0.72rem; font-weight: 700; color: var(--orange-lite);
-  text-transform: uppercase; letter-spacing: 0.08em; display: inline-block; margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.08em; display: inline-block;
 }
 #lightboxTitle {
-  font-size: 1.35rem; font-weight: 800; color: white; margin-bottom: 8px;
+  font-size: 1.45rem; font-weight: 800; color: white; margin-bottom: 14px;
+  line-height: 1.35;
 }
-#lightboxDesc {
-  font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.65;
+
+/* Structured Narasi Content */
+.lb-summary {
+  font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.7;
+  margin-bottom: 16px;
+}
+.lb-points-card {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 14px 18px;
+}
+.lb-points-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--orange-lite); margin-bottom: 10px;
+}
+.lb-points-list {
+  list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;
+}
+.lb-points-list li {
+  font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6;
+  position: relative; padding-left: 20px;
+}
+.lb-points-list li::before {
+  content: ""; position: absolute; left: 4px; top: 8px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 8px rgba(232,102,10,0.6);
+}
+@media (max-width: 640px) {
+  .lightbox-content { max-height: 94vh; }
+  .lightbox-caption { padding: 18px 20px 24px; }
+  #lightboxTitle { font-size: 1.2rem; }
+  .lightbox-nav-btn { width: 38px; height: 38px; }
+  .lightbox-nav-btn.lb-prev { left: 8px; }
+  .lightbox-nav-btn.lb-next { right: 8px; }
 }
 
 /* ==============================

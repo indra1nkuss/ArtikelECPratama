@@ -6,7 +6,7 @@
   <title>Energy Conservation Department | Profil Departemen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2.5.2" />
+  <link rel="stylesheet" href="style.css?v=2.5.4" />
 </head>
 <body>
 
@@ -44,15 +44,30 @@
     </button>
   </nav>
 
-  <!-- LIGHTBOX MODAL UNTUK PREVIEW FOTO -->
-  <div class="lightbox-overlay" id="lightboxModal">
+  <!-- LIGHTBOX MODAL UNTUK PREVIEW FOTO DENGAN NAVIGASI & NARASI DETAIL -->
+  <div class="lightbox-overlay" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
     <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose" title="Tutup">&times;</button>
-      <img id="lightboxImg" src="" alt="Pratinjau Foto" />
+      <button class="lightbox-close" id="lightboxClose" title="Tutup (Esc)" aria-label="Tutup Pratinjau">&times;</button>
+      
+      <!-- NAVIGASI PREV & NEXT -->
+      <button class="lightbox-nav-btn lb-prev" id="lightboxPrev" title="Sebelumnya (←)" aria-label="Foto Sebelumnya">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="lightbox-nav-btn lb-next" id="lightboxNext" title="Berikutnya (→)" aria-label="Foto Berikutnya">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="lightbox-media">
+        <img id="lightboxImg" src="" alt="Pratinjau Foto" />
+        <div class="lightbox-counter-pill" id="lightboxCounter">1 / 9</div>
+      </div>
+
       <div class="lightbox-caption">
-        <span class="lightbox-badge" id="lightboxBadge"></span>
+        <div class="lightbox-header-meta">
+          <span class="lightbox-badge" id="lightboxBadge"></span>
+        </div>
         <h3 id="lightboxTitle"></h3>
-        <p id="lightboxDesc"></p>
+        <div class="lightbox-desc-box" id="lightboxDesc"></div>
       </div>
     </div>
   </div>
@@ -623,7 +638,7 @@
             <div class="scope-acc-panel-inner">
               <div class="scope-detail">
                 <figure class="scope-detail-media">
-                  <img src="doc-rec.jpg" alt="Serah terima sertifikat Renewable Energy Certificate (REC) dari PLN" loading="lazy" />
+                  <img src="assets/scopeimplementasi/energysource/Agreement%20REC.jpeg" alt="Perjanjian Renewable Energy Certificate (REC) dari PLN" loading="lazy" />
                   <span class="scope-media-badge">&#x26A1; REC &bull; PLN Indonesia</span>
                   <div class="scope-media-stat">
                     <strong>100%</strong>
@@ -668,7 +683,7 @@
             <div class="scope-acc-panel-inner">
               <div class="scope-detail">
                 <figure class="scope-detail-media">
-                  <img src="doc-audit.jpg" alt="Inspeksi panel distribusi PV dan inverter solar rooftop" loading="lazy" />
+                  <img src="assets/scopeimplementasi/solarpvrooftop/Agreement%20Solar%20PV.jpg" alt="Perjanjian dan instalasi Solar PV Rooftop" loading="lazy" />
                   <span class="scope-media-badge">&#x2600; Solar PV Rooftop</span>
                   <div class="scope-media-stat">
                     <strong>6,2 MWp</strong>
@@ -718,7 +733,7 @@
             <div class="scope-acc-panel-inner">
               <div class="scope-detail">
                 <figure class="scope-detail-media">
-                  <img src="doc-workshop.jpg" alt="Sosialisasi dan koordinasi teknis program efisiensi energi" loading="lazy" />
+                  <img src="assets/scopeimplementasi/efisiensiprogram/tdl-elektrik.jpg" alt="Konversi mesin Hydraulic Press TDL Elektrik" loading="lazy" />
                   <span class="scope-media-badge">&#x2699; Efisiensi Peralatan</span>
                   <div class="scope-media-stat">
                     <strong>2 Site</strong>
@@ -895,7 +910,7 @@
         <div class="gallery-card spotlight-card" data-category="award" data-title="Penghargaan Renewable Energy Certificate PLN" data-badge="Penghargaan &bull; PT PLN (Persero)" data-desc="Trofi Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Garut dari PT PLN (Persero) sebagai bukti penggunaan pasokan listrik dari sumber energi terbarukan.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/penghargaan/REC%20by%20PLN.jpg" alt="Trofi Renewable Energy Certificate dari PLN" loading="lazy" />
+            <img src="assets/penghargaan/REC%20by%20PLN.jpeg" alt="Trofi Renewable Energy Certificate dari PLN" loading="lazy" />
             <div class="gcard-badge badge-green">&#x26A1; REC PLN</div>
             <div class="gcard-zoom-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -912,7 +927,7 @@
         <div class="gallery-card spotlight-card" data-category="cert" data-title="Sertifikat ISO 50001:2018" data-badge="Sertifikat &bull; ISO 50001:2018" data-desc="Sertifikat sistem manajemen energi ISO 50001:2018 untuk PT Pratama Abadi Industri yang diterbitkan setelah memenuhi seluruh persyaratan audit sistem manajemen energi.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/sertifikat/iso%2050001.jpg" alt="Sertifikat ISO 50001:2018" loading="lazy" />
+            <img src="assets/sertifikat/iso%2050001.png" alt="Sertifikat ISO 50001:2018" loading="lazy" />
             <div class="gcard-badge">&#x2714; ISO 50001 Certified</div>
             <div class="gcard-zoom-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -929,7 +944,7 @@
         <div class="gallery-card spotlight-card" data-category="cert" data-title="Certificate of Completion — MCAP 2026" data-badge="Sertifikat &bull; MCAP" data-desc="Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 dari Cascale bagi PT Pratama Abadi Industri.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/sertifikat/mcap.png" alt="Certificate of Completion MCAP" loading="lazy" />
+            <img src="assets/sertifikat/mcap.jpeg" alt="Certificate of Completion MCAP" loading="lazy" />
             <div class="gcard-badge">&#x1F30D; MCAP Completed</div>
             <div class="gcard-zoom-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -946,7 +961,7 @@
         <div class="gallery-card spotlight-card" data-category="cert" data-title="Sertifikat POME 2025" data-badge="Sertifikat &bull; POME 2025" data-desc="Sertifikat penghargaan POME 2025 atas keberhasilan pengelolaan dan penghematan energi pada fasilitas produksi PT Pratama Abadi Industri.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/sertifikat/pome%202025.jpg" alt="Sertifikat POME 2025" loading="lazy" />
+            <img src="assets/sertifikat/pome%202025.png" alt="Sertifikat POME 2025" loading="lazy" />
             <div class="gcard-badge">&#x1F4DC; POME 2025</div>
             <div class="gcard-zoom-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -959,11 +974,62 @@
           </div>
         </div>
 
-        <!-- FOTO 6: TRAINING ENERGY AWARENESS (assets/kegiatan) -->
+        <!-- FOTO 6: UK-PACT (assets/sertifikat) — NEW -->
+        <div class="gallery-card spotlight-card" data-category="cert" data-title="Sertifikasi Pelatihan UK-PACT (EnB &amp; EnPI)" data-badge="Sertifikat &bull; UK-PACT Energy Performance" data-desc="Telah berpartisipasi dalam program pelatihan yang diselenggarakan oleh UK-Pact terkait Energy Baseline (EnB) dan Energy Performance Indicator (EnPI). Pelatihan ini bertujuan untuk meningkatkan pemahaman dan kompetensi dalam penyusunan baseline energi, penetapan indikator kinerja energi, serta evaluasi performa penggunaan energi sebagai dasar dalam mengidentifikasi peluang penghematan dan meningkatkan efisiensi energi. Kegiatan pelatihan ini juga menjadi salah satu upaya dalam mendukung penerapan Sistem Manajemen Energi berdasarkan standar ISO 50001:2018 secara konsisten dan berkelanjutan.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/sertifikat/uk-pact.jpg" alt="Sertifikat Pelatihan UK-PACT EnB dan EnPI" loading="lazy" />
+            <div class="gcard-badge badge-blue">&#x1F1EC;&#x1F1E7; UK-PACT EnPI</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Sertifikat &bull; Pelatihan Kinerja Energi UK-PACT</span>
+            <h4 class="gcard-title">Pelatihan UK-PACT (EnB &amp; EnPI)</h4>
+            <p class="gcard-snippet">Partisipasi pelatihan UK-Pact penguasaan Energy Baseline (EnB) &amp; EnPI untuk evaluasi performa energi dan mendukung penerapan ISO 50001:2018 berkelanjutan.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 7: SETI SERTIFIKAT (assets/sertifikat) — NEW -->
+        <div class="gallery-card spotlight-card" data-category="cert" data-title="Program SETI (Sustainable Energy Transition in Indonesia)" data-badge="Sertifikat &bull; Kemitraan SETI" data-desc="Sustainable Energy Transition in Indonesia (SETI) merupakan proyek yang bertujuan untuk mengakselerasi pencapaian target net-zero atau transisi energi Indonesia, dengan mendorong transisi energi di sektor industri dan lingkungan terbangun. Proyek kolaboratif ini antara pemerintah Jerman dan Indonesia yang dipimpin oleh DJEBTKE dari Kementerian ESDM dan Pusat Industri Hijau dari Kementerian Perindustrian, mendukung implementasi efisiensi energi dan energi terbarukan pada sektor yang mengkonsumsi energi secara besar. Sebagai bentuk komitmen terhadap keberlanjutan dan pengurangan emisi karbon, perusahaan berpartisipasi aktif dalam program SETI ini.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap is-doc">
+            <img src="assets/sertifikat/SETI.png" alt="Sertifikat Kemitraan Program SETI" loading="lazy" />
+            <div class="gcard-badge badge-green">&#x1F331; SETI Transition</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Sertifikat &bull; Transisi Energi Indonesia (SETI)</span>
+            <h4 class="gcard-title">Program SETI (Transisi Energi)</h4>
+            <p class="gcard-snippet">Proyek kolaborasi DJEBTKE Kementerian ESDM, Pusat Industri Hijau Kemenperin &amp; Pemerintah Jerman dalam akselerasi target Net-Zero dan efisiensi energi industri.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 8: SETI KEGIATAN (assets/kegiatan) — NEW -->
+        <div class="gallery-card spotlight-card" data-category="activity" data-title="Forum &amp; Workshop Proyek SETI" data-badge="Kegiatan &bull; Kolaborasi Transisi Energi" data-desc="Dokumentasi keterlibatan aktif tim Energy Conservation dalam forum dan workshop proyek Sustainable Energy Transition in Indonesia (SETI) bersama DJEBTKE KESDM, Kementerian Perindustrian, dan mitra internasional guna mempercepat roadmap dekarbonisasi industri.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-img-wrap">
+            <img src="assets/kegiatan/SETI.jpeg" alt="Kegiatan Forum dan Workshop Program SETI" loading="lazy" />
+            <div class="gcard-badge">&#x1F30D; Workshop SETI</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Kegiatan &bull; Forum Kemitraan SETI</span>
+            <h4 class="gcard-title">Forum &amp; Workshop Program SETI</h4>
+            <p class="gcard-snippet">Keterlibatan aktif tim energi dalam workshop dan forum implementasi efisiensi energi bersama DJEBTKE KESDM dan Kementerian Perindustrian.</p>
+          </div>
+        </div>
+
+        <!-- FOTO 9: TRAINING ENERGY AWARENESS (assets/kegiatan) -->
         <div class="gallery-card spotlight-card" data-category="activity" data-title="Training Energy Awareness" data-badge="Kegiatan &bull; Edukasi Karyawan" data-desc="Pelatihan dan sosialisasi internal kepada karyawan operasional mengenai target penurunan intensitas energi serta kebiasaan ramah lingkungan sehari-hari.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-img-wrap">
-            <img src="assets/kegiatan/Training%20Energy%20Awereness.jpg" alt="Training Energy Awareness untuk karyawan" loading="lazy" />
+            <img src="assets/kegiatan/Training%20Energy%20Awereness.jpeg" alt="Training Energy Awareness untuk karyawan" loading="lazy" />
             <div class="gcard-badge">&#x1F393; Training &amp; Edukasi</div>
             <div class="gcard-zoom-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -977,6 +1043,7 @@
         </div>
 
       </div>
+    </div>
     </div>
   </section>
 
@@ -1041,7 +1108,7 @@
   <!-- ===== CHAPTER 8: CLOSING ===== -->
   <section class="chapter chapter-closing" id="ch-closing">
     <div class="closing-bg">
-      <img src="doc-iso.jpg" alt="" />
+      <img src="assets/sertifikat/iso%2050001.png" alt="Sertifikat ISO 50001" />
       <div class="closing-veil"></div>
       <div class="ambient-glow g1"></div>
     </div>
@@ -1068,6 +1135,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <script src="script.js?v=2.5.2"></script>
+  <script src="script.js?v=2.5.4"></script>
 </body>
 </html>
