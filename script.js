@@ -860,12 +860,12 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
   {
-    title: "Sertifikat POME 2025",
-    badge: "Sertifikat • POME 2025",
+    title: "Sertifikat POME",
+    badge: "Sertifikat • POME",
     badgeClass: "",
     img: "assets/sertifikat/pome%202025.png",
-    alt: "Sertifikat POME 2025",
-    summary: "Sertifikat apresiasi Pelaporan dan Optimalisasi Manajemen Energi (POME) 2025 atas keberhasilan tata kelola efisiensi energi terpadu pada fasilitas produksi perusahaan.",
+    alt: "Sertifikat POME",
+    summary: "Sertifikat apresiasi Pelaporan dan Optimalisasi Manajemen Energi (POME) atas keberhasilan tata kelola efisiensi energi terpadu pada fasilitas produksi perusahaan.",
     points: [
       "Konsistensi audit energi internal dan pelaporan kinerja berkala.",
       "Realisasi proyek konservasi energi yang berdampak langsung pada efisiensi biaya dan reduksi emisi."
@@ -875,7 +875,7 @@ const GALLERY_ITEMS_DATA = [
     title: "Sertifikasi Pelatihan UK-PACT (EnB &amp; EnPI)",
     badge: "Sertifikat • UK-PACT Energy Performance",
     badgeClass: "badge-blue",
-    img: "assets/sertifikat/uk-pact.jpg",
+    img: "assets/sertifikat/uk-pact.png",
     alt: "Sertifikat Pelatihan UK-PACT EnB dan EnPI",
     summary: "Telah berpartisipasi dalam program pelatihan yang diselenggarakan oleh UK-PACT terkait Energy Baseline (EnB) dan Energy Performance Indicator (EnPI) guna memperkuat kompetensi tim energi.",
     points: [
