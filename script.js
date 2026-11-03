@@ -1310,35 +1310,226 @@ function initJourneyAndLowerAnimations() {
 /* ════════════════════════════════════════════════
    8.5. CHAPTER 2.5: CARBON PERFORMANCE CHART & SCROLL ENGINE
    ════════════════════════════════════════════════ */
+/* =============================================
+   CHAPTER 2.5: CARBON PERFORMANCE DASHBOARD & CHART (TARGET TRACKING)
+   ============================================= */
+
+const CARBON_DATA = {
+  scope1: {
+    name: "Scope 1 (Emisi Langsung)",
+    baselineYear: 2019,
+    baselineVal: 11409,
+    currentYear: 2025,
+    currentVal: 8662,
+    reductionVal: 2747,
+    percentReduction: 24.1,
+    maxY: 15000,
+    yTicks: ["15K", "10K", "5K", "0"],
+    years: [
+      { year: "2019", isBaseline: true, target: 11409, actual: 11409, status: "Baseline", tagClass: "tag-baseline", note: "Titik tolak target acuan Scope 1" },
+      { year: "2020", isBaseline: false, target: 10929, actual: 10024, status: "Ahead of Target", tagClass: "tag-ahead", note: "Lebih hemat 905 tCO₂e dari target tahunan" },
+      { year: "2021", isBaseline: false, target: 10450, actual: 12862, status: "Over Target", tagClass: "tag-over", note: "Kenaikan beban produksi pasca-pandemi" },
+      { year: "2022", isBaseline: false, target: 9971, actual: 11673, status: "Ahead of Prev", tagClass: "tag-ahead", note: "Penurunan -1,189 tCO₂e dari tahun 2021" },
+      { year: "2023", isBaseline: false, target: 9971, actual: 9853, status: "Ahead of Target", tagClass: "tag-ahead", note: "Mencapai target efisiensi operasional" },
+      { year: "2024", isBaseline: false, target: 9013, actual: 9556, status: "Dekat Target", tagClass: "tag-ahead", note: "Penurunan konsumsi energi lini press" },
+      { year: "2025", isBaseline: false, target: 8534, actual: 8662, status: "Rekor -24.1%", tagClass: "tag-ahead", note: "Capaian terendah: reduksi 24.1% dari baseline 2019" }
+    ]
+  },
+  scope2: {
+    name: "Scope 2 (Listrik / EBT)",
+    baselineYear: 2019,
+    baselineVal: 73149,
+    currentYear: 2025,
+    currentVal: 0,
+    reductionVal: 73149,
+    percentReduction: 100.0,
+    maxY: 90000,
+    yTicks: ["90K", "60K", "30K", "0"],
+    years: [
+      { year: "2019", isBaseline: true, target: 73149, actual: 73149, status: "Baseline", tagClass: "tag-baseline", note: "Konsumsi daya listrik PLN non-EBT" },
+      { year: "2020", isBaseline: false, target: 70077, actual: 60893, status: "Ahead of Target", tagClass: "tag-ahead", note: "Efisiensi operasional fasilitas" },
+      { year: "2021", isBaseline: false, target: 67005, actual: 85084, status: "Over Target", tagClass: "tag-over", note: "Lonjakan volume produksi pabrik" },
+      { year: "2022", isBaseline: false, target: 63932, actual: 54619, status: "Ahead of Target", tagClass: "tag-ahead", note: "Optimasi sistem utilitas & motor listrik" },
+      { year: "2023", isBaseline: false, target: 60860, actual: 55264, status: "Ahead of Target", tagClass: "tag-ahead", note: "Standardisasi sistem manajemen energi ISO 50001" },
+      { year: "2024", isBaseline: false, target: 57788, actual: 0, status: "Zero Emission", tagClass: "tag-zero", note: "100% Pasokan Listrik EBT via REC PLN" },
+      { year: "2025", isBaseline: false, target: 54715, actual: 0, status: "Zero Emission", tagClass: "tag-zero", note: "Bebas Emisi Scope 2 (100% EBT Terverifikasi)" }
+    ]
+  },
+  total: {
+    name: "Total Scope 1 + 2 (Gabungan)",
+    baselineYear: 2019,
+    baselineVal: 84558,
+    currentYear: 2025,
+    currentVal: 8662,
+    reductionVal: 75896,
+    percentReduction: 89.8,
+    maxY: 105000,
+    yTicks: ["100K", "75K", "50K", "0"],
+    years: [
+      { year: "2019", isBaseline: true, target: 84558, actual: 84558, status: "Baseline", tagClass: "tag-baseline", note: "Total emisi acuan awal Scope 1 & 2" },
+      { year: "2020", isBaseline: false, target: 81006, actual: 70917, status: "Ahead of Target", tagClass: "tag-ahead", note: "Pengurangan 13,641 tCO₂e dari baseline" },
+      { year: "2021", isBaseline: false, target: 77455, actual: 97946, status: "Over Target", tagClass: "tag-over", note: "Aktivitas produksi pasca-pandemi" },
+      { year: "2022", isBaseline: false, target: 73903, actual: 66292, status: "Ahead of Target", tagClass: "tag-ahead", note: "Penurunan -31,654 tCO₂e dari tahun 2021" },
+      { year: "2023", isBaseline: false, target: 70831, actual: 65116, status: "Ahead of Target", tagClass: "tag-ahead", note: "Penurunan berkelanjutan ke 65,116 tCO₂e" },
+      { year: "2024", isBaseline: false, target: 66801, actual: 9556, status: "Lompatan Besar", tagClass: "tag-ahead", note: "Penurunan tajam -55,561 tCO₂e berkat 100% REC" },
+      { year: "2025", isBaseline: false, target: 63249, actual: 8662, status: "Rekor -89.8%", tagClass: "tag-ahead", note: "Pengurangan total 89.8% dari baseline 2019" }
+    ]
+  }
+};
+
 function initCarbonPerformanceChart() {
   const section = document.getElementById('ch-carbon');
   if (!section) return;
 
-  const kpiVals     = section.querySelectorAll('.ckpi-val');
-  const kpiCards    = section.querySelectorAll('.ckpi-card');
-  const explainer   = section.querySelector('.carbon-calc-explainer');
-  const expNodes    = section.querySelectorAll('.cce-node');
-  const chartWrap   = section.querySelector('.carbon-chart-wrap');
-  const chartCols   = section.querySelectorAll('.chart-col');
-  const deltaTags   = section.querySelectorAll('.col-delta-tag');
-  const bars        = section.querySelectorAll('.bar');
-  const trendPath   = document.getElementById('trendPath');
-  const trendDots   = section.querySelectorAll('.trend-dot');
-  const stepCards   = section.querySelectorAll('.cstep-card');
-  const transGlow   = section.querySelector('.carbon-transition-glow');
+  const scopeBtns = section.querySelectorAll('.cscope-btn');
+  const kpiBaselineVal = document.getElementById('kpiBaselineVal');
+  const kpiCurrentVal = document.getElementById('kpiCurrentVal');
+  const kpiReductionVal = document.getElementById('kpiReductionVal');
+  const kpiPercentVal = document.getElementById('kpiPercentVal');
+  const chartYAxis = document.getElementById('chartYAxis');
+  const columnsContainer = document.getElementById('carbonChartColumns');
+  const transGlow = section.querySelector('.carbon-transition-glow');
+  const trackingBanner = section.querySelector('.carbon-target-tracking-banner');
+  const kpiStrip = section.querySelector('.carbon-kpi-strip');
+  const chartWrap = section.querySelector('.carbon-chart-wrap');
+  const tablesWrap = section.querySelector('.carbon-tables-wrap');
+
+  let activeScope = 'scope1';
+
+  function animateCounter(el, targetVal, prefix, suffix, isFloat) {
+    if (!el) return;
+    if (typeof gsap !== 'undefined') {
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: targetVal,
+        duration: 1.2,
+        ease: 'power2.out',
+        onUpdate: () => {
+          if (isFloat) {
+            el.textContent = (prefix || '') + obj.val.toFixed(1) + (suffix || '');
+          } else {
+            el.textContent = (prefix || '') + Math.floor(obj.val).toLocaleString('id-ID') + (suffix || '');
+          }
+        }
+      });
+    } else {
+      if (isFloat) {
+        el.textContent = (prefix || '') + targetVal.toFixed(1) + (suffix || '');
+      } else {
+        el.textContent = (prefix || '') + Math.floor(targetVal).toLocaleString('id-ID') + (suffix || '');
+      }
+    }
+  }
+
+  function renderScope(scopeKey) {
+    const data = CARBON_DATA[scopeKey];
+    if (!data) return;
+    activeScope = scopeKey;
+
+    // 1. Update 4 Kotak KPI
+    animateCounter(kpiBaselineVal, data.baselineVal, '', ' tCO₂e', false);
+    animateCounter(kpiCurrentVal, data.currentVal, '', ' tCO₂e', false);
+    animateCounter(kpiReductionVal, data.reductionVal, '-', ' tCO₂e', false);
+    animateCounter(kpiPercentVal, data.percentReduction, '-', '%', true);
+
+    // 2. Update Y-Axis Labels
+    if (chartYAxis && data.yTicks) {
+      chartYAxis.innerHTML = data.yTicks.map(t => `<span>${t}</span>`).join('');
+    }
+
+    // 3. Render 7 Columns (2019 - 2025)
+    if (columnsContainer) {
+      columnsContainer.innerHTML = '';
+      const maxY = data.maxY;
+
+      data.years.forEach((item, idx) => {
+        const col = document.createElement('div');
+        col.className = 'chart-col' + (idx === 0 ? ' col-pos-first' : '') + (idx === data.years.length - 1 ? ' col-pos-last' : '');
+        col.tabIndex = 0;
+
+        const targetPct = Math.min(100, Math.max(0, (item.target / maxY) * 100));
+        const actualPct = Math.min(100, Math.max(0, (item.actual / maxY) * 100));
+        const isZero = item.actual === 0;
+
+        col.innerHTML = `
+          <div class="col-delta-tag ${item.tagClass}">${item.status}</div>
+
+          <div class="col-popover">
+            <div class="pop-header">
+              <span class="pop-year">Tahun ${item.year}</span>
+              <span class="pop-badge ${item.tagClass}">${item.status}</span>
+            </div>
+            <div class="pop-body">
+              <div class="pop-row">
+                <span class="pop-dot dot-target"></span>
+                <span>Target: <b>${item.target.toLocaleString('id-ID')} tCO₂e</b></span>
+              </div>
+              <div class="pop-row">
+                <span class="pop-dot dot-actual"></span>
+                <span>Aktual: <b>${item.actual.toLocaleString('id-ID')} tCO₂e</b></span>
+              </div>
+            </div>
+            <div class="pop-formula">${item.note}</div>
+          </div>
+
+          <div class="col-bars">
+            <div class="bar-wrap" title="Target: ${item.target.toLocaleString('id-ID')} tCO₂e">
+              <div class="bar bar-target" style="height: ${targetPct.toFixed(1)}%;"></div>
+            </div>
+            <div class="bar-wrap" title="Aktual: ${item.actual.toLocaleString('id-ID')} tCO₂e">
+              <div class="bar bar-actual ${isZero ? 'is-zero' : ''}" style="height: ${isZero ? '6px' : actualPct.toFixed(1) + '%'};"></div>
+            </div>
+          </div>
+
+          <div class="col-year-label">${item.year}</div>
+          <div class="col-val-label">${item.actual.toLocaleString('id-ID')}</div>
+        `;
+
+        // Click on col to toggle active popover on mobile
+        col.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const wasActive = col.classList.contains('active-col');
+          section.querySelectorAll('.chart-col').forEach(c => c.classList.remove('active-col'));
+          if (!wasActive) col.classList.add('active-col');
+        });
+
+        columnsContainer.appendChild(col);
+      });
+
+      // Animate bars entrance
+      if (typeof gsap !== 'undefined') {
+        gsap.fromTo(columnsContainer.querySelectorAll('.bar'),
+          { scaleY: 0, transformOrigin: 'bottom' },
+          { scaleY: 1, duration: 0.85, stagger: 0.04, ease: 'power3.out' }
+        );
+      }
+    }
+  }
+
+  // Dismiss active popover on outside click
+  document.addEventListener('click', () => {
+    section.querySelectorAll('.chart-col').forEach(c => c.classList.remove('active-col'));
+  });
+
+  // Scope Switcher Buttons
+  scopeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scopeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const scope = btn.getAttribute('data-scope');
+      renderScope(scope);
+    });
+  });
+
+  // Initial Render (Scope 1 default)
+  renderScope('scope1');
 
   // GSAP & ScrollTrigger Animations
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-
-    /* ── A. CINEMATIC SCROLL TRANSITION FROM CHAPTER 2 TO CHAPTER 3 / CARBON ── */
-    // Smooth scrub parallax glide-in on inner container (prevents trigger jitter)
     const carbonInner = section.querySelector('.container-wide');
     if (carbonInner) {
       gsap.fromTo(carbonInner,
-        {
-          opacity: 0.25,
-          y: 50
-        },
+        { opacity: 0.25, y: 50 },
         {
           opacity: 1,
           y: 0,
@@ -1370,263 +1561,49 @@ function initCarbonPerformanceChart() {
       );
     }
 
-    /* ── B. CONTENT ORCHESTRATION TIMELINE ── */
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top 68%',
+        start: 'top 70%',
         toggleActions: 'play none none reverse'
       }
     });
 
-    // 1. Header & Formula Explainer Entry
-    if (explainer) {
-      tl.fromTo(explainer,
+    if (trackingBanner) {
+      tl.fromTo(trackingBanner,
         { opacity: 0, y: 30, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' },
+        { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power2.out' },
         0
       );
     }
-    if (expNodes.length) {
-      tl.fromTo(expNodes,
-        { opacity: 0, y: 15, scale: 0.92 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12, ease: 'back.out(1.7)' },
-        0.18
-      );
-    }
 
-    // 2. KPI Cards & Counter rollups
+    const kpiCards = section.querySelectorAll('.ckpi-card');
     if (kpiCards.length) {
       tl.fromTo(kpiCards,
-        { opacity: 0, y: 35, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.1, ease: 'power3.out' },
-        0.25
+        { opacity: 0, y: 30, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.08, ease: 'power3.out' },
+        0.15
       );
     }
 
-    kpiVals.forEach(el => {
-      const target = parseFloat(el.getAttribute('data-target') || '0');
-      const suffix = el.getAttribute('data-suffix') || '';
-      const counter = { val: 0 };
-      tl.to(counter, {
-        val: target,
-        duration: 1.8,
-        ease: 'power2.out',
-        onUpdate: () => {
-          const formatted = Math.floor(counter.val).toLocaleString('en-US');
-          el.textContent = formatted + suffix;
-        }
-      }, 0.3);
-    });
-
-    // 3. Chart Container entrance
     if (chartWrap) {
       tl.fromTo(chartWrap,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.85, ease: 'power2.out' },
-        0.35
+        { opacity: 0, y: 35 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        0.3
       );
     }
 
-    // 4. Bars scaleY entrance (staggered by year)
-    tl.fromTo(bars,
-      { scaleY: 0, transformOrigin: 'bottom' },
-      {
-        scaleY: 1,
-        duration: 1.15,
-        stagger: 0.08,
-        ease: 'power3.out'
-      },
-      0.5
-    );
-
-    // 5. Delta Tags bounce in
-    if (deltaTags.length) {
-      tl.fromTo(deltaTags,
-        { opacity: 0, y: -18, scale: 0.7 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'back.out(2.2)'
-        },
-        0.7
+    if (tablesWrap) {
+      tl.fromTo(tablesWrap,
+        { opacity: 0, y: 35 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        0.45
       );
     }
-
-    // 6. SVG Trendline Draw & Dots Pop
-    if (trendPath) {
-      try {
-        const length = trendPath.getTotalLength ? trendPath.getTotalLength() : 1000;
-        gsap.set(trendPath, { strokeDasharray: length, strokeDashoffset: length });
-        tl.to(trendPath, {
-          strokeDashoffset: 0,
-          duration: 1.5,
-          ease: 'power2.inOut'
-        }, 0.55);
-      } catch (e) {
-        gsap.to(trendPath, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' });
-      }
-    }
-
-    if (trendDots.length) {
-      tl.fromTo(trendDots,
-        { scale: 0, transformOrigin: 'center' },
-        {
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.12,
-          ease: 'back.out(2.5)'
-        },
-        0.8
-      );
-    }
-
-    // 7. Step-by-Step YoY Cards entrance
-    if (stepCards.length) {
-      tl.fromTo(stepCards,
-        { opacity: 0, y: 30, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power2.out'
-        },
-        0.85
-      );
-    }
-
-    /* ── C. INTERACTIVE TOUCH & HOVER SYSTEM (ALWAYS FOREGROUND, NEVER COVERED) ── */
-    function activateColumn(col, idx) {
-      const year = col.getAttribute('data-year');
-      const matchingStep = section.querySelector(`.cstep-card[data-step-year="${year}"]`);
-
-      // Deactivate all others first
-      chartCols.forEach(otherCol => {
-        if (otherCol !== col) {
-          otherCol.classList.remove('active-col');
-          gsap.to(otherCol, { opacity: 0.35, duration: 0.2 });
-        } else {
-          otherCol.classList.add('active-col');
-          gsap.to(otherCol, { opacity: 1, duration: 0.2 });
-        }
-      });
-
-      // Pulse matching trend dot
-      trendDots.forEach((dot, dIdx) => {
-        if (dIdx === idx) {
-          gsap.to(dot, { scale: 2.3, filter: 'drop-shadow(0 0 14px #FF9347)', duration: 0.25 });
-        } else {
-          gsap.to(dot, { scale: 1, filter: 'drop-shadow(0 0 6px rgba(232, 102, 10, 0.8))', duration: 0.25 });
-        }
-      });
-
-      // Highlight matching step card
-      stepCards.forEach(sc => {
-        if (sc === matchingStep) {
-          sc.classList.add('active-step');
-        } else {
-          sc.classList.remove('active-step');
-        }
-      });
-    }
-
-    function resetColumns() {
-      chartCols.forEach(col => {
-        col.classList.remove('active-col');
-        gsap.to(col, { opacity: 1, duration: 0.25 });
-      });
-      trendDots.forEach(dot => {
-        gsap.to(dot, { scale: 1, filter: 'drop-shadow(0 0 6px rgba(232, 102, 10, 0.8))', duration: 0.25 });
-      });
-      stepCards.forEach(sc => {
-        sc.classList.remove('active-step');
-      });
-    }
-
-    // Attach Click / Touch and Hover to Columns
-    chartCols.forEach((col, idx) => {
-      // Mouse events (Desktop)
-      col.addEventListener('mouseenter', () => {
-        activateColumn(col, idx);
-      });
-      col.addEventListener('mouseleave', () => {
-        // If not locked by touch click, reset
-        if (!col.classList.contains('locked-active')) {
-          resetColumns();
-        }
-      });
-
-      // Click / Touch events (Mobile & Desktop)
-      col.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const wasActive = col.classList.contains('locked-active');
-        chartCols.forEach(c => c.classList.remove('locked-active'));
-
-        if (!wasActive) {
-          col.classList.add('locked-active');
-          activateColumn(col, idx);
-        } else {
-          resetColumns();
-        }
-      });
-
-      // Keyboard accessibility
-      col.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          col.click();
-        }
-      });
-    });
-
-    // Step cards click & hover triggers matching column popover
-    stepCards.forEach(sc => {
-      const stepYear = sc.getAttribute('data-step-year');
-      const matchingCol = section.querySelector(`.chart-col[data-year="${stepYear}"]`);
-      const colIdx = Array.from(chartCols).indexOf(matchingCol);
-
-      sc.addEventListener('mouseenter', () => {
-        if (matchingCol) {
-          activateColumn(matchingCol, colIdx);
-        }
-      });
-      sc.addEventListener('mouseleave', () => {
-        resetColumns();
-      });
-      sc.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (matchingCol) {
-          activateColumn(matchingCol, colIdx);
-          matchingCol.classList.add('locked-active');
-        }
-      });
-    });
-
-    // Tap outside to close popovers
-    document.addEventListener('click', (e) => {
-      if (!section.contains(e.target)) {
-        chartCols.forEach(c => c.classList.remove('locked-active'));
-        resetColumns();
-      }
-    });
-
-  } else {
-    // Non-GSAP fallback
-    kpiVals.forEach(el => {
-      const target = parseFloat(el.getAttribute('data-target') || '0');
-      const suffix = el.getAttribute('data-suffix') || '';
-      el.textContent = Math.floor(target).toLocaleString('en-US') + suffix;
-    });
-    bars.forEach(b => {
-      b.style.transform = 'scaleY(1)';
-    });
   }
 }
+
 
 /* ════════════════════════════════════════════════
    9. BOOT SEQUENCE
