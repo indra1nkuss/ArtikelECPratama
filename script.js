@@ -813,25 +813,25 @@ function initGalleryFilters() {
 const GALLERY_ITEMS_DATA = [
   {
     title: "Green Energy Partnership Forum",
-    badge: "Penghargaan • PLN Indonesia",
+    badge: "Plakat • PLN Indonesia",
     badgeClass: "badge-gold",
-    img: "assets/penghargaan/Green%20Energy%20Partnership%20by%20PLN.jpg",
-    alt: "Piagam Green Energy Partnership Forum",
-    summary: "Piagam apresiasi resmi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri sebagai mitra aktif dalam percepatan transisi energi hijau — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
+    img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN.jpg",
+    alt: "Plakat Green Energy Partnership Forum",
+    summary: "Plakat apresiasi resmi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri sebagai mitra aktif dalam percepatan transisi energi hijau — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
     points: [
-      "Bentuk apresiasi atas inisiatif dekarbonisasi industri manufaktur berkelanjutan.",
+      "Bentuk plakat apresiasi atas inisiatif dekarbonisasi industri manufaktur berkelanjutan.",
       "Penguatan kemitraan strategis dalam pemanfaatan energi bersih bersama PLN."
     ]
   },
   {
-    title: "Penghargaan Renewable Energy Certificate PLN",
-    badge: "Penghargaan • PT PLN (Persero)",
+    title: "Plakat Renewable Energy Certificate (REC) PLN",
+    badge: "Plakat • PT PLN (Persero)",
     badgeClass: "badge-green",
-    img: "assets/penghargaan/REC%20by%20PLN.jpeg",
-    alt: "Trofi Renewable Energy Certificate dari PLN",
-    summary: "Trofi Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Garut dari PT PLN (Persero) sebagai bukti penggunaan pasokan listrik dari sumber energi terbarukan.",
+    img: "assets/plakat/REC%20by%20PLN.jpeg",
+    alt: "Plakat Renewable Energy Certificate dari PLN",
+    summary: "Plakat Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Garut dari PT PLN (Persero) sebagai bukti resmi penggunaan pasokan listrik dari sumber energi terbarukan.",
     points: [
-      "Verifikasi resmi atas pasokan daya listrik operasional berbasis Energi Baru Terbarukan (EBT).",
+      "Penyerahan plakat dan verifikasi resmi atas pasokan daya listrik operasional berbasis Energi Baru Terbarukan (EBT).",
       "Menurunkan jejak emisi karbon Scope 2 secara signifikan dan terdata transparan."
     ]
   },
@@ -865,7 +865,7 @@ const GALLERY_ITEMS_DATA = [
     badgeClass: "",
     img: "assets/sertifikat/pome%202025.png",
     alt: "Sertifikat POME 2025",
-    summary: "Sertifikat penghargaan Pelaporan dan Optimalisasi Manajemen Energi (POME) 2025 atas keberhasilan tata kelola efisiensi energi terpadu pada fasilitas produksi perusahaan.",
+    summary: "Sertifikat apresiasi Pelaporan dan Optimalisasi Manajemen Energi (POME) 2025 atas keberhasilan tata kelola efisiensi energi terpadu pada fasilitas produksi perusahaan.",
     points: [
       "Konsistensi audit energi internal dan pelaporan kinerja berkala.",
       "Realisasi proyek konservasi energi yang berdampak langsung pada efisiensi biaya dan reduksi emisi."
