@@ -853,13 +853,13 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
 
-  // 2. PLAKAT REC PLN (3 Site: IR, JX, JX2)
+  // 2. PLAKAT REC PLN (4 Site: IR, JX, JX2, PM)
   {
     id: "rec-pln",
     title: "Plakat Renewable Energy Certificate (REC) PLN",
     badge: "Plakat &bull; PT PLN (Persero)",
     badgeClass: "badge-green",
-    categoryBadge: "3 Site: Serpong, Sukabumi &amp; Garut",
+    categoryBadge: "4 Site: Serpong, Sukabumi, Garut &amp; SMJ",
     coverImg: "assets/plakat/REC%20by%20PLN%20IR.jpeg",
     items: [
       {
@@ -879,6 +879,12 @@ const GALLERY_ITEMS_DATA = [
         label: "Pratama Garut (Site JX2)",
         img: "assets/plakat/REC%20by%20PLN%20JX2.jpeg",
         desc: "Plakat Renewable Energy Certificate (REC) resmi dari PLN untuk fasilitas Pratama Garut (Site JX2)."
+      },
+      {
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (Site PM)",
+        img: "assets/plakat/REC%20by%20PLN%20PM.jpeg",
+        desc: "Plakat Renewable Energy Certificate (REC) resmi dari PLN untuk fasilitas PT Sumber Masanda Jaya (Site PM)."
       }
     ],
     summary: "Plakat Renewable Energy Certificate (REC) yang dianugerahkan oleh PT PLN (Persero) kepada PT Pratama Abadi Industri di seluruh lokasi pabrik (Pratama Serpong - IR, Pratama Sukabumi - JX, dan Pratama Garut - JX2) sebagai bukti legal kepemilikan atribut listrik ramah lingkungan dari pembangkit EBT.",
@@ -1040,7 +1046,7 @@ const GALLERY_ITEMS_DATA = [
     title: "Program SETI (Sertifikasi Capacity Building)",
     badge: "Sertifikat &bull; SETI Capacity Building",
     badgeClass: "badge-green",
-    categoryBadge: "5 Sertifikat Capacity Building",
+    categoryBadge: "6 Sertifikat Capacity Building",
     coverImg: "assets/sertifikat/SETI%20Capacity%20Building-energy%20transition-alfi.png",
     items: [
       {
@@ -1072,6 +1078,12 @@ const GALLERY_ITEMS_DATA = [
         label: "Measurement &amp; Verification (M&amp;V) — Faozi",
         img: "assets/sertifikat/SETI%20Capacity%20Building-Measurement%20and%20verification-faozi.jpg",
         desc: "Sertifikat kompetensi Pengukuran &amp; Verifikasi (Measurement &amp; Verification) kinerja energi program SETI."
+      },
+      {
+        site: "Exploring Tech",
+        label: "Exploring Technologies — Priyo",
+        img: "assets/sertifikat/SETI%20Capacity%20Building-exploring%20technologies-priyo.jpg",
+        desc: "Sertifikat kompetensi Exploring Technologies dalam program Capacity Building SETI."
       }
     ],
     summary: "Sertifikasi resmi dalam rangkaian program Capacity Building Sustainable Energy Transition in Indonesia (SETI) — kemitraan strategis pemerintah Jerman dan Indonesia yang dipimpin oleh DJEBTKE Kementerian ESDM serta Pusat Industri Hijau Kementerian Perindustrian. Program ini meningkatkan keahlian teknis tim konservasi energi dalam Transisi Energi, Efisiensi Energi &amp; Energi Terbarukan (EE &amp; RE), serta Pengukuran &amp; Verifikasi (M&amp;V).",
@@ -1660,12 +1672,9 @@ function initJourneyAndLowerAnimations() {
   // 4. Chapter 7: Visi & Misi Stagger (Removed as requested)
 
   // 5. Chapter 8: Closing
-  const closingSection = document.getElementById('ch-closing');
+  const closingSection = document.getElementById('slide6-closing');
   if (closingSection) {
-    const certRow = closingSection.querySelector('.closing-cert-row');
-    const headline = closingSection.querySelector('.closing-headline');
-    const sub = closingSection.querySelector('.closing-sub');
-    // Closing section background parallax updated (no image)
+    // Slide 6 closing integrated into numbers chapter
   }
 }
 
@@ -1970,6 +1979,199 @@ function initCarbonPerformanceChart() {
 /* ════════════════════════════════════════════════
    9. BOOT SEQUENCE
    ════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════
+   ANIMATED ENERGY CONSERVATION LOGO & SWARM PARTICLE ENGINE
+   ════════════════════════════════════════════════ */
+function initClosingEnergyLogo() {
+  const canvas = document.getElementById('swarm');
+  const logoEl = document.getElementById('logo');
+  const triggerEl = document.getElementById('slide6-closing') || logoEl;
+  if (!canvas || !logoEl || typeof gsap === 'undefined') return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Logo glowing and pulsing loop (runs forever once ignited) */
+  function lit() {
+    const loops = gsap.timeline();
+    loops.to('#bolt-glow', { opacity: 0.65, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' }, 0)
+         .to('#halo', { opacity: 0.35, scale: 1.06, transformOrigin: '50% 50%', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' }, 0)
+         .to('#bolt', { fillOpacity: 0.85, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' }, 0)
+         .fromTo('#flow', { strokeDashoffset: 0 }, { strokeDashoffset: -100, duration: 5, repeat: -1, ease: 'none' }, 0)
+         .to('#leaf-group', { rotation: 4, svgOrigin: '138 170', duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut' }, 0)
+         .to('#spark', { opacity: 0.5, duration: 1.1, repeat: -1, yoyo: true, ease: 'sine.inOut' }, 0);
+  }
+
+  function ignite() {
+    const t = gsap.timeline({ onComplete: lit });
+    t.to('#bolt-glow', { opacity: 1, duration: 0.3 }, 0)
+     .to('#halo', { opacity: 0.95, scale: 1.18, transformOrigin: '50% 50%', duration: 0.3, ease: 'power2.out' }, 0)
+     .to('#halo', { opacity: 0.35, scale: 1, duration: 1.2, ease: 'power2.inOut' }, 0.3)
+     .to('#bolt', { keyframes: [
+        { fillOpacity: 1, duration: 0.06 }, { fillOpacity: 0.15, duration: 0.08 },
+        { fillOpacity: 1, duration: 0.06 }, { fillOpacity: 0.5, duration: 0.1 }, { fillOpacity: 1, duration: 0.25 }
+      ] }, 0)
+     .to('#leaf', { fillOpacity: 0.35, duration: 1 }, 0.2)
+     .to('#flow', { opacity: 1, duration: 0.6 }, 0.4);
+  }
+
+  /* Initial setup: draw elements are set to hidden/empty */
+  const draw = ['#bolt', '#leaf', '#leaf-vein'];
+  gsap.set(draw, { strokeDasharray: 100, strokeDashoffset: 100, fillOpacity: 0 });
+  gsap.set('#ring-arc', { strokeDasharray: '0 100' });
+  gsap.set(['#ring-track', '#ring-inner', '#spark', '#wordmark', '#bolt-glow', '#halo', '#flow'], { opacity: 0 });
+
+  const intro = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+  intro.to('#ring-arc', { strokeDasharray: '78 22', duration: 1.6, ease: 'power3.inOut' }, 0)
+       .to(['#ring-track', '#ring-inner'], { opacity: 1, duration: 1 }, 0)
+       .to('#bolt', { strokeDashoffset: 0, duration: 1 }, 0.4)
+       .to('#leaf', { strokeDashoffset: 0, duration: 0.9 }, 0.9)
+       .to('#leaf-vein', { strokeDashoffset: 0, duration: 0.5 }, 1.3)
+       .to('#spark', { opacity: 1, scale: 1, transformOrigin: '50% 50%', duration: 0.5, ease: 'back.out(3)' }, 1.4)
+       .fromTo('#wordmark', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 }, 1.0);
+
+  if (reduce) {
+    intro.progress(1);
+    gsap.set(['#bolt', '#leaf'], { fillOpacity: 1 });
+    gsap.set('#bolt-glow', { opacity: 0.6 });
+    gsap.set('#halo', { opacity: 0.3 });
+    canvas.remove();
+    return;
+  }
+
+  /* Canvas particle swarm */
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, dpr = 1, TAU = Math.PI * 2;
+  let running = false;
+  let rafId = null;
+  const colors = ['#FFE2A0', '#4ade80', '#E8660A'];
+  const sw = { collapse: 0, alpha: 1 };
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.parentElement ? canvas.parentElement.getBoundingClientRect() : { width: window.innerWidth, height: 400 };
+    W = rect.width || window.innerWidth;
+    H = rect.height || 400;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  const parts = [];
+  function initParticles() {
+    parts.length = 0;
+    const N = W < 640 ? 80 : 150;
+    for (let i = 0; i < N; i++) {
+      const edge = Math.random() * TAU;
+      const x = W / 2 + Math.cos(edge) * (W * 0.6), y = H / 2 + Math.sin(edge) * (H * 0.6);
+      parts.push({
+        x: x, y: y, px: x, py: y, vx: 0, vy: 0, a: Math.random() * TAU,
+        r: 20 + Math.pow(Math.random(), 1.7) * 130,
+        w: (0.006 + Math.random() * 0.02) * (Math.random() < 0.5 ? -1 : 1),
+        k: 0.012 + Math.random() * 0.03, s: 0.6 + Math.random() * 1.5,
+        c: Math.random() < 0.55 ? 0 : (Math.random() < 0.7 ? 1 : 2)
+      });
+    }
+  }
+
+  let mx = 0, my = 0, cx = 0, cy = 0;
+  const qx = gsap.quickTo('#logo', 'x', { duration: 0.9, ease: 'power3.out' });
+  const qy = gsap.quickTo('#logo', 'y', { duration: 0.9, ease: 'power3.out' });
+
+  function move(e) {
+    const rect = canvas.getBoundingClientRect();
+    mx = e.clientX - rect.left;
+    my = e.clientY - rect.top;
+    qx((mx - W / 2) * 0.02);
+    qy((my - H / 2) * 0.02);
+  }
+  function burst() {
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i], ang = Math.random() * TAU, f = 8 + Math.random() * 20;
+      p.vx += Math.cos(ang) * f; p.vy += Math.sin(ang) * f;
+    }
+  }
+
+  const container = canvas.parentElement;
+  if (container) {
+    container.addEventListener('pointermove', move, { passive: true });
+    container.addEventListener('pointerdown', function () {
+      if (sw.collapse < 0.2) burst();
+    });
+  }
+
+  function frame() {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    const lr = logoEl.getBoundingClientRect();
+    const cr = canvas.getBoundingClientRect();
+    const lx = lr.left - cr.left + lr.width / 2;
+    const ly = lr.top - cr.top + lr.height * 0.5;
+
+    cx += (mx - cx) * 0.14;
+    cy += (my - cy) * 0.14;
+    const c = sw.collapse, ox = cx + (lx - cx) * c, oy = cy + (ly - cy) * c, rs = 1 - 0.93 * c;
+
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i];
+      p.a += p.w * (1 + c * 3);
+      const tx = ox + Math.cos(p.a) * p.r * rs, ty = oy + Math.sin(p.a) * p.r * rs * 0.65;
+      p.px = p.x; p.py = p.y;
+      p.vx += (tx - p.x) * p.k * (1 + c); p.vy += (ty - p.y) * p.k * (1 + c);
+      p.vx *= 0.86; p.vy *= 0.86;
+      p.x += p.vx; p.y += p.vy;
+      const sp = Math.min(Math.hypot(p.vx, p.vy) / 12, 1);
+      ctx.globalAlpha = (0.35 + sp * 0.55) * sw.alpha;
+      ctx.strokeStyle = colors[p.c]; ctx.fillStyle = colors[p.c];
+      ctx.lineWidth = p.s; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y); ctx.stroke();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.s * 0.7, 0, TAU); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    rafId = requestAnimationFrame(frame);
+  }
+
+  /* Timeline: particles swirl, gather to logo, ignite, then transition to lit glow */
+  const seq = gsap.timeline({ paused: true, delay: 1.8 });
+  seq.to(sw, { collapse: 1, duration: 1.1, ease: 'power3.in' }, 0)
+     .add(ignite, '>-0.05')
+     .to(sw, { alpha: 0, duration: 0.7, ease: 'power1.out' }, '>')
+     .add(function () {
+       running = false;
+       if (rafId) cancelAnimationFrame(rafId);
+       canvas.style.opacity = '0';
+       setTimeout(() => { canvas.remove(); }, 800);
+     });
+
+  let triggered = false;
+  function triggerAnimation() {
+    if (triggered) return;
+    triggered = true;
+    resize();
+    mx = W / 2; my = H * 0.35; cx = mx; cy = my;
+    initParticles();
+    running = true;
+    rafId = requestAnimationFrame(frame);
+    intro.play(0);
+    seq.play(0);
+  }
+
+  /* Trigger on scroll into Slide 6 closing section */
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.create({
+      trigger: triggerEl,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => {
+        triggerAnimation();
+      }
+    });
+  } else {
+    triggerAnimation();
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // 0. Mark body for GSAP transition smoothness
@@ -2009,6 +2211,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initFloatingNav();
   initHeroBgParallax();
+  initClosingEnergyLogo();
 
   // 6. Re-measure on resize
   let resizeTimer;
