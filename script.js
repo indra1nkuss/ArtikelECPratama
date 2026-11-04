@@ -809,172 +809,458 @@ function initGalleryFilters() {
   });
 }
 
-/* Lightbox — Enhanced with Navigation, Slide Counter, & Structured Narasi */
+/* =============================================
+   CHAPTER 5: MULTI-SITE GALLERY LIGHTBOX
+   ============================================= */
+
 const GALLERY_ITEMS_DATA = [
   {
+    id: "pln-partnership",
     title: "Green Energy Partnership Forum",
     badge: "Plakat • PLN Indonesia",
     badgeClass: "badge-gold",
-    img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN.jpg",
-    alt: "Plakat Green Energy Partnership Forum",
-    summary: "Plakat apresiasi resmi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri sebagai mitra aktif dalam percepatan transisi energi hijau — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
+    categoryBadge: "Multi-Site: Site IR &amp; PM",
+    coverImg: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(IR).jpeg",
+    items: [
+      {
+        site: "Site IR",
+        label: "Site IR — Karawang",
+        img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(IR).jpeg",
+        desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional Site IR."
+      },
+      {
+        site: "Site PM",
+        label: "Site PM — Pasir Mulya",
+        img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(PM).png",
+        desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional Site PM."
+      }
+    ],
+    summary: "Plakat apresiasi resmi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri (Site IR &amp; Site PM) sebagai mitra aktif dan pelopor dalam percepatan transisi energi hijau manufaktur berkelanjutan — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
     points: [
-      "Bentuk plakat apresiasi atas inisiatif dekarbonisasi industri manufaktur berkelanjutan.",
-      "Penguatan kemitraan strategis dalam pemanfaatan energi bersih bersama PLN."
+      "Pengakuan atas sinergi aktif multi-site (Site IR &amp; PM) dalam mengadopsi pasokan energi bersih terbarukan.",
+      "Kemitraan strategis berkelanjutan bersama PLN dalam mendukung dekarbonisasi industri nasional."
     ]
   },
   {
+    id: "rec-pln",
     title: "Plakat Renewable Energy Certificate (REC) PLN",
     badge: "Plakat • PT PLN (Persero)",
     badgeClass: "badge-green",
-    img: "assets/plakat/REC%20by%20PLN.jpeg",
-    alt: "Plakat Renewable Energy Certificate dari PLN",
-    summary: "Plakat Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Garut dari PT PLN (Persero) sebagai bukti resmi penggunaan pasokan listrik dari sumber energi terbarukan.",
+    categoryBadge: "Site PM / Garut",
+    coverImg: "assets/plakat/REC%20by%20PLN.jpeg",
+    items: [
+      {
+        site: "Site PM / Garut",
+        label: "Site Garut (PM)",
+        img: "assets/plakat/REC%20by%20PLN.jpeg",
+        desc: "Plakat dan verifikasi Renewable Energy Certificate (REC) dari PT PLN (Persero)."
+      }
+    ],
+    summary: "Plakat Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Industri dari PT PLN (Persero) sebagai bukti resmi pemanfaatan pasokan listrik 100% dari sumber Energi Baru Terbarukan (EBT).",
     points: [
-      "Penyerahan plakat dan verifikasi resmi atas pasokan daya listrik operasional berbasis Energi Baru Terbarukan (EBT).",
-      "Menurunkan jejak emisi karbon Scope 2 secara signifikan dan terdata transparan."
+      "Verifikasi resmi atas pasokan daya listrik operasional berbasis energi hijau terbarukan.",
+      "Menghilangkan emisi karbon Scope 2 secara signifikan dan terdata transparan."
     ]
   },
   {
-    title: "Sertifikat ISO 50001:2018",
+    id: "iso-50001",
+    title: "Sertifikasi ISO 50001:2018 (Multi-Site: IR, PM, JX2)",
     badge: "Sertifikat • ISO 50001:2018",
     badgeClass: "",
-    img: "assets/sertifikat/iso%2050001.png",
-    alt: "Sertifikat ISO 50001:2018",
-    summary: "Sertifikat Sistem Manajemen Energi ISO 50001:2018 yang mengonfirmasi bahwa perusahaan telah memenuhi seluruh persyaratan audit internasional dalam efisiensi energi.",
+    categoryBadge: "3 Site: IR • PM • JX2",
+    coverImg: "assets/sertifikat/iso%2050001%20(IR).png",
+    items: [
+      {
+        site: "Site IR",
+        label: "Site IR — Karawang",
+        img: "assets/sertifikat/iso%2050001%20(IR).png",
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Site IR."
+      },
+      {
+        site: "Site PM",
+        label: "Site PM — Pasir Mulya",
+        img: "assets/sertifikat/iso%2050001%20(PM).png",
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Site PM."
+      },
+      {
+        site: "Site JX2",
+        label: "Site JX2",
+        img: "assets/sertifikat/iso%2050001%20(JX2).png",
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Site JX2."
+      }
+    ],
+    summary: "Seluruh unit operasional manufaktur PT Pratama Abadi Industri — meliputi <b>Site IR, Site PM, dan Site JX2</b> — telah resmi tersertifikasi standar internasional Sistem Manajemen Energi <b>ISO 50001:2018</b>. Sertifikasi menyeluruh ini mengonfirmasi bahwa seluruh fasilitas pabrik telah menerapkan tata kelola energi terpadu berbasis siklus PDCA (Plan-Do-Check-Act) yang diakui secara global.",
     points: [
-      "Implementasi tata kelola konsumsi energi berbasis siklus PDCA (Plan - Do - Check - Act).",
-      "Audit kepatuhan berkala untuk memastikan penurunan intensitas energi tahunan secara konsisten."
+      "Standardisasi manajemen energi internasional seragam di seluruh site pabrik (Site IR, PM, dan JX2).",
+      "Penerapan audit kepatuhan energi berkala guna menjamin penurunan intensitas energi tahunan yang terukur.",
+      "Sistem kendali konsumsi daya terpadu untuk efisiensi operasional dan reduksi emisi yang berkelanjutan."
     ]
   },
   {
+    id: "mcap",
     title: "Certificate of Completion — MCAP 2026",
     badge: "Sertifikat • MCAP",
     badgeClass: "",
-    img: "assets/sertifikat/mcap.jpeg",
-    alt: "Certificate of Completion MCAP",
+    categoryBadge: "Aksi Iklim Global",
+    coverImg: "assets/sertifikat/mcap.jpeg",
+    items: [
+      {
+        site: "Corporate",
+        label: "PT Pratama Abadi Industri",
+        img: "assets/sertifikat/mcap.jpeg",
+        desc: "Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 dari Cascale."
+      }
+    ],
     summary: "Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 yang diinisiasi oleh Cascale bagi PT Pratama Abadi Industri.",
     points: [
-      "Validasi target penurunan emisi berbasis sains (Science-Based Targets).",
-      "Integrasi langkah dekarbonisasi operasional dengan tolok ukur rantai pasok global."
+      "Validasi target penurunan emisi gas rumah kaca berbasis sains (Science-Based Targets).",
+      "Integrasi langkah dekarbonisasi operasional dengan tolok ukur rantai pasok industri global."
     ]
   },
   {
-    title: "Sertifikat POME",
+    id: "pome",
+    title: "Sertifikat POME (Multi-Site: IR, PM, JX2)",
     badge: "Sertifikat • POME",
     badgeClass: "",
-    img: "assets/sertifikat/pome%202025.png",
-    alt: "Sertifikat POME",
-    summary: "Sertifikat apresiasi Pelaporan dan Optimalisasi Manajemen Energi (POME) atas keberhasilan tata kelola efisiensi energi terpadu pada fasilitas produksi perusahaan.",
+    categoryBadge: "3 Site: IR • PM • JX2",
+    coverImg: "assets/sertifikat/pome%202025%20(IR).png",
+    items: [
+      {
+        site: "Site IR",
+        label: "Site IR — Karawang",
+        img: "assets/sertifikat/pome%202025%20(IR).png",
+        desc: "Sertifikat apresiasi POME atas kepatuhan pelaporan &amp; pengelolaan energi di Site IR."
+      },
+      {
+        site: "Site PM",
+        label: "Site PM — Pasir Mulya",
+        img: "assets/sertifikat/pome%202025%20(PM).jpg",
+        desc: "Sertifikat apresiasi POME atas optimalisasi efisiensi energi di fasilitas Site PM."
+      },
+      {
+        site: "Site JX2",
+        label: "Site JX2",
+        img: "assets/sertifikat/pome%202025%20(JX2).png",
+        desc: "Sertifikat apresiasi POME atas konsistensi manajemen energi di fasilitas Site JX2."
+      }
+    ],
+    summary: "Seluruh fasilitas operasional manufaktur PT Pratama Abadi Industri — <b>Site IR, Site PM, dan Site JX2</b> — berhasil meraih apresiasi resmi Pelaporan dan Optimalisasi Manajemen Energi (POME) atas komitmen transparansi pelaporan dan keunggulan tata kelola energi terpadu.",
     points: [
-      "Konsistensi audit energi internal dan pelaporan kinerja berkala.",
-      "Realisasi proyek konservasi energi yang berdampak langsung pada efisiensi biaya dan reduksi emisi."
+      "Konsistensi audit energi internal dan akurasi pelaporan kinerja di ketiga site fasilitas produksi.",
+      "Realisasi proyek konservasi energi yang terbukti menurunkan biaya operasional dan intensitas emisi."
     ]
   },
   {
+    id: "uk-pact",
     title: "Sertifikasi Pelatihan UK-PACT (EnB &amp; EnPI)",
     badge: "Sertifikat • UK-PACT Energy Performance",
     badgeClass: "badge-blue",
-    img: "assets/sertifikat/uk-pact.png",
-    alt: "Sertifikat Pelatihan UK-PACT EnB dan EnPI",
-    summary: "Telah berpartisipasi dalam program pelatihan yang diselenggarakan oleh UK-PACT terkait Energy Baseline (EnB) dan Energy Performance Indicator (EnPI) guna memperkuat kompetensi tim energi.",
+    categoryBadge: "4 Sertifikat Kompetensi",
+    coverImg: "assets/sertifikat/uk-pact.png",
+    items: [
+      {
+        site: "Sertifikat #1",
+        label: "Sertifikasi UK-PACT #1",
+        img: "assets/sertifikat/uk-pact.png",
+        desc: "Sertifikat partisipasi pelatihan UK-PACT dalam bidang Energy Baseline (EnB) &amp; EnPI."
+      },
+      {
+        site: "Sertifikat #2",
+        label: "Sertifikasi UK-PACT #2",
+        img: "assets/sertifikat/uk-pact2.png",
+        desc: "Sertifikat kompetensi penetapan indikator kinerja energi &amp; evaluasi performa UK-PACT."
+      },
+      {
+        site: "Sertifikat #3",
+        label: "Sertifikasi UK-PACT #3",
+        img: "assets/sertifikat/uk-pact3.png",
+        desc: "Sertifikat pelatihan penyusunan baseline energi &amp; identifikasi peluang efisiensi UK-PACT."
+      },
+      {
+        site: "Sertifikat #4",
+        label: "Sertifikasi UK-PACT #4",
+        img: "assets/sertifikat/uk-pact4.png",
+        desc: "Sertifikat penguatan implementasi standar manajemen energi ISO 50001 UK-PACT."
+      }
+    ],
+    summary: "Telah berpartisipasi aktif dalam program pelatihan yang diselenggarakan oleh UK-PACT terkait <b>Energy Baseline (EnB)</b> dan <b>Energy Performance Indicator (EnPI)</b> guna meningkatkan pemahaman dan kompetensi teknis tim energi perusahaan. Pelatihan ini menjadi landasan kokoh dalam mengidentifikasi peluang penghematan daya serta mendukung penerapan Sistem Manajemen Energi ISO 50001:2018 secara konsisten dan berkelanjutan di semua unit operasional.",
     points: [
-      "Peningkatan kompetensi dalam penyusunan baseline energi serta penetapan indikator kinerja energi yang akurat.",
-      "Evaluasi performa penggunaan energi sebagai dasar dalam mengidentifikasi peluang penghematan riil di lini operasional.",
-      "Mendukung penerapan Sistem Manajemen Energi berdasarkan standar ISO 50001:2018 secara konsisten dan berkelanjutan."
+      "Penguasaan metodologi penyusunan baseline energi dan penentuan indikator kinerja energi presisi.",
+      "Evaluasi performa energi berbasis data untuk mengeksekusi peluang efisiensi riil.",
+      "Dukungan penuh terhadap kesinambungan sertifikasi sistem manajemen energi ISO 50001:2018."
     ]
   },
   {
+    id: "seti-cert",
     title: "Program SETI (Sustainable Energy Transition in Indonesia)",
     badge: "Sertifikat • Kemitraan SETI",
     badgeClass: "badge-green",
-    img: "assets/sertifikat/SETI.png",
-    alt: "Sertifikat Kemitraan Program SETI",
-    summary: "Sustainable Energy Transition in Indonesia (SETI) merupakan proyek kolaboratif untuk mengakselerasi pencapaian target Net-Zero dan transisi energi industri di Indonesia.",
+    categoryBadge: "Kemitraan DJEBTKE &amp; Jerman",
+    coverImg: "assets/sertifikat/SETI.png",
+    items: [
+      {
+        site: "Sertifikat Kemitraan",
+        label: "Sertifikat Program SETI",
+        img: "assets/sertifikat/SETI.png",
+        desc: "Sertifikat kemitraan resmi proyek Sustainable Energy Transition in Indonesia (SETI)."
+      }
+    ],
+    summary: "Sustainable Energy Transition in Indonesia (SETI) merupakan proyek kerja sama antara Pemerintah Jerman dan Indonesia yang dipimpin oleh DJEBTKE Kementerian ESDM dan Pusat Industri Hijau Kementerian Perindustrian. Proyek ini bertujuan mengakselerasi pencapaian target Net-Zero Emission dengan mendorong efisiensi energi dan pemanfaatan energi terbarukan di sektor industri besar. Perusahaan berpartisipasi aktif sebagai bentuk komitmen keberlanjutan dan dekarbonisasi.",
     points: [
-      "Proyek kerja sama Pemerintah Jerman dan Indonesia yang dipimpin DJEBTKE KESDM serta Pusat Industri Hijau Kemenperin.",
-      "Mendukung implementasi efisiensi energi dan energi terbarukan pada sektor industri dengan konsumsi energi besar.",
-      "Partisipasi aktif perusahaan sebagai wujud komitmen nyata terhadap keberlanjutan dan penurunan emisi karbon."
+      "Sinergi strategis antara pemerintah dan industri dalam implementasi teknologi hijau.",
+      "Akselerasi peta jalan dekarbonisasi operasional menuju target nol emisi karbon nasional."
     ]
   },
   {
+    id: "seti-activity",
     title: "Forum &amp; Workshop Proyek SETI",
     badge: "Kegiatan • Kolaborasi Transisi Energi",
     badgeClass: "",
-    img: "assets/kegiatan/SETI.jpeg",
-    alt: "Kegiatan Forum dan Workshop Program SETI",
-    summary: "Dokumentasi keterlibatan aktif tim Energy Conservation dalam agenda forum konsultasi dan lokakarya proyek SETI bersama Kementerian ESDM dan Kementerian Perindustrian.",
+    categoryBadge: "Workshop &amp; Forum JX",
+    coverImg: "assets/kegiatan/SETI%20(JX).jpeg",
+    items: [
+      {
+        site: "Forum &amp; Workshop SETI",
+        label: "Forum &amp; Workshop SETI (JX)",
+        img: "assets/kegiatan/SETI%20(JX).jpeg",
+        desc: "Keterlibatan tim Energy Conservation dalam forum dan workshop proyek Sustainable Energy Transition in Indonesia."
+      }
+    ],
+    summary: "Dokumentasi keterlibatan aktif tim Energy Conservation dalam rangkaian forum konsultasi, lokakarya teknis, dan diskusi percepatan proyek SETI bersama DJEBTKE Kementerian ESDM dan Kementerian Perindustrian.",
     points: [
-      "Diskusi strategis percepatan transisi energi industri manufaktur nasional bersama mitra internasional.",
-      "Harmonisasi roadmap penurunan emisi gas rumah kaca perusahaan dengan target dekarbonisasi nasional."
+      "Penyelarasan target efisiensi energi fasilitas pabrik dengan kerangka regulasi industri hijau nasional.",
+      "Kolaborasi teknis bersama konsultan dan pakar energi terbarukan internasional."
     ]
   },
   {
-    title: "Training Energy Awareness",
+    id: "awareness",
+    title: "Training Energy Awareness (Multi-Site: IR &amp; PM)",
     badge: "Kegiatan • Edukasi Karyawan",
     badgeClass: "",
-    img: "assets/kegiatan/Training%20Energy%20Awereness.jpeg",
-    alt: "Training Energy Awareness untuk karyawan",
-    summary: "Pelatihan dan sosialisasi berkala budaya hemat energi kepada seluruh karyawan operasional di fasilitas produksi perusahaan.",
+    categoryBadge: "4 Sesi: IR &amp; PM",
+    coverImg: "assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg",
+    items: [
+      {
+        site: "Site IR — Karyawan",
+        label: "Site IR — Awareness Karyawan",
+        img: "assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg",
+        desc: "Sosialisasi dan pelatihan hemat energi bagi karyawan operasional di Site IR."
+      },
+      {
+        site: "Site PM — Produksi",
+        label: "Site PM — Refresh Tim Produksi",
+        img: "assets/kegiatan/Referesh%20Training%20Energy%20PM%20(Production).jpg",
+        desc: "Refresh training efisiensi energi bagi tim lini produksi manufaktur Site PM."
+      },
+      {
+        site: "Site PM — Karyawan Baru",
+        label: "Site PM — Orientasi Karyawan Baru",
+        img: "assets/kegiatan/Training%20Energy%20PM%20(Karyawan%20Baru).jpg",
+        desc: "Pembekalan budaya hemat energi pada program orientasi karyawan baru di Site PM."
+      },
+      {
+        site: "Site PM — Promosi",
+        label: "Site PM — Pelatihan Promosi",
+        img: "assets/kegiatan/Training%20Energy%20PM(Promotion).jpg",
+        desc: "Sesi pelatihan kepedulian energi pada program promosi jenjang karir Site PM."
+      }
+    ],
+    summary: "Program edukasi dan sosialisasi budaya hemat energi yang dilaksanakan secara menyeluruh dan berkesinambungan di seluruh fasilitas perusahaan (Site IR dan Site PM). Pelatihan ini menjangkau seluruh tingkatan karyawan — mulai dari orientasi karyawan baru, refreshing berkala tim operasional produksi, hingga sesi pembekalan promosi — guna memastikan efisiensi energi menjadi kebiasaan kerja sehari-hari.",
     points: [
-      "Membangun pemahaman dan kepedulian terhadap target penurunan intensitas energi fasilitas.",
-      "Mendorong kebiasaan hemat energi dan pengurangan pemborosan daya dalam rutinitas kerja harian."
+      "Penanaman kesadaran pentingnya konservasi energi dalam setiap aktivitas kerja operasional.",
+      "Keterlibatan aktif karyawan dari hulu hingga hilir dalam menekan pemborosan daya di semua site."
     ]
   }
 ];
 
 function initLightbox() {
-  const modal      = document.getElementById('lightboxModal');
-  const img        = document.getElementById('lightboxImg');
-  const badge      = document.getElementById('lightboxBadge');
-  const title      = document.getElementById('lightboxTitle');
-  const desc       = document.getElementById('lightboxDesc');
-  const counter    = document.getElementById('lightboxCounter');
-  const closeBtn   = document.getElementById('lightboxClose');
-  const prevBtn    = document.getElementById('lightboxPrev');
-  const nextBtn    = document.getElementById('lightboxNext');
+  const modal          = document.getElementById('lightboxModal');
+  const img            = document.getElementById('lightboxImg');
+  const badge          = document.getElementById('lightboxBadge');
+  const multiTag       = document.getElementById('lightboxMultiTag');
+  const title          = document.getElementById('lightboxTitle');
+  const desc           = document.getElementById('lightboxDesc');
+  const counter        = document.getElementById('lightboxCounter');
+  const sitePill       = document.getElementById('lightboxSitePill');
+  const siteTabsBar    = document.getElementById('lightboxSiteTabs');
+  const singleView     = document.getElementById('lbSingleView');
+  const multiGridView  = document.getElementById('lbMultiGridView');
+  const thumbStrip     = document.getElementById('lightboxThumbStrip');
+  const closeBtn       = document.getElementById('lightboxClose');
+  const prevBtn        = document.getElementById('lightboxPrev');
+  const nextBtn        = document.getElementById('lightboxNext');
 
   const cards = Array.from(document.querySelectorAll('.gallery-card'));
-  let currentIndex = 0;
+  let currentTopicIdx = 0;
+  let currentSiteIdx  = 0;
+  let isMultiViewMode = false;
 
-  function renderItem(idx) {
-    if (idx < 0) idx = GALLERY_ITEMS_DATA.length - 1;
-    if (idx >= GALLERY_ITEMS_DATA.length) idx = 0;
-    currentIndex = idx;
+  function renderTopic(topicIdx, siteIdx = 0, multiView = false) {
+    if (topicIdx < 0) topicIdx = GALLERY_ITEMS_DATA.length - 1;
+    if (topicIdx >= GALLERY_ITEMS_DATA.length) topicIdx = 0;
+    currentTopicIdx = topicIdx;
 
-    const data = GALLERY_ITEMS_DATA[idx];
-    if (!data) return;
+    const topic = GALLERY_ITEMS_DATA[topicIdx];
+    if (!topic) return;
 
-    if (img) {
-      img.style.opacity = '0';
-      img.src = data.img;
-      img.alt = data.alt || data.title;
-      img.onload = () => { img.style.opacity = '1'; };
-    }
+    const items = topic.items || [];
+    if (siteIdx < 0) siteIdx = 0;
+    if (siteIdx >= items.length) siteIdx = items.length - 1;
+    currentSiteIdx = siteIdx;
+    isMultiViewMode = multiView;
 
+    // 1. Header & Badges
     if (badge) {
-      badge.innerHTML = data.badge;
-      badge.className = 'lightbox-badge ' + (data.badgeClass || '');
+      badge.innerHTML = topic.badge;
+      badge.className = 'lightbox-badge ' + (topic.badgeClass || '');
     }
-
+    if (multiTag) {
+      if (topic.categoryBadge) {
+        multiTag.innerHTML = topic.categoryBadge;
+        multiTag.style.display = 'inline-block';
+      } else {
+        multiTag.style.display = 'none';
+      }
+    }
     if (title) {
-      title.innerHTML = data.title;
+      title.innerHTML = topic.title;
     }
-
     if (counter) {
-      counter.textContent = (idx + 1) + ' / ' + GALLERY_ITEMS_DATA.length;
+      counter.textContent = (topicIdx + 1) + ' / ' + GALLERY_ITEMS_DATA.length;
     }
 
+    // 2. Site Tabs Bar (muncul jika items > 1)
+    if (siteTabsBar) {
+      if (items.length > 1) {
+        let tabsHtml = '<span class="lb-tab-label">Pilih Site:</span>';
+        items.forEach((it, sIdx) => {
+          const activeClass = (!isMultiViewMode && sIdx === currentSiteIdx) ? 'active' : '';
+          tabsHtml += `<button class="lb-site-tab ${activeClass}" data-site-idx="${sIdx}">🏢 ${it.site}</button>`;
+        });
+        const multiActiveClass = isMultiViewMode ? 'active' : '';
+        tabsHtml += `<button class="lb-site-tab tab-multiview ${multiActiveClass}" id="lbBtnMultiView">🖼️ Tampilkan Semua (${items.length} Site)</button>`;
+        siteTabsBar.innerHTML = tabsHtml;
+        siteTabsBar.style.display = 'flex';
+
+        // Event listener per tab
+        siteTabsBar.querySelectorAll('.lb-site-tab[data-site-idx]').forEach(tabBtn => {
+          tabBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const sIdx = parseInt(tabBtn.getAttribute('data-site-idx'), 10);
+            renderTopic(currentTopicIdx, sIdx, false);
+          });
+        });
+
+        const btnMulti = document.getElementById('lbBtnMultiView');
+        if (btnMulti) {
+          btnMulti.addEventListener('click', (e) => {
+            e.stopPropagation();
+            renderTopic(currentTopicIdx, currentSiteIdx, true);
+          });
+        }
+      } else {
+        siteTabsBar.innerHTML = '';
+        siteTabsBar.style.display = 'none';
+      }
+    }
+
+    // 3. Media Area Rendering (Single View vs Multi-Grid View)
+    if (isMultiViewMode && items.length > 1) {
+      // MULTI-GRID MODE
+      if (singleView) singleView.style.display = 'none';
+      if (thumbStrip) thumbStrip.style.display = 'none';
+      if (multiGridView) {
+        const gridColClass = items.length === 2 ? 'multigrid-2' : (items.length === 3 ? 'multigrid-3' : 'multigrid-4');
+        let gridHtml = '';
+        items.forEach((it, sIdx) => {
+          gridHtml += `
+            <div class="lb-grid-card" data-focus-idx="${sIdx}">
+              <div class="lb-grid-card-media">
+                <img src="${it.img}" alt="${it.label}" loading="lazy" />
+              </div>
+              <div class="lb-grid-card-footer">
+                <span class="lb-grid-site-title">🏢 ${it.label}</span>
+                <span class="lb-grid-zoom-hint">&#x1F50D; Perbesar</span>
+              </div>
+            </div>
+          `;
+        });
+        multiGridView.className = 'lightbox-multigrid-view ' + gridColClass;
+        multiGridView.innerHTML = gridHtml;
+        multiGridView.style.display = 'grid';
+
+        // Click on grid card to focus single view
+        multiGridView.querySelectorAll('.lb-grid-card').forEach(gCard => {
+          gCard.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const focusIdx = parseInt(gCard.getAttribute('data-focus-idx'), 10);
+            renderTopic(currentTopicIdx, focusIdx, false);
+          });
+        });
+      }
+    } else {
+      // SINGLE VIEW MODE
+      if (multiGridView) multiGridView.style.display = 'none';
+      if (singleView) singleView.style.display = 'flex';
+
+      const currentItem = items[currentSiteIdx] || { img: topic.coverImg, label: topic.title };
+
+      if (img) {
+        img.style.opacity = '0';
+        img.src = currentItem.img;
+        img.alt = currentItem.label || topic.title;
+        img.onload = () => { img.style.opacity = '1'; };
+      }
+
+      if (sitePill) {
+        if (items.length > 1 && currentItem.label) {
+          sitePill.innerHTML = `<span>🏢</span> ${currentItem.label}`;
+          sitePill.style.display = 'flex';
+        } else {
+          sitePill.style.display = 'none';
+        }
+      }
+
+      // Thumbnail Strip
+      if (thumbStrip) {
+        if (items.length > 1) {
+          let thumbHtml = '';
+          items.forEach((it, sIdx) => {
+            const activeClass = sIdx === currentSiteIdx ? 'active' : '';
+            thumbHtml += `
+              <div class="lb-thumb-item ${activeClass}" data-thumb-idx="${sIdx}" title="${it.label}">
+                <img src="${it.img}" alt="${it.label}" />
+              </div>
+            `;
+          });
+          thumbStrip.innerHTML = thumbHtml;
+          thumbStrip.style.display = 'flex';
+
+          thumbStrip.querySelectorAll('.lb-thumb-item').forEach(th => {
+            th.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const sIdx = parseInt(th.getAttribute('data-thumb-idx'), 10);
+              renderTopic(currentTopicIdx, sIdx, false);
+            });
+          });
+        } else {
+          thumbStrip.innerHTML = '';
+          thumbStrip.style.display = 'none';
+        }
+      }
+    }
+
+    // 4. Structured Narasi
     if (desc) {
-      let html = '<p class="lb-summary">' + data.summary + '</p>';
-      if (data.points && data.points.length > 0) {
+      let html = '<p class="lb-summary">' + topic.summary + '</p>';
+      if (topic.points && topic.points.length > 0) {
         html += '<div class="lb-points-card">';
         html += '  <div class="lb-points-title">';
         html += '    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
-        html += '    <span>Poin Kunci &amp; Sasaran Strategis</span>';
+        html += '    <span>Poin Kunci &amp; Standarisasi Menyeluruh</span>';
         html += '  </div>';
         html += '  <ul class="lb-points-list">';
-        data.points.forEach(pt => {
+        topic.points.forEach(pt => {
           html += '    <li>' + pt + '</li>';
         });
         html += '  </ul>';
@@ -984,26 +1270,26 @@ function initLightbox() {
     }
   }
 
-  // Event listener per card
+  // Event listener per gallery card on page
   cards.forEach((card, index) => {
     card.addEventListener('click', () => {
-      renderItem(index);
+      renderTopic(index, 0, false);
       if (modal) modal.classList.add('active');
       if (typeof lenis !== 'undefined' && lenis) lenis.stop();
       document.body.style.overflow = 'hidden';
     });
   });
 
-  // Navigasi Prev & Next
-  function showPrev() {
-    renderItem(currentIndex - 1);
+  // Navigasi Prev & Next (Pindah Topik)
+  function showPrevTopic() {
+    renderTopic(currentTopicIdx - 1, 0, false);
   }
-  function showNext() {
-    renderItem(currentIndex + 1);
+  function showNextTopic() {
+    renderTopic(currentTopicIdx + 1, 0, false);
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
-  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevTopic(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNextTopic(); });
 
   function closeLightbox() {
     if (modal) modal.classList.remove('active');
@@ -1021,10 +1307,11 @@ function initLightbox() {
   document.addEventListener('keydown', e => {
     if (!modal || !modal.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
-    else if (e.key === 'ArrowLeft') showPrev();
-    else if (e.key === 'ArrowRight') showNext();
+    else if (e.key === 'ArrowLeft') showPrevTopic();
+    else if (e.key === 'ArrowRight') showNextTopic();
   });
 }
+
 
 /* Floating Nav clicks + back to top */
 function initFloatingNav() {
