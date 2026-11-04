@@ -629,6 +629,17 @@ let galleryRevealTween = null;
 function initGalleryFilters() {
   const filterBtns = document.querySelectorAll('.gfilter-btn');
   const grid = document.getElementById('galleryGrid');
+    // Scroll ke Narasi Lengkap
+  const jumpBtn = document.getElementById('lbJumpToDesc');
+  const scrollIndicator = document.getElementById('lbScrollIndicator');
+  function scrollToNarasi() {
+    if (desc) {
+      desc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  if (jumpBtn) jumpBtn.addEventListener('click', scrollToNarasi);
+  if (scrollIndicator) scrollIndicator.addEventListener('click', scrollToNarasi);
+
   const cards = Array.from(document.querySelectorAll('.gallery-card'));
   if (!filterBtns.length || !cards.length) return;
 
@@ -1654,74 +1665,7 @@ function initJourneyAndLowerAnimations() {
     const certRow = closingSection.querySelector('.closing-cert-row');
     const headline = closingSection.querySelector('.closing-headline');
     const sub = closingSection.querySelector('.closing-sub');
-    const bgImg = closingSection.querySelector('.closing-bg img');
-
-    if (bgImg) {
-      gsap.to(bgImg, {
-        yPercent: 12,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: closingSection,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-    }
-
-    if (certRow) {
-      gsap.fromTo(certRow.children,
-        { opacity: 0, y: 24, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: certRow,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    }
-
-    if (headline) {
-      gsap.fromTo(headline,
-        { opacity: 0, y: 35 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.85,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: headline,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    }
-
-    if (sub) {
-      gsap.fromTo(sub,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: 0.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sub,
-            start: 'top 88%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    }
+    // Closing section background parallax updated (no image)
   }
 }
 

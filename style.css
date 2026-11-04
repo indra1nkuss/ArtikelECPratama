@@ -3803,3 +3803,196 @@ html { scroll-behavior: auto; }
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   SMOOTH SCROLLBAR & COMPACT DYNAMIC MULTI-GRID
+   ═══════════════════════════════════════════════════════════ */
+
+/* Modal Content: High-contrast draggable scrollbar */
+.lightbox-content {
+  max-width: 1200px !important;
+  width: 95vw !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth !important;
+  overscroll-behavior: contain !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(232, 102, 10, 0.8) rgba(255, 255, 255, 0.06) !important;
+}
+.lightbox-content::-webkit-scrollbar {
+  width: 9px !important;
+}
+.lightbox-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 8px !important;
+}
+.lightbox-content::-webkit-scrollbar-thumb {
+  background: rgba(232, 102, 10, 0.8) !important;
+  border-radius: 8px !important;
+  border: 2px solid #0d0f13 !important;
+}
+.lightbox-content::-webkit-scrollbar-thumb:hover {
+  background: var(--orange) !important;
+  box-shadow: 0 0 12px rgba(232, 102, 10, 0.9) !important;
+}
+
+/* Header Action Row & Jump Button */
+.lightbox-header-actions-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 4px !important;
+}
+.lb-jump-desc-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(232, 102, 10, 0.16) !important;
+  border: 1px solid rgba(232, 102, 10, 0.4) !important;
+  color: var(--orange-lite) !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+.lb-jump-desc-btn:hover {
+  background: var(--orange) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(232, 102, 10, 0.4) !important;
+}
+
+/* Media Area: Compact, Controlled Height so all pictures fit in frame */
+.lightbox-media {
+  padding: 12px 22px !important;
+  background: #050608 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.lightbox-multigrid-view {
+  width: 100% !important;
+  gap: 10px !important;
+}
+
+/* ══ DYNAMIC SCALING FOR MULTI-GRID ══ */
+
+/* 1 Item: Terpusat dan pas */
+.multigrid-single {
+  grid-template-columns: 1fr !important;
+  max-width: 460px !important;
+  margin: 0 auto !important;
+}
+.multigrid-single .lb-grid-card-media {
+  height: 250px !important;
+}
+
+/* 2 Items: 2 Kolom 1 Baris */
+.multigrid-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+.multigrid-2 .lb-grid-card-media {
+  height: 210px !important;
+}
+
+/* 3 Items: 3 Kolom 1 Baris */
+.multigrid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+.multigrid-3 .lb-grid-card-media {
+  height: 180px !important;
+}
+
+/* 4 Items (ISO, POME, UK-PACT): 4 Kolom 1 Baris di desktop! */
+.multigrid-4 {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+.multigrid-4 .lb-grid-card-media {
+  height: 160px !important;
+}
+
+/* 5 Items (SETI Capacity): 3 Kolom compact, pas dalam 1 tampilan */
+.multigrid-5 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+.multigrid-5 .lb-grid-card-media {
+  height: 120px !important;
+}
+
+/* 6 Items (Training Energy): 3 Kolom x 2 Baris COMPACT — SEMUA 6 PAS DALAM 1 VIEWPORT! */
+.multigrid-6 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+.multigrid-6 .lb-grid-card-media {
+  height: 115px !important;
+}
+.multigrid-6 .lb-grid-card-footer,
+.multigrid-5 .lb-grid-card-footer {
+  padding: 4px 8px !important;
+}
+.multigrid-6 .lb-grid-site-title,
+.multigrid-5 .lb-grid-site-title {
+  font-size: 0.72rem !important;
+}
+.multigrid-6 .lb-grid-zoom-hint,
+.multigrid-5 .lb-grid-zoom-hint {
+  font-size: 0.65rem !important;
+}
+
+/* Card Media: ZERO CROPPING GUARANTEED */
+.lb-grid-card-media {
+  padding: 6px !important;
+  background: #030405 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+.lb-grid-card-media img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Bottom Hint to Scroll to Narasi */
+.lb-scroll-down-hint {
+  margin-top: 10px !important;
+  font-size: 0.74rem !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  transition: color 0.2s ease !important;
+}
+.lb-scroll-down-hint:hover {
+  color: var(--orange-lite) !important;
+}
+
+/* Chapter 8 Closing Background: Clean Dark Ambient Glow (No certificate watermark) */
+.chapter-closing {
+  position: relative !important;
+  background: #08090b !important;
+}
+.closing-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(ellipse at 50% 50%, rgba(232, 102, 10, 0.08) 0%, rgba(8, 9, 11, 0.98) 75%) !important;
+  pointer-events: none !important;
+}
+.closing-veil {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, #0d0f12 0%, transparent 40%, #08090b 100%) !important;
+}
+

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2.9.1" />
+  <link rel="stylesheet" href="style.css?v=2.9.2" />
 </head>
 
 <body>
@@ -68,14 +68,22 @@
           <span class="lightbox-topic-counter" id="lightboxCounter"></span>
         </div>
         <h3 id="lightboxTitle"></h3>
-        <p class="lightbox-header-hint">
-          <span class="hint-icon">💡</span> Klik salah satu gambar untuk melihat dokumen dalam ukuran satu layar penuh tanpa terpotong.
-        </p>
+        <div class="lightbox-header-actions-row">
+          <p class="lightbox-header-hint">
+            <span class="hint-icon">💡</span> Klik gambar untuk melihat satu layar penuh.
+          </p>
+          <button class="lb-jump-desc-btn" id="lbJumpToDesc" title="Gulir ke narasi">
+            <span>📜 Baca Narasi Lengkap &darr;</span>
+          </button>
+        </div>
       </div>
 
       <!-- MAIN MEDIA AREA (Multi-Grid Semua Foto Sertifikat / Dokumentasi) -->
       <div class="lightbox-media" id="lightboxMediaArea">
         <div class="lightbox-multigrid-view" id="lbMultiGridView"></div>
+        <div class="lb-scroll-down-hint" id="lbScrollIndicator" title="Klik untuk membaca narasi">
+          <span>📜 Gulir ke bawah untuk membaca narasi lengkap &darr;</span>
+        </div>
       </div>
 
       <!-- CAPTION & GENERAL NARASI (Tampil di awal saat membuka kartu) -->
@@ -1200,7 +1208,6 @@
   <!-- ===== CHAPTER 8: CLOSING ===== -->
   <section class="chapter chapter-closing" id="ch-closing">
     <div class="closing-bg">
-      <img src="assets/sertifikat/iso%2050001%20(IR).png" alt="Sertifikat ISO 50001" />
       <div class="closing-veil"></div>
       <div class="ambient-glow g1"></div>
     </div>
@@ -1249,7 +1256,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <script src="script.js?v=2.9.1"></script>
+  <script src="script.js?v=2.9.2"></script>
 </body>
 
 </html>
