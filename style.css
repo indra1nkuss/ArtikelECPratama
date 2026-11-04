@@ -3619,28 +3619,187 @@ html { scroll-behavior: auto; }
   scroll-behavior: smooth !important;
 }
 
-/* ══ Multi-Grid 5 & 6 items (SETI 5 certs & Training 6 items) ══ */
-.multigrid-5, .multigrid-6 {
+/* ═══════════════════════════════════════════════════════════
+   OPTIMIZED MULTI-GRID LAYOUTS (PAS 1 FRAME, TIDAK KEBESARAN)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Modal Content adjustments for comfortable 1-frame viewing */
+.lightbox-content {
+  max-width: 1240px !important;
+  width: 96vw !important;
+  max-height: 92vh !important;
+  scroll-behavior: smooth !important;
+}
+.lightbox-modal-header {
+  padding: 18px 28px 12px !important;
+}
+#lightboxTitle {
+  font-size: 1.35rem !important;
+  margin: 0 0 4px !important;
+}
+.lightbox-header-hint {
+  font-size: 0.78rem !important;
+}
+.lightbox-media {
+  padding: 16px 24px !important;
+  background: #07080b !important;
+}
+.lightbox-multigrid-view {
+  gap: 14px !important;
+  width: 100% !important;
+}
+
+/* 1 Item: Terpusat, Elegan */
+.multigrid-single {
+  grid-template-columns: 1fr !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+}
+.multigrid-single .lb-grid-card-media {
+  height: 340px !important;
+}
+
+/* 2 Items: 2 Kolom Seimbang */
+.multigrid-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+.multigrid-2 .lb-grid-card-media {
+  height: 250px !important;
+}
+
+/* 3 Items: 3 Kolom 1 Baris */
+.multigrid-3 {
   grid-template-columns: repeat(3, 1fr) !important;
 }
+.multigrid-3 .lb-grid-card-media {
+  height: 220px !important;
+}
 
-@media (max-width: 1024px) {
-  .multigrid-5, .multigrid-6 {
+/* 4 Items (ISO 50001, POME, UK-PACT): 4 Kolom di desktop atau 2x2 pas */
+.multigrid-4 {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+.multigrid-4 .lb-grid-card-media {
+  height: 190px !important;
+}
+
+/* 5 Items (SETI Capacity Building): 3 Kolom rapi (3 atas, 2 bawah) */
+.multigrid-5 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+.multigrid-5 .lb-grid-card-media {
+  height: 165px !important;
+}
+
+/* 6 Items (Training Energy): 3 Kolom x 2 Baris PAS DALAM 1 TAMPILAN! */
+.multigrid-6 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+.multigrid-6 .lb-grid-card-media {
+  height: 155px !important;
+}
+
+/* Card & Image Styling: Zero Cropping Guaranteed */
+.lb-grid-card {
+  border-radius: 12px !important;
+  background: #111318 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+.lb-grid-card:hover {
+  border-color: var(--orange) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.7), 0 0 18px rgba(232,102,10,0.3) !important;
+}
+.lb-grid-card-media {
+  padding: 8px 10px !important;
+  background: #040507 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+.lb-grid-card-media img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+  transition: transform 0.25s ease !important;
+}
+.lb-grid-card:hover .lb-grid-card-media img {
+  transform: scale(1.03) !important;
+}
+.lb-grid-card-footer {
+  padding: 8px 12px !important;
+  background: #151820 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 6px !important;
+}
+.lb-grid-site-title {
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  max-width: 65% !important;
+}
+.lb-grid-zoom-hint {
+  font-size: 0.68rem !important;
+  color: var(--orange-lite) !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+/* Narasi Caption Smooth Spacing */
+.lightbox-caption {
+  padding: 22px 28px 28px !important;
+  scroll-behavior: smooth !important;
+}
+.lb-summary {
+  font-size: 0.92rem !important;
+  line-height: 1.68 !important;
+  margin: 0 0 14px !important;
+}
+.lb-points-card {
+  padding: 14px 18px !important;
+  border-radius: 10px !important;
+}
+.lb-points-list li {
+  font-size: 0.85rem !important;
+  line-height: 1.55 !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1100px) {
+  .multigrid-4 {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-}
-
-@media (max-width: 768px) {
-  .multigrid-5, .multigrid-6 {
-    grid-template-columns: 1fr !important;
+  .multigrid-4 .lb-grid-card-media {
+    height: 175px !important;
   }
 }
-
-/* ══ Guarantee uncropped images in all modal states ══ */
-.lb-grid-card-media img,
-#lightboxImg,
-#lbFsImg {
-  object-fit: contain !important;
-  max-width: 100% !important;
+@media (max-width: 860px) {
+  .multigrid-3, .multigrid-5, .multigrid-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .multigrid-3 .lb-grid-card-media,
+  .multigrid-5 .lb-grid-card-media,
+  .multigrid-6 .lb-grid-card-media {
+    height: 160px !important;
+  }
+}
+@media (max-width: 600px) {
+  .multigrid-2, .multigrid-3, .multigrid-4, .multigrid-5, .multigrid-6 {
+    grid-template-columns: 1fr !important;
+  }
+  .lb-grid-card-media {
+    height: 200px !important;
+  }
 }
 

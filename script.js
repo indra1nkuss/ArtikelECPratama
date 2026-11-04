@@ -813,10 +813,10 @@ function initGalleryFilters() {
    ============================================= */
 
 const GALLERY_ITEMS_DATA = [
-  // 1. GREEN ENERGY PARTNERSHIP FORUM (PLN)
+  // 1. PLAKAT GREEN ENERGY PARTNERSHIP PLN (2 Site: Serpong & SMJ)
   {
     id: "pln-partnership",
-    title: "Green Energy Partnership Forum by PLN",
+    title: "Plakat Green Energy Partnership PLN",
     badge: "Plakat &bull; PLN Indonesia",
     badgeClass: "badge-gold",
     categoryBadge: "Pratama Serpong &amp; Sumber Masanda Jaya",
@@ -833,15 +833,9 @@ const GALLERY_ITEMS_DATA = [
         label: "Sumber Masanda Jaya (Site PM)",
         img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(PM).png",
         desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional PT Sumber Masanda Jaya (Site PM)."
-      },
-      {
-        site: "Dokumentasi Forum",
-        label: "Forum Green Energy Partnership by PLN",
-        img: "assets/kegiatan/Forum%20Green%20Energy%20Partnership%20by%20PLN.jpeg",
-        desc: "Dokumentasi keterlibatan perwakilan perusahaan dalam forum transisi energi hijau manufaktur bersama PLN."
       }
     ],
-    summary: "Plakat apresiasi resmi dan dokumentasi forum kemitraan strategis dari PT PLN (Persero) kepada PT Pratama Abadi Industri (Pratama Serpong - Site IR) dan PT Sumber Masanda Jaya (Site PM) sebagai mitra aktif dan pelopor transisi energi hijau manufaktur berkelanjutan — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
+    summary: "Plakat apresiasi resmi kemitraan strategis dari PT PLN (Persero) kepada PT Pratama Abadi Industri (Pratama Serpong - Site IR) dan PT Sumber Masanda Jaya (Site PM) sebagai mitra aktif dan pelopor transisi energi hijau manufaktur berkelanjutan — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
     points: [
       "Pengakuan atas sinergi aktif multi-site (Pratama Serpong &amp; Sumber Masanda Jaya) dalam pemanfaatan energi bersih terbarukan.",
       "Kemitraan berkelanjutan bersama PLN dalam mewujudkan operasional industri rendah emisi karbon."
@@ -988,7 +982,7 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
 
-  // 6. UK-PACT (4 Sertifikat: Billy & Vina - Energy Audit & Baseline EnPI)
+  // 6. UK-PACT (4 Sertifikat: Billy & Vina)
   {
     id: "uk-pact",
     title: "Program UK-PACT (Kick-Off Meeting, Audit Energi &amp; EnPI)",
@@ -1076,7 +1070,30 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
 
-  // 8. AUDIT ENERGI PROGRAM SETI (assets/kegiatan - Pratama Sukabumi JX)
+  // 8. FORUM GREEN ENERGY PARTNERSHIP PLN (Activity - DIPISAH DARI PLAKAT)
+  {
+    id: "pln-forum",
+    title: "Forum Green Energy Partnership PLN",
+    badge: "Kegiatan &bull; Forum Kemitraan PLN",
+    badgeClass: "badge-gold",
+    categoryBadge: "Dokumentasi Forum PLN",
+    coverImg: "assets/kegiatan/Forum%20Green%20Energy%20Partnership%20by%20PLN.jpeg",
+    items: [
+      {
+        site: "Forum PLN",
+        label: "Forum Green Energy Partnership by PLN",
+        img: "assets/kegiatan/Forum%20Green%20Energy%20Partnership%20by%20PLN.jpeg",
+        desc: "Dokumentasi keikutsertaan delegasi perusahaan dalam forum kemitraan transisi energi hijau manufaktur bersama PLN."
+      }
+    ],
+    summary: "Dokumentasi keikutsertaan delegasi PT Pratama Abadi Industri (Pratama Serpong) dan PT Sumber Masanda Jaya dalam forum Green Energy Partnership yang diselenggarakan oleh PT PLN (Persero). Forum ini menjadi sarana strategis konsolidasi para pemangku kepentingan industri dalam mempercepat adopsi energi terbarukan, dekarbonisasi rantai pasok manufaktur, serta penguatan komitmen transisi energi nasional.",
+    points: [
+      "Partisipasi aktif perwakilan perusahaan dalam forum diskusi transisi energi bersih industri bersama PLN.",
+      "Penguatan roadmap dekarbonisasi melalui kolaborasi penyediaan listrik ramah lingkungan berkelanjutan."
+    ]
+  },
+
+  // 9. AUDIT ENERGI PROGRAM SETI (Activity - Pratama Sukabumi JX)
   {
     id: "seti-activity",
     title: "Audit Energi Program SETI",
@@ -1099,7 +1116,7 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
 
-  // 9. KOORDINASI PENAMBAHAN DAYA PLN (assets/kegiatan - Pratama Garut JX2)
+  // 10. KOORDINASI PENAMBAHAN DAYA PLN (Activity - Pratama Garut JX2)
   {
     id: "daya-garut",
     title: "Koordinasi Penambahan Daya PLN",
@@ -1122,7 +1139,7 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
 
-  // 10. TRAINING ENERGY AWARENESS & REFRESHMENT (6 Sesi di 4 Site: IR, JX, JX2, PM)
+  // 11. TRAINING ENERGY AWARENESS & REFRESHMENT (6 Sesi di 4 Site: IR, JX, JX2, PM)
   {
     id: "awareness",
     title: "Training Energy Awareness &amp; Refreshment",
@@ -1133,19 +1150,19 @@ const GALLERY_ITEMS_DATA = [
     items: [
       {
         site: "Pratama Serpong (IR)",
-        label: "Pratama Serpong (IR) — Awareness Karyawan",
+        label: "Pratama Serpong (IR) — Awareness",
         img: "assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg",
         desc: "Pelatihan kesadaran efisiensi energi bagi karyawan operasional di Pratama Serpong (Site IR)."
       },
       {
         site: "Pratama Sukabumi (JX)",
-        label: "Pratama Sukabumi (JX) — Awareness Karyawan",
+        label: "Pratama Sukabumi (JX) — Awareness",
         img: "assets/kegiatan/Training%20Energy%20Awereness%20(JX).jpeg",
         desc: "Pelatihan kesadaran efisiensi energi bagi karyawan operasional di Pratama Sukabumi (Site JX)."
       },
       {
         site: "Pratama Garut (JX2)",
-        label: "Pratama Garut (JX2) — Awareness Karyawan",
+        label: "Pratama Garut (JX2) — Awareness",
         img: "assets/kegiatan/Training%20Energy%20Awereness%20(JX2).jpeg",
         desc: "Pelatihan kesadaran efisiensi energi bagi karyawan operasional di Pratama Garut (Site JX2)."
       },
@@ -1157,13 +1174,13 @@ const GALLERY_ITEMS_DATA = [
       },
       {
         site: "Sumber Masanda Jaya (PM)",
-        label: "Sumber Masanda Jaya (PM) — Orientasi Karyawan Baru",
+        label: "Sumber Masanda Jaya (PM) — Orientasi Baru",
         img: "assets/kegiatan/Training%20Energy%20PM%20(Karyawan%20Baru).jpg",
         desc: "Pembekalan budaya hemat energi pada orientasi karyawan baru di PT Sumber Masanda Jaya."
       },
       {
         site: "Sumber Masanda Jaya (PM)",
-        label: "Sumber Masanda Jaya (PM) — Pelatihan Promosi",
+        label: "Sumber Masanda Jaya (PM) — Promosi",
         img: "assets/kegiatan/Training%20Energy%20PM(Promotion).jpg",
         desc: "Pelatihan kepedulian energi pada pembekalan promosi jenjang karir PT Sumber Masanda Jaya."
       }
@@ -1253,7 +1270,9 @@ function initLightbox() {
       let gridClass = 'multigrid-single';
       if (count === 2) gridClass = 'multigrid-2';
       else if (count === 3) gridClass = 'multigrid-3';
-      else if (count >= 4) gridClass = 'multigrid-4';
+      else if (count === 4) gridClass = 'multigrid-4';
+      else if (count === 5) gridClass = 'multigrid-5';
+      else if (count >= 6) gridClass = 'multigrid-6';
 
       let gridHtml = '';
       items.forEach((it, sIdx) => {
