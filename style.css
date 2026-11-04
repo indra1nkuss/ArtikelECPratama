@@ -2974,7 +2974,7 @@ body { font-family: var(--font); background: var(--off); color: var(--gray-dark)
 }
 .sx-tv-ebar-fill {
   height: 100%;
-  width: 78%;
+  width: 100%;
   background: linear-gradient(90deg, var(--orange), var(--orange-lite), var(--gold-lite));
   border-radius: 2px;
   animation: ebarPulse 3s ease-in-out infinite;
