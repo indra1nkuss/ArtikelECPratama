@@ -3608,3 +3608,39 @@ html { scroll-behavior: auto; }
   .lbfs-bottom-hint { display: none; }
 }
 
+/* ══ Smooth Scrolling for Lightbox Modal & Fullscreen ══ */
+.lightbox-content {
+  scroll-behavior: smooth !important;
+}
+.lightbox-caption {
+  scroll-behavior: smooth !important;
+}
+.lbfs-img-wrapper {
+  scroll-behavior: smooth !important;
+}
+
+/* ══ Multi-Grid 5 & 6 items (SETI 5 certs & Training 6 items) ══ */
+.multigrid-5, .multigrid-6 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+@media (max-width: 1024px) {
+  .multigrid-5, .multigrid-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .multigrid-5, .multigrid-6 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ══ Guarantee uncropped images in all modal states ══ */
+.lb-grid-card-media img,
+#lightboxImg,
+#lbFsImg {
+  object-fit: contain !important;
+  max-width: 100% !important;
+}
+

@@ -470,7 +470,6 @@ const chapters = [
   { id: 'ch-journey', dot: null },
   { id: 'ch-gallery', dot: null },
   { id: 'ch-numbers', dot: null },
-  { id: 'ch-visi',    dot: null },
 ];
 
 function initChapterDots() {
@@ -814,261 +813,365 @@ function initGalleryFilters() {
    ============================================= */
 
 const GALLERY_ITEMS_DATA = [
+  // 1. GREEN ENERGY PARTNERSHIP FORUM (PLN)
   {
     id: "pln-partnership",
-    title: "Green Energy Partnership Forum",
-    badge: "Plakat • PLN Indonesia",
+    title: "Green Energy Partnership Forum by PLN",
+    badge: "Plakat &bull; PLN Indonesia",
     badgeClass: "badge-gold",
-    categoryBadge: "Multi-Site: Site IR &amp; PM",
+    categoryBadge: "Pratama Serpong &amp; Sumber Masanda Jaya",
     coverImg: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(IR).jpeg",
     items: [
       {
-        site: "Site IR",
-        label: "Site IR — Karawang",
+        site: "Pratama Serpong (IR)",
+        label: "Pratama Serpong (Site IR)",
         img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(IR).jpeg",
-        desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional Site IR."
+        desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional Pratama Serpong (Site IR)."
       },
       {
-        site: "Site PM",
-        label: "Site PM — Pasir Mulya",
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (Site PM)",
         img: "assets/plakat/Green%20Energy%20Partnership%20by%20PLN%20(PM).png",
-        desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional Site PM."
+        desc: "Plakat kemitraan Green Energy Partnership Forum untuk operasional PT Sumber Masanda Jaya (Site PM)."
+      },
+      {
+        site: "Dokumentasi Forum",
+        label: "Forum Green Energy Partnership by PLN",
+        img: "assets/kegiatan/Forum%20Green%20Energy%20Partnership%20by%20PLN.jpeg",
+        desc: "Dokumentasi keterlibatan perwakilan perusahaan dalam forum transisi energi hijau manufaktur bersama PLN."
       }
     ],
-    summary: "Plakat apresiasi resmi dari PLN Energy Management Indonesia kepada PT Pratama Abadi Industri (Site IR &amp; Site PM) sebagai mitra aktif dan pelopor dalam percepatan transisi energi hijau manufaktur berkelanjutan — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
+    summary: "Plakat apresiasi resmi dan dokumentasi forum kemitraan strategis dari PT PLN (Persero) kepada PT Pratama Abadi Industri (Pratama Serpong - Site IR) dan PT Sumber Masanda Jaya (Site PM) sebagai mitra aktif dan pelopor transisi energi hijau manufaktur berkelanjutan — &ldquo;Thank you for being our partner in the energy transition&rdquo;.",
     points: [
-      "Pengakuan atas sinergi aktif multi-site (Site IR &amp; PM) dalam mengadopsi pasokan energi bersih terbarukan.",
-      "Kemitraan strategis berkelanjutan bersama PLN dalam mendukung dekarbonisasi industri nasional."
+      "Pengakuan atas sinergi aktif multi-site (Pratama Serpong &amp; Sumber Masanda Jaya) dalam pemanfaatan energi bersih terbarukan.",
+      "Kemitraan berkelanjutan bersama PLN dalam mewujudkan operasional industri rendah emisi karbon."
     ]
   },
+
+  // 2. PLAKAT REC PLN (3 Site: IR, JX, JX2)
   {
     id: "rec-pln",
     title: "Plakat Renewable Energy Certificate (REC) PLN",
-    badge: "Plakat • PT PLN (Persero)",
+    badge: "Plakat &bull; PT PLN (Persero)",
     badgeClass: "badge-green",
-    categoryBadge: "Site PM / Garut",
-    coverImg: "assets/plakat/REC%20by%20PLN.jpeg",
+    categoryBadge: "3 Site: Serpong, Sukabumi &amp; Garut",
+    coverImg: "assets/plakat/REC%20by%20PLN%20IR.jpeg",
     items: [
       {
-        site: "Site PM / Garut",
-        label: "Site Garut (PM)",
-        img: "assets/plakat/REC%20by%20PLN.jpeg",
-        desc: "Plakat dan verifikasi Renewable Energy Certificate (REC) dari PT PLN (Persero)."
+        site: "Pratama Serpong (IR)",
+        label: "Pratama Serpong (Site IR)",
+        img: "assets/plakat/REC%20by%20PLN%20IR.jpeg",
+        desc: "Plakat Renewable Energy Certificate (REC) resmi dari PLN untuk fasilitas Pratama Serpong (Site IR)."
+      },
+      {
+        site: "Pratama Sukabumi (JX)",
+        label: "Pratama Sukabumi (Site JX)",
+        img: "assets/plakat/REC%20by%20PLN%20JX.jpg",
+        desc: "Plakat Renewable Energy Certificate (REC) resmi dari PLN untuk fasilitas Pratama Sukabumi (Site JX)."
+      },
+      {
+        site: "Pratama Garut (JX2)",
+        label: "Pratama Garut (Site JX2)",
+        img: "assets/plakat/REC%20by%20PLN%20JX2.jpeg",
+        desc: "Plakat Renewable Energy Certificate (REC) resmi dari PLN untuk fasilitas Pratama Garut (Site JX2)."
       }
     ],
-    summary: "Plakat Renewable Energy Certificate (REC) yang diterima PT Pratama Abadi Industri dari PT PLN (Persero) sebagai bukti resmi pemanfaatan pasokan listrik 100% dari sumber Energi Baru Terbarukan (EBT).",
+    summary: "Plakat Renewable Energy Certificate (REC) yang dianugerahkan oleh PT PLN (Persero) kepada PT Pratama Abadi Industri di seluruh lokasi pabrik (Pratama Serpong - IR, Pratama Sukabumi - JX, dan Pratama Garut - JX2) sebagai bukti legal kepemilikan atribut listrik ramah lingkungan dari pembangkit EBT.",
     points: [
-      "Verifikasi resmi atas pasokan daya listrik operasional berbasis energi hijau terbarukan.",
-      "Menghilangkan emisi karbon Scope 2 secara signifikan dan terdata transparan."
+      "Bukti autentik pemanfaatan pasokan listrik 100% dari sumber Energi Baru Terbarukan (EBT) PLN.",
+      "Menghilangkan emisi karbon Scope 2 secara signifikan dan memperkuat kredensial keberlanjutan produk ekspor."
     ]
   },
+
+  // 3. ISO 50001:2018 (4 Site: IR, JX, JX2, PM)
   {
     id: "iso-50001",
-    title: "Sertifikasi ISO 50001:2018 (Multi-Site: IR, PM, JX2)",
-    badge: "Sertifikat • ISO 50001:2018",
-    badgeClass: "",
-    categoryBadge: "3 Site: IR • PM • JX2",
+    title: "Sertifikasi ISO 50001:2018 (Multi-Site)",
+    badge: "Sertifikat &bull; ISO 50001:2018",
+    badgeClass: "badge-orange",
+    categoryBadge: "4 Site: Serpong, Sukabumi, Garut &amp; SMJ",
     coverImg: "assets/sertifikat/iso%2050001%20(IR).png",
     items: [
       {
-        site: "Site IR",
-        label: "Site IR — Karawang",
+        site: "Pratama Serpong (IR)",
+        label: "Pratama Serpong (Site IR)",
         img: "assets/sertifikat/iso%2050001%20(IR).png",
-        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Site IR."
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Pratama Serpong (Site IR)."
       },
       {
-        site: "Site PM",
-        label: "Site PM — Pasir Mulya",
-        img: "assets/sertifikat/iso%2050001%20(PM).png",
-        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Site PM."
+        site: "Pratama Sukabumi (JX)",
+        label: "Pratama Sukabumi (Site JX)",
+        img: "assets/sertifikat/iso%2050001%20(JX).jpg",
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Pratama Sukabumi (Site JX)."
       },
       {
-        site: "Site JX2",
-        label: "Site JX2",
+        site: "Pratama Garut (JX2)",
+        label: "Pratama Garut (Site JX2)",
         img: "assets/sertifikat/iso%2050001%20(JX2).png",
-        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Site JX2."
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas operasional Pratama Garut (Site JX2)."
+      },
+      {
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (Site PM)",
+        img: "assets/sertifikat/iso%2050001%20(PM).png",
+        desc: "Sertifikat ISO 50001:2018 Sistem Manajemen Energi untuk fasilitas PT Sumber Masanda Jaya (Site PM)."
       }
     ],
-    summary: "Seluruh unit operasional manufaktur PT Pratama Abadi Industri — meliputi <b>Site IR, Site PM, dan Site JX2</b> — telah resmi tersertifikasi standar internasional Sistem Manajemen Energi <b>ISO 50001:2018</b>. Sertifikasi menyeluruh ini mengonfirmasi bahwa seluruh fasilitas pabrik telah menerapkan tata kelola energi terpadu berbasis siklus PDCA (Plan-Do-Check-Act) yang diakui secara global.",
+    summary: "Seluruh unit operasional manufaktur — PT Pratama Abadi Industri (<b>Pratama Serpong - IR, Pratama Sukabumi - JX, Pratama Garut - JX2</b>) dan PT Sumber Masanda Jaya (<b>Site PM</b>) — telah resmi tersertifikasi standar internasional Sistem Manajemen Energi <b>ISO 50001:2018</b>. Sertifikasi ini mengonfirmasi bahwa seluruh fasilitas pabrik telah menerapkan tata kelola energi terpadu berbasis siklus PDCA (Plan-Do-Check-Act) yang diakui secara global.",
     points: [
-      "Standardisasi manajemen energi internasional seragam di seluruh site pabrik (Site IR, PM, dan JX2).",
-      "Penerapan audit kepatuhan energi berkala guna menjamin penurunan intensitas energi tahunan yang terukur.",
-      "Sistem kendali konsumsi daya terpadu untuk efisiensi operasional dan reduksi emisi yang berkelanjutan."
+      "Standardisasi manajemen energi internasional seragam di seluruh site pabrik (Pratama Serpong, Sukabumi, Garut &amp; Sumber Masanda Jaya).",
+      "Kepatuhan ketat terhadap audit periodik eksternal independen dan perbaikan berkelanjutan (continual improvement)."
     ]
   },
+
+  // 4. MCAP 2026
   {
     id: "mcap",
     title: "Certificate of Completion — MCAP 2026",
-    badge: "Sertifikat • MCAP",
-    badgeClass: "",
-    categoryBadge: "Aksi Iklim Global",
+    badge: "Sertifikat &bull; MCAP",
+    badgeClass: "badge-blue",
+    categoryBadge: "Corporate Pratama Group",
     coverImg: "assets/sertifikat/mcap.jpeg",
     items: [
       {
         site: "Corporate",
-        label: "PT Pratama Abadi Industri",
+        label: "Corporate Pratama Group",
         img: "assets/sertifikat/mcap.jpeg",
-        desc: "Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 dari Cascale."
+        desc: "Sertifikat resmi penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 - Maret 2026."
       }
     ],
-    summary: "Sertifikat penyelesaian Manufacturer Climate Action Program (MCAP) periode Oktober 2024 hingga Maret 2026 yang diinisiasi oleh Cascale bagi PT Pratama Abadi Industri.",
+    summary: "Sertifikat resmi kelulusan Manufacturer Climate Action Program (MCAP) dari Cascale bagi PT Pratama Abadi Industri, menegaskan kepatuhan korporasi terhadap target penurunan emisi gas rumah kaca berbasis sains serta transparansi dekarbonisasi rantai pasok global.",
     points: [
-      "Validasi target penurunan emisi gas rumah kaca berbasis sains (Science-Based Targets).",
-      "Integrasi langkah dekarbonisasi operasional dengan tolok ukur rantai pasok industri global."
+      "Validasi target dekarbonisasi jangka menengah dan panjang selaras dengan kaidah standar sains iklim.",
+      "Kesiapan audit keberlanjutan rantai pasok internasional secara transparan dan akuntabel."
     ]
   },
+
+  // 5. POME (4 Site: IR, JX, JX2, PM)
   {
     id: "pome",
-    title: "Sertifikat POME (Multi-Site: IR, PM, JX2)",
-    badge: "Sertifikat • POME",
-    badgeClass: "",
-    categoryBadge: "3 Site: IR • PM • JX2",
+    title: "Sertifikat POME (Multi-Site)",
+    badge: "Sertifikat &bull; POME",
+    badgeClass: "badge-green",
+    categoryBadge: "4 Site: Serpong, Sukabumi, Garut &amp; SMJ",
     coverImg: "assets/sertifikat/pome%202025%20(IR).png",
     items: [
       {
-        site: "Site IR",
-        label: "Site IR — Karawang",
+        site: "Pratama Serpong (IR)",
+        label: "Pratama Serpong (Site IR)",
         img: "assets/sertifikat/pome%202025%20(IR).png",
-        desc: "Sertifikat apresiasi POME atas kepatuhan pelaporan &amp; pengelolaan energi di Site IR."
+        desc: "Sertifikat apresiasi POME atas kepatuhan pelaporan &amp; pengelolaan energi di Pratama Serpong (Site IR)."
       },
       {
-        site: "Site PM",
-        label: "Site PM — Pasir Mulya",
-        img: "assets/sertifikat/pome%202025%20(PM).jpg",
-        desc: "Sertifikat apresiasi POME atas optimalisasi efisiensi energi di fasilitas Site PM."
+        site: "Pratama Sukabumi (JX)",
+        label: "Pratama Sukabumi (Site JX)",
+        img: "assets/sertifikat/pome%202025%20(JX).jpg",
+        desc: "Sertifikat apresiasi POME atas kepatuhan pelaporan &amp; pengelolaan energi di Pratama Sukabumi (Site JX)."
       },
       {
-        site: "Site JX2",
-        label: "Site JX2",
+        site: "Pratama Garut (JX2)",
+        label: "Pratama Garut (Site JX2)",
         img: "assets/sertifikat/pome%202025%20(JX2).png",
-        desc: "Sertifikat apresiasi POME atas konsistensi manajemen energi di fasilitas Site JX2."
+        desc: "Sertifikat apresiasi POME atas konsistensi manajemen energi di fasilitas Pratama Garut (Site JX2)."
+      },
+      {
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (Site PM)",
+        img: "assets/sertifikat/pome%202025%20(PM).jpg",
+        desc: "Sertifikat apresiasi POME atas optimalisasi efisiensi energi di PT Sumber Masanda Jaya (Site PM)."
       }
     ],
-    summary: "Seluruh fasilitas operasional manufaktur PT Pratama Abadi Industri — <b>Site IR, Site PM, dan Site JX2</b> — berhasil meraih apresiasi resmi Pelaporan dan Optimalisasi Manajemen Energi (POME) atas komitmen transparansi pelaporan dan keunggulan tata kelola energi terpadu.",
+    summary: "Seluruh fasilitas operasional manufaktur — <b>Pratama Serpong (IR), Pratama Sukabumi (JX), Pratama Garut (JX2), dan Sumber Masanda Jaya (PM)</b> — berhasil meraih sertifikat apresiasi resmi Pelaporan dan Optimalisasi Manajemen Energi (POME) atas komitmen kepatuhan regulasi, transparansi pelaporan energi online, dan pencapaian efisiensi energi yang nyata.",
     points: [
-      "Konsistensi audit energi internal dan akurasi pelaporan kinerja di ketiga site fasilitas produksi.",
-      "Realisasi proyek konservasi energi yang terbukti menurunkan biaya operasional dan intensitas emisi."
+      "Kepatuhan pelaporan berkala pengelolaan energi industri sesuai regulasi ketenagalistrikan nasional.",
+      "Integrasi data monitoring konsumsi daya real-time untuk audit berkala di seluruh pabrik."
     ]
   },
+
+  // 6. UK-PACT (4 Sertifikat: Billy & Vina - Energy Audit & Baseline EnPI)
   {
     id: "uk-pact",
-    title: "Sertifikasi Pelatihan UK-PACT (EnB &amp; EnPI)",
-    badge: "Sertifikat • UK-PACT Energy Performance",
+    title: "Program UK-PACT (Kick-Off Meeting, Audit Energi &amp; EnPI)",
+    badge: "Sertifikat &bull; UK-PACT Energy Transition",
     badgeClass: "badge-blue",
     categoryBadge: "4 Sertifikat Kompetensi",
-    coverImg: "assets/sertifikat/uk-pact.png",
+    coverImg: "assets/sertifikat/uk-pact%20energy%20audit-billy.png",
     items: [
       {
-        site: "Sertifikat #1",
-        label: "Sertifikasi UK-PACT #1",
-        img: "assets/sertifikat/uk-pact.png",
-        desc: "Sertifikat partisipasi pelatihan UK-PACT dalam bidang Energy Baseline (EnB) &amp; EnPI."
+        site: "Energy Audit",
+        label: "Energy Audit — Billy (UK-PACT)",
+        img: "assets/sertifikat/uk-pact%20energy%20audit-billy.png",
+        desc: "Sertifikat kompetensi Energy Audit program UK-PACT untuk tenaga ahli konservasi energi perusahaan."
       },
       {
-        site: "Sertifikat #2",
-        label: "Sertifikasi UK-PACT #2",
-        img: "assets/sertifikat/uk-pact2.png",
-        desc: "Sertifikat kompetensi penetapan indikator kinerja energi &amp; evaluasi performa UK-PACT."
+        site: "Energy Audit",
+        label: "Energy Audit — Vina (UK-PACT)",
+        img: "assets/sertifikat/uk-pact%20energy%20audit-vina.png",
+        desc: "Sertifikat kompetensi Energy Audit program UK-PACT untuk tenaga ahli konservasi energi perusahaan."
       },
       {
-        site: "Sertifikat #3",
-        label: "Sertifikasi UK-PACT #3",
-        img: "assets/sertifikat/uk-pact3.png",
-        desc: "Sertifikat pelatihan penyusunan baseline energi &amp; identifikasi peluang efisiensi UK-PACT."
+        site: "Baseline & EnPI",
+        label: "Energy Baseline &amp; EnPI — Billy (UK-PACT)",
+        img: "assets/sertifikat/uk-pact%20energy%20baseline%20dan%20ENPI-billy.png",
+        desc: "Sertifikat kompetensi penyusunan Baseline Energi (EnB) dan Indikator Kinerja Energi (EnPI)."
       },
       {
-        site: "Sertifikat #4",
-        label: "Sertifikasi UK-PACT #4",
-        img: "assets/sertifikat/uk-pact4.png",
-        desc: "Sertifikat penguatan implementasi standar manajemen energi ISO 50001 UK-PACT."
+        site: "Baseline & EnPI",
+        label: "Energy Baseline &amp; EnPI — Vina (UK-PACT)",
+        img: "assets/sertifikat/uk-pact%20energy%20baseline%20dan%20ENPI-vina.png",
+        desc: "Sertifikat kompetensi penyusunan Baseline Energi (EnB) dan Indikator Kinerja Energi (EnPI)."
       }
     ],
-    summary: "Telah berpartisipasi aktif dalam program pelatihan yang diselenggarakan oleh UK-PACT terkait <b>Energy Baseline (EnB)</b> dan <b>Energy Performance Indicator (EnPI)</b> guna meningkatkan pemahaman dan kompetensi teknis tim energi perusahaan. Pelatihan ini menjadi landasan kokoh dalam mengidentifikasi peluang penghematan daya serta mendukung penerapan Sistem Manajemen Energi ISO 50001:2018 secara konsisten dan berkelanjutan di semua unit operasional.",
+    summary: "Kegiatan Kick-Off Meeting UK PACT (UK Partnering for Accelerated Climate Transitions) menandai dimulainya program yang didanai oleh Pemerintah Inggris untuk mendukung industri terpilih di Indonesia dalam mempercepat transisi menuju operasional yang lebih berkelanjutan dan rendah karbon. Melalui rangkaian scoping study, audit energi terperinci (detailed energy audit), serta pelatihan khusus, program ini meningkatkan kapasitas dalam efisiensi energi, mengidentifikasi peluang penghematan, mengurangi emisi GRK, dan menerapkan standar ISO 50001:2018.",
     points: [
-      "Penguasaan metodologi penyusunan baseline energi dan penentuan indikator kinerja energi presisi.",
-      "Evaluasi performa energi berbasis data untuk mengeksekusi peluang efisiensi riil.",
-      "Dukungan penuh terhadap kesinambungan sertifikasi sistem manajemen energi ISO 50001:2018."
+      "Pelaksanaan detailed energy audit komprehensif pada fasilitas manufaktur terpilih bersama tenaga ahli UK-PACT.",
+      "Peningkatan kompetensi tim energi dalam penyusunan baseline energi (EnB), indikator performa (EnPI), dan roadmap dekarbonisasi industri."
     ]
   },
+
+  // 7. SETI CAPACITY BUILDING (5 Sertifikat: Alfi & Faozi)
   {
     id: "seti-cert",
-    title: "Program SETI (Sustainable Energy Transition in Indonesia)",
-    badge: "Sertifikat • Kemitraan SETI",
+    title: "Program SETI (Sertifikasi Capacity Building)",
+    badge: "Sertifikat &bull; SETI Capacity Building",
     badgeClass: "badge-green",
-    categoryBadge: "Kemitraan DJEBTKE &amp; Jerman",
-    coverImg: "assets/sertifikat/SETI.png",
+    categoryBadge: "5 Sertifikat Capacity Building",
+    coverImg: "assets/sertifikat/SETI%20Capacity%20Building-energy%20transition-alfi.png",
     items: [
       {
-        site: "Sertifikat Kemitraan",
-        label: "Sertifikat Program SETI",
-        img: "assets/sertifikat/SETI.png",
-        desc: "Sertifikat kemitraan resmi proyek Sustainable Energy Transition in Indonesia (SETI)."
+        site: "Energy Transition",
+        label: "Energy Transition — Alfi",
+        img: "assets/sertifikat/SETI%20Capacity%20Building-energy%20transition-alfi.png",
+        desc: "Sertifikat kelulusan pelatihan Energy Transition program SETI (DJEBTKE KESDM &amp; Jerman)."
+      },
+      {
+        site: "EE & RE",
+        label: "Energy Efficiency &amp; Renewable Energy — Alfi",
+        img: "assets/sertifikat/SETI%20Capacity%20Building-EE-RE-alfi.jpg",
+        desc: "Sertifikat kompetensi Efisiensi Energi &amp; Energi Terbarukan (EE &amp; RE) program SETI."
+      },
+      {
+        site: "EE & RE",
+        label: "Energy Efficiency &amp; Renewable Energy — Faozi",
+        img: "assets/sertifikat/SETI%20Capacity%20Building-EE-RE-faozi.jpg",
+        desc: "Sertifikat kompetensi Efisiensi Energi &amp; Energi Terbarukan (EE &amp; RE) program SETI."
+      },
+      {
+        site: "M&V",
+        label: "Measurement &amp; Verification (M&amp;V) — Alfi",
+        img: "assets/sertifikat/SETI%20Capacity%20Building-Measurement%20and%20verification-alfi.jpg",
+        desc: "Sertifikat kompetensi Pengukuran &amp; Verifikasi (Measurement &amp; Verification) kinerja energi program SETI."
+      },
+      {
+        site: "M&V",
+        label: "Measurement &amp; Verification (M&amp;V) — Faozi",
+        img: "assets/sertifikat/SETI%20Capacity%20Building-Measurement%20and%20verification-faozi.jpg",
+        desc: "Sertifikat kompetensi Pengukuran &amp; Verifikasi (Measurement &amp; Verification) kinerja energi program SETI."
       }
     ],
-    summary: "Sustainable Energy Transition in Indonesia (SETI) merupakan proyek kerja sama antara Pemerintah Jerman dan Indonesia yang dipimpin oleh DJEBTKE Kementerian ESDM dan Pusat Industri Hijau Kementerian Perindustrian. Proyek ini bertujuan mengakselerasi pencapaian target Net-Zero Emission dengan mendorong efisiensi energi dan pemanfaatan energi terbarukan di sektor industri besar. Perusahaan berpartisipasi aktif sebagai bentuk komitmen keberlanjutan dan dekarbonisasi.",
+    summary: "Sertifikasi resmi dalam rangkaian program Capacity Building Sustainable Energy Transition in Indonesia (SETI) — kemitraan strategis pemerintah Jerman dan Indonesia yang dipimpin oleh DJEBTKE Kementerian ESDM serta Pusat Industri Hijau Kementerian Perindustrian. Program ini meningkatkan keahlian teknis tim konservasi energi dalam Transisi Energi, Efisiensi Energi &amp; Energi Terbarukan (EE &amp; RE), serta Pengukuran &amp; Verifikasi (M&amp;V).",
     points: [
-      "Sinergi strategis antara pemerintah dan industri dalam implementasi teknologi hijau.",
-      "Akselerasi peta jalan dekarbonisasi operasional menuju target nol emisi karbon nasional."
+      "Penguasaan metodologi internasional Measurement and Verification (M&amp;V) untuk validasi kuantitatif penghematan daya.",
+      "Penguatan kapabilitas teknis internal dalam integrasi solusi efisiensi energi dan energi baru terbarukan di lini produksi."
     ]
   },
+
+  // 8. AUDIT ENERGI PROGRAM SETI (assets/kegiatan - Pratama Sukabumi JX)
   {
     id: "seti-activity",
-    title: "Forum &amp; Workshop Proyek SETI",
-    badge: "Kegiatan • Kolaborasi Transisi Energi",
-    badgeClass: "",
-    categoryBadge: "Workshop &amp; Forum JX",
+    title: "Audit Energi Program SETI",
+    badge: "Kegiatan &bull; Audit Energi Industri",
+    badgeClass: "badge-green",
+    categoryBadge: "Pratama Sukabumi (JX)",
     coverImg: "assets/kegiatan/SETI%20(JX).jpeg",
     items: [
       {
-        site: "Forum &amp; Workshop SETI",
-        label: "Forum &amp; Workshop SETI (JX)",
+        site: "Pratama Sukabumi (JX)",
+        label: "Audit Energi SETI — Pratama Sukabumi (Site JX)",
         img: "assets/kegiatan/SETI%20(JX).jpeg",
-        desc: "Keterlibatan tim Energy Conservation dalam forum dan workshop proyek Sustainable Energy Transition in Indonesia."
+        desc: "Pelaksanaan audit energi lapangan dan konsultasi teknis transisi energi bersama tim ahli program SETI."
       }
     ],
-    summary: "Dokumentasi keterlibatan aktif tim Energy Conservation dalam rangkaian forum konsultasi, lokakarya teknis, dan diskusi percepatan proyek SETI bersama DJEBTKE Kementerian ESDM dan Kementerian Perindustrian.",
+    summary: "Pelaksanaan kegiatan Audit Energi terperinci dalam kerangka proyek Sustainable Energy Transition in Indonesia (SETI) di fasilitas manufaktur Pratama Sukabumi (Site JX). Program kolaborasi antara Kementerian ESDM (DJEBTKE), Pusat Industri Hijau Kementerian Perindustrian, dan Pemerintah Jerman ini berfokus pada asesmen efisiensi konsumsi daya, identifikasi potensi penghematan energi termal &amp; elektrik, serta penyusunan rekomendasi teknis dekarbonisasi operasional.",
     points: [
-      "Penyelarasan target efisiensi energi fasilitas pabrik dengan kerangka regulasi industri hijau nasional.",
-      "Kolaborasi teknis bersama konsultan dan pakar energi terbarukan internasional."
+      "Pelaksanaan audit energi komprehensif pada sistem utilitas dan lini produksi fasilitas Pratama Sukabumi (JX).",
+      "Kolaborasi teknis langsung bersama DJEBTKE KESDM dan advisor energi Jerman dalam menyusun rekomendasi efisiensi."
     ]
   },
+
+  // 9. KOORDINASI PENAMBAHAN DAYA PLN (assets/kegiatan - Pratama Garut JX2)
+  {
+    id: "daya-garut",
+    title: "Koordinasi Penambahan Daya PLN",
+    badge: "Kegiatan &bull; PLN UP3 Garut",
+    badgeClass: "badge-gold",
+    categoryBadge: "Pratama Garut (JX2)",
+    coverImg: "assets/kegiatan/kordinasi%20penambahan%20daya%20(JX).jpeg",
+    items: [
+      {
+        site: "Pratama Garut (JX2)",
+        label: "Pratama Garut (Site JX2) &bull; PLN UP3 Garut",
+        img: "assets/kegiatan/kordinasi%20penambahan%20daya%20(JX).jpeg",
+        desc: "Dokumentasi koordinasi teknis bersama PT PLN (Persero) UP3 Garut untuk penambahan kapasitas daya listrik ke 3.465 kVA."
+      }
+    ],
+    summary: "Kegiatan koordinasi bersama PT PLN (Persero) UP3 Garut dilaksanakan dalam rangka proses penambahan kapasitas daya listrik di PT Pratama Abadi Industri Pratama Garut (JX2), dari kapasitas sebelumnya sebesar 2.770 kVA menjadi 3.465 kVA. Koordinasi ini bertujuan membahas kesiapan teknis, proses pemeriksaan dan pengujian instalasi listrik di area utilitas, serta pemenuhan persyaratan ketenagalistrikan yang berlaku. Penambahan daya ini diharapkan dapat mengakomodasi kebutuhan listrik akibat penambahan mesin produksi dan meningkatkan keandalan pasokan listrik guna mendukung kelancaran operasional perusahaan.",
+    points: [
+      "Peningkatan kapasitas pasokan daya listrik operasional dari 2.770 kVA menjadi 3.465 kVA untuk ekspansi mesin manufaktur.",
+      "Pemeriksaan dan pengujian instalasi utilitas listrik bersama PLN UP3 Garut demi menjamin standar keselamatan dan keandalan."
+    ]
+  },
+
+  // 10. TRAINING ENERGY AWARENESS & REFRESHMENT (6 Sesi di 4 Site: IR, JX, JX2, PM)
   {
     id: "awareness",
-    title: "Training Energy Awareness (Multi-Site: IR &amp; PM)",
-    badge: "Kegiatan • Edukasi Karyawan",
-    badgeClass: "",
-    categoryBadge: "4 Sesi: IR &amp; PM",
+    title: "Training Energy Awareness &amp; Refreshment",
+    badge: "Kegiatan &bull; Edukasi Karyawan",
+    badgeClass: "badge-blue",
+    categoryBadge: "6 Sesi di 4 Site Manufaktur",
     coverImg: "assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg",
     items: [
       {
-        site: "Site IR — Karyawan",
-        label: "Site IR — Awareness Karyawan",
+        site: "Pratama Serpong (IR)",
+        label: "Pratama Serpong (IR) — Awareness Karyawan",
         img: "assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg",
-        desc: "Sosialisasi dan pelatihan hemat energi bagi karyawan operasional di Site IR."
+        desc: "Pelatihan kesadaran efisiensi energi bagi karyawan operasional di Pratama Serpong (Site IR)."
       },
       {
-        site: "Site PM — Produksi",
-        label: "Site PM — Refresh Tim Produksi",
+        site: "Pratama Sukabumi (JX)",
+        label: "Pratama Sukabumi (JX) — Awareness Karyawan",
+        img: "assets/kegiatan/Training%20Energy%20Awereness%20(JX).jpeg",
+        desc: "Pelatihan kesadaran efisiensi energi bagi karyawan operasional di Pratama Sukabumi (Site JX)."
+      },
+      {
+        site: "Pratama Garut (JX2)",
+        label: "Pratama Garut (JX2) — Awareness Karyawan",
+        img: "assets/kegiatan/Training%20Energy%20Awereness%20(JX2).jpeg",
+        desc: "Pelatihan kesadaran efisiensi energi bagi karyawan operasional di Pratama Garut (Site JX2)."
+      },
+      {
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (PM) — Refreshment Produksi",
         img: "assets/kegiatan/Referesh%20Training%20Energy%20PM%20(Production).jpg",
-        desc: "Refresh training efisiensi energi bagi tim lini produksi manufaktur Site PM."
+        desc: "Refreshment training efisiensi energi untuk tim lini produksi manufaktur PT Sumber Masanda Jaya."
       },
       {
-        site: "Site PM — Karyawan Baru",
-        label: "Site PM — Orientasi Karyawan Baru",
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (PM) — Orientasi Karyawan Baru",
         img: "assets/kegiatan/Training%20Energy%20PM%20(Karyawan%20Baru).jpg",
-        desc: "Pembekalan budaya hemat energi pada program orientasi karyawan baru di Site PM."
+        desc: "Pembekalan budaya hemat energi pada orientasi karyawan baru di PT Sumber Masanda Jaya."
       },
       {
-        site: "Site PM — Promosi",
-        label: "Site PM — Pelatihan Promosi",
+        site: "Sumber Masanda Jaya (PM)",
+        label: "Sumber Masanda Jaya (PM) — Pelatihan Promosi",
         img: "assets/kegiatan/Training%20Energy%20PM(Promotion).jpg",
-        desc: "Sesi pelatihan kepedulian energi pada program promosi jenjang karir Site PM."
+        desc: "Pelatihan kepedulian energi pada pembekalan promosi jenjang karir PT Sumber Masanda Jaya."
       }
     ],
-    summary: "Program edukasi dan sosialisasi budaya hemat energi yang dilaksanakan secara menyeluruh dan berkesinambungan di seluruh fasilitas perusahaan (Site IR dan Site PM). Pelatihan ini menjangkau seluruh tingkatan karyawan — mulai dari orientasi karyawan baru, refreshing berkala tim operasional produksi, hingga sesi pembekalan promosi — guna memastikan efisiensi energi menjadi kebiasaan kerja sehari-hari.",
+    summary: "Program edukasi dan sosialisasi budaya hemat energi yang dilaksanakan secara berkesinambungan di seluruh fasilitas manufaktur: <b>Pratama Serpong (IR), Pratama Sukabumi (JX), Pratama Garut (JX2), dan Sumber Masanda Jaya (PM)</b>. Pelatihan ini menjangkau seluruh tingkatan karyawan — mulai dari orientasi karyawan baru, refreshing berkala tim operasional produksi, hingga sesi pembekalan promosi — guna memastikan efisiensi energi terintegrasi dalam perilaku kerja harian.",
     points: [
-      "Penanaman kesadaran pentingnya konservasi energi dalam setiap aktivitas kerja operasional.",
-      "Keterlibatan aktif karyawan dari hulu hingga hilir dalam menekan pemborosan daya di semua site."
+      "Keterlibatan aktif karyawan dari hulu hingga hilir dalam menekan pemborosan daya di semua site pabrik.",
+      "Pembentukan pola pikir berkelanjutan (mindset of sustainability) yang mendukung target ISO 50001:2018."
     ]
   }
 ];
@@ -1524,43 +1627,7 @@ function initJourneyAndLowerAnimations() {
     );
   }
 
-  // 4. Chapter 7: Visi & Misi Stagger
-  const visiWrap = document.querySelector('.visi-wrap');
-  const misiItems = document.querySelectorAll('.misi-journey-list li');
-  if (visiWrap) {
-    gsap.fromTo(visiWrap,
-      { opacity: 0, y: 35, scale: 0.97 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.9,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: visiWrap,
-          start: 'top 82%',
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-  }
-  if (misiItems.length) {
-    gsap.fromTo(misiItems,
-      { opacity: 0, x: -30 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.misi-list-wrap',
-          start: 'top 82%',
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-  }
+  // 4. Chapter 7: Visi & Misi Stagger (Removed as requested)
 
   // 5. Chapter 8: Closing
   const closingSection = document.getElementById('ch-closing');
