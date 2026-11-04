@@ -810,7 +810,7 @@ function initGalleryFilters() {
 }
 
 /* =============================================
-   CHAPTER 5: MULTI-SITE GALLERY LIGHTBOX
+   CHAPTER 5: MULTI-SITE GALLERY LIGHTBOX (ENHANCED FULL VIEW)
    ============================================= */
 
 const GALLERY_ITEMS_DATA = [
@@ -1093,9 +1093,9 @@ function initLightbox() {
   const cards = Array.from(document.querySelectorAll('.gallery-card'));
   let currentTopicIdx = 0;
   let currentSiteIdx  = 0;
-  let isMultiViewMode = false;
+  let isMultiViewMode = true; // Default true if multi-item
 
-  function renderTopic(topicIdx, siteIdx = 0, multiView = false) {
+  function renderTopic(topicIdx, siteIdx = 0, multiView = null) {
     if (topicIdx < 0) topicIdx = GALLERY_ITEMS_DATA.length - 1;
     if (topicIdx >= GALLERY_ITEMS_DATA.length) topicIdx = 0;
     currentTopicIdx = topicIdx;
@@ -1107,7 +1107,16 @@ function initLightbox() {
     if (siteIdx < 0) siteIdx = 0;
     if (siteIdx >= items.length) siteIdx = items.length - 1;
     currentSiteIdx = siteIdx;
-    isMultiViewMode = multiView;
+
+    // Jika multiView tidak dispesifikasikan: jika items > 1 otomatis langsung multi-grid!
+    if (multiView === null) {
+      isMultiViewMode = items.length > 1;
+    } else {
+      isMultiViewMode = multiView;
+    }
+
+    // Reset zoom state on new render
+    if (img) img.classList.remove('is-zoomed');
 
     // 1. Header & Badges
     if (badge) {
@@ -1132,17 +1141,18 @@ function initLightbox() {
     // 2. Site Tabs Bar (muncul jika items > 1)
     if (siteTabsBar) {
       if (items.length > 1) {
-        let tabsHtml = '<span class="lb-tab-label">Pilih Site:</span>';
+        let tabsHtml = '<span class="lb-tab-label">Tampilan:</span>';
+        const multiActiveClass = isMultiViewMode ? 'active' : '';
+        tabsHtml += `<button class="lb-site-tab tab-multiview ${multiActiveClass}" id="lbBtnMultiView">🖼️ Semua Gambar (${items.length} Site)</button>`;
+
         items.forEach((it, sIdx) => {
           const activeClass = (!isMultiViewMode && sIdx === currentSiteIdx) ? 'active' : '';
           tabsHtml += `<button class="lb-site-tab ${activeClass}" data-site-idx="${sIdx}">🏢 ${it.site}</button>`;
         });
-        const multiActiveClass = isMultiViewMode ? 'active' : '';
-        tabsHtml += `<button class="lb-site-tab tab-multiview ${multiActiveClass}" id="lbBtnMultiView">🖼️ Tampilkan Semua (${items.length} Site)</button>`;
+
         siteTabsBar.innerHTML = tabsHtml;
         siteTabsBar.style.display = 'flex';
 
-        // Event listener per tab
         siteTabsBar.querySelectorAll('.lb-site-tab[data-site-idx]').forEach(tabBtn => {
           tabBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1164,9 +1174,9 @@ function initLightbox() {
       }
     }
 
-    // 3. Media Area Rendering (Single View vs Multi-Grid View)
+    // 3. Media Area Rendering (Multi-Grid Default vs Single View Full)
     if (isMultiViewMode && items.length > 1) {
-      // MULTI-GRID MODE
+      // MULTI-GRID MODE (Langsung tampil semua gambar saat masuk)
       if (singleView) singleView.style.display = 'none';
       if (thumbStrip) thumbStrip.style.display = 'none';
       if (multiGridView) {
@@ -1174,13 +1184,13 @@ function initLightbox() {
         let gridHtml = '';
         items.forEach((it, sIdx) => {
           gridHtml += `
-            <div class="lb-grid-card" data-focus-idx="${sIdx}">
+            <div class="lb-grid-card" data-focus-idx="${sIdx}" title="Klik untuk perbesar penuh ${it.label}">
               <div class="lb-grid-card-media">
                 <img src="${it.img}" alt="${it.label}" loading="lazy" />
               </div>
               <div class="lb-grid-card-footer">
                 <span class="lb-grid-site-title">🏢 ${it.label}</span>
-                <span class="lb-grid-zoom-hint">&#x1F50D; Perbesar</span>
+                <span class="lb-grid-zoom-hint">&#x1F50D; Perbesar Penuh</span>
               </div>
             </div>
           `;
@@ -1189,7 +1199,7 @@ function initLightbox() {
         multiGridView.innerHTML = gridHtml;
         multiGridView.style.display = 'grid';
 
-        // Click on grid card to focus single view
+        // Klik salah satu kartu grid untuk masuk ke mode perbesar penuh (tidak terpotong)
         multiGridView.querySelectorAll('.lb-grid-card').forEach(gCard => {
           gCard.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1199,17 +1209,71 @@ function initLightbox() {
         });
       }
     } else {
-      // SINGLE VIEW MODE
+      // SINGLE VIEW MODE (Perbesar Penuh, Tidak Terpotong)
       if (multiGridView) multiGridView.style.display = 'none';
-      if (singleView) singleView.style.display = 'flex';
+      if (singleView) {
+        singleView.style.display = 'flex';
+      }
 
       const currentItem = items[currentSiteIdx] || { img: topic.coverImg, label: topic.title };
+
+      // Pasang tombol kontrol single view jika belum ada
+      let controlsEl = document.getElementById('lbSingleControls');
+      if (!controlsEl && singleView) {
+        controlsEl = document.createElement('div');
+        controlsEl.className = 'lb-single-controls';
+        controlsEl.id = 'lbSingleControls';
+        singleView.insertBefore(controlsEl, singleView.firstChild);
+      }
+
+      if (controlsEl) {
+        let controlsHtml = '';
+        if (items.length > 1) {
+          controlsHtml += `<button class="lb-action-btn lb-back-btn" id="lbBackToGrid">⬅ Kembali ke Semua Gambar (${items.length} Site)</button>`;
+        }
+        controlsHtml += `
+          <div style="display:flex; gap:8px; margin-left:auto;">
+            <button class="lb-action-btn" id="lbZoomBtn" title="Klik untuk perbesar/perkecil tampilan sertifikat">🔍 <span id="lbZoomText">Perbesar Penuh</span></button>
+            <a class="lb-action-btn" id="lbOpenDirect" href="${currentItem.img}" target="_blank" rel="noopener" title="Buka gambar resolusi asli di tab baru">↗ Buka File Asli</a>
+          </div>
+        `;
+        controlsEl.innerHTML = controlsHtml;
+
+        const backBtn = document.getElementById('lbBackToGrid');
+        if (backBtn) {
+          backBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            renderTopic(currentTopicIdx, currentSiteIdx, true);
+          });
+        }
+
+        const zoomBtn = document.getElementById('lbZoomBtn');
+        if (zoomBtn && img) {
+          zoomBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleZoom();
+          });
+        }
+      }
+
+      function toggleZoom() {
+        if (!img) return;
+        const isZoomed = img.classList.toggle('is-zoomed');
+        const zoomText = document.getElementById('lbZoomText');
+        if (zoomText) zoomText.textContent = isZoomed ? 'Ukuran Normal' : 'Perbesar Penuh';
+      }
 
       if (img) {
         img.style.opacity = '0';
         img.src = currentItem.img;
         img.alt = currentItem.label || topic.title;
         img.onload = () => { img.style.opacity = '1'; };
+
+        // Klik gambar langsung juga bisa toggle zoom
+        img.onclick = (e) => {
+          e.stopPropagation();
+          toggleZoom();
+        };
       }
 
       if (sitePill) {
@@ -1221,7 +1285,7 @@ function initLightbox() {
         }
       }
 
-      // Thumbnail Strip
+      // Thumbnail Strip di Single View
       if (thumbStrip) {
         if (items.length > 1) {
           let thumbHtml = '';
@@ -1250,7 +1314,7 @@ function initLightbox() {
       }
     }
 
-    // 4. Structured Narasi
+    // 4. Structured General Narasi
     if (desc) {
       let html = '<p class="lb-summary">' + topic.summary + '</p>';
       if (topic.points && topic.points.length > 0) {
@@ -1270,10 +1334,11 @@ function initLightbox() {
     }
   }
 
-  // Event listener per gallery card on page
+  // Event listener per gallery card on page:
+  // Ketika kartu diklik, langsung panggil renderTopic dengan default multiView (otomatis menampilkan semua gambar jika > 1)
   cards.forEach((card, index) => {
     card.addEventListener('click', () => {
-      renderTopic(index, 0, false);
+      renderTopic(index, 0, null); // null = auto detect multiView
       if (modal) modal.classList.add('active');
       if (typeof lenis !== 'undefined' && lenis) lenis.stop();
       document.body.style.overflow = 'hidden';
@@ -1282,10 +1347,10 @@ function initLightbox() {
 
   // Navigasi Prev & Next (Pindah Topik)
   function showPrevTopic() {
-    renderTopic(currentTopicIdx - 1, 0, false);
+    renderTopic(currentTopicIdx - 1, 0, null);
   }
   function showNextTopic() {
-    renderTopic(currentTopicIdx + 1, 0, false);
+    renderTopic(currentTopicIdx + 1, 0, null);
   }
 
   if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevTopic(); });
