@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2.7.1" />
+  <link rel="stylesheet" href="style.css?v=2.8.1" />
 </head>
 
 <body>
@@ -52,43 +52,76 @@
 
   <!-- LIGHTBOX MODAL UNTUK PREVIEW FOTO DENGAN MULTI-SITE GALLERY & NARASI DETAIL -->
   <div class="lightbox-overlay" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
-    <div class="lightbox-content lb-expanded">
+    <div class="lightbox-content">
       <button class="lightbox-close" id="lightboxClose" title="Tutup (Esc)" aria-label="Tutup Pratinjau">&times;</button>
       
-      <!-- NAVIGASI PREV & NEXT -->
-      <button class="lightbox-nav-btn lb-prev" id="lightboxPrev" title="Sebelumnya (←)" aria-label="Topik Sebelumnya">
+      <!-- NAVIGASI PREV & NEXT (Pindah Topik Galeri) -->
+      <button class="lightbox-nav-btn lb-prev" id="lightboxPrev" title="Topik Sebelumnya (←)" aria-label="Topik Sebelumnya">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
-      <button class="lightbox-nav-btn lb-next" id="lightboxNext" title="Berikutnya (→)" aria-label="Topik Berikutnya">
+      <button class="lightbox-nav-btn lb-next" id="lightboxNext" title="Topik Berikutnya (→)" aria-label="Topik Berikutnya">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
 
-      <!-- TOP SITE SELECTOR TABS BAR (Muncul otomatis jika topik memiliki > 1 site) -->
-      <div class="lightbox-site-tabs-bar" id="lightboxSiteTabs"></div>
-
-      <!-- MAIN MEDIA AREA (Single View vs Multi-Grid View) -->
-      <div class="lightbox-media" id="lightboxMediaArea">
-        <div class="lightbox-single-view" id="lbSingleView">
-          <img id="lightboxImg" src="" alt="Pratinjau Foto" />
-          <div class="lightbox-site-pill" id="lightboxSitePill">Site IR</div>
-          <div class="lightbox-counter-pill" id="lightboxCounter">1 / 9</div>
-        </div>
-
-        <div class="lightbox-multigrid-view" id="lbMultiGridView" style="display: none;"></div>
-      </div>
-
-      <!-- THUMBNAIL STRIP -->
-      <div class="lightbox-thumb-strip" id="lightboxThumbStrip"></div>
-
-      <!-- CAPTION & GENERAL NARASI -->
-      <div class="lightbox-caption">
+      <!-- LIGHTBOX TOP HEADER: Judul & Badge di Atas agar Tampilan Rapi & Jelas -->
+      <div class="lightbox-modal-header">
         <div class="lightbox-header-meta">
           <span class="lightbox-badge" id="lightboxBadge"></span>
           <span class="lightbox-multisite-tag" id="lightboxMultiTag"></span>
+          <span class="lightbox-topic-counter" id="lightboxCounter"></span>
         </div>
         <h3 id="lightboxTitle"></h3>
+        <p class="lightbox-header-hint">
+          <span class="hint-icon">💡</span> Klik salah satu gambar untuk melihat dokumen dalam ukuran satu layar penuh tanpa terpotong.
+        </p>
+      </div>
+
+      <!-- MAIN MEDIA AREA (Multi-Grid Semua Foto Sertifikat / Dokumentasi) -->
+      <div class="lightbox-media" id="lightboxMediaArea">
+        <div class="lightbox-multigrid-view" id="lbMultiGridView"></div>
+      </div>
+
+      <!-- CAPTION & GENERAL NARASI (Tampil di awal saat membuka kartu) -->
+      <div class="lightbox-caption">
         <div class="lightbox-desc-box" id="lightboxDesc"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN PHOTO OVERLAY (Foto Penuh Satu Layar Tanpa Narasi) -->
+  <div id="lbFullscreenOverlay" role="dialog" aria-modal="true" aria-label="Tampilan Foto Penuh">
+    <div class="lbfs-topbar">
+      <div class="lbfs-info">
+        <span id="lbFsTitle">Dokumen Sertifikat</span>
+        <span id="lbFsCounter" class="lbfs-counter-badge">1 / 1</span>
+      </div>
+      <div class="lbfs-actions">
+        <button id="lbFsZoomBtn" class="lbfs-btn" title="Perbesar / Perkecil Teks Sertifikat">
+          <span id="lbFsZoomIcon">🔍</span> <span id="lbFsZoomText">Perbesar</span>
+        </button>
+        <a id="lbFsDirectBtn" class="lbfs-btn" href="#" target="_blank" rel="noopener" title="Buka File Gambar Asli di Tab Baru">
+          ↗ Buka Asli
+        </a>
+        <button id="lbFsClose" class="lbfs-btn lbfs-btn-close" title="Kembali ke Galeri (Esc)" aria-label="Tutup Tampilan Penuh">&times;</button>
+      </div>
+    </div>
+
+    <!-- Navigasi Gambar Fullscreen -->
+    <button id="lbFsPrev" class="lbfs-nav lbfs-prev" title="Gambar Sebelumnya (←)" aria-label="Gambar Sebelumnya">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button id="lbFsNext" class="lbfs-nav lbfs-next" title="Gambar Berikutnya (→)" aria-label="Gambar Berikutnya">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Canvas Gambar Fullscreen -->
+    <div id="lbFsImgWrapper" class="lbfs-img-wrapper" title="Klik gambar untuk memperbesar / memperkecil">
+      <img id="lbFsImg" src="" alt="Pratinjau Penuh Sertifikat" />
+    </div>
+
+    <!-- Minimal Bottom Hint -->
+    <div class="lbfs-bottom-hint">
+      <span>Gunakan tombol panah ⬅ ➡ atau klik gambar untuk memperbesar/memperkecil teks sertifikat</span>
     </div>
   </div>
 
@@ -1246,7 +1279,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <script src="script.js?v=2.7.1"></script>
+  <script src="script.js?v=2.8.1"></script>
 </body>
 
 </html>

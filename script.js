@@ -1074,28 +1074,39 @@ const GALLERY_ITEMS_DATA = [
 ];
 
 function initLightbox() {
-  const modal          = document.getElementById('lightboxModal');
-  const img            = document.getElementById('lightboxImg');
-  const badge          = document.getElementById('lightboxBadge');
-  const multiTag       = document.getElementById('lightboxMultiTag');
-  const title          = document.getElementById('lightboxTitle');
-  const desc           = document.getElementById('lightboxDesc');
-  const counter        = document.getElementById('lightboxCounter');
-  const sitePill       = document.getElementById('lightboxSitePill');
-  const siteTabsBar    = document.getElementById('lightboxSiteTabs');
-  const singleView     = document.getElementById('lbSingleView');
-  const multiGridView  = document.getElementById('lbMultiGridView');
-  const thumbStrip     = document.getElementById('lightboxThumbStrip');
-  const closeBtn       = document.getElementById('lightboxClose');
-  const prevBtn        = document.getElementById('lightboxPrev');
-  const nextBtn        = document.getElementById('lightboxNext');
+  // Modal Elements
+  const modal         = document.getElementById('lightboxModal');
+  const badge         = document.getElementById('lightboxBadge');
+  const multiTag      = document.getElementById('lightboxMultiTag');
+  const counter       = document.getElementById('lightboxCounter');
+  const title         = document.getElementById('lightboxTitle');
+  const desc          = document.getElementById('lightboxDesc');
+  const multiGridView = document.getElementById('lbMultiGridView');
+  const closeBtn      = document.getElementById('lightboxClose');
+  const prevBtn       = document.getElementById('lightboxPrev');
+  const nextBtn       = document.getElementById('lightboxNext');
+
+  // Fullscreen Photo Viewer Elements (Foto Penuh tanpa Narasi)
+  const fsOverlay   = document.getElementById('lbFullscreenOverlay');
+  const fsWrapper   = document.getElementById('lbFsImgWrapper');
+  const fsImg       = document.getElementById('lbFsImg');
+  const fsTitle     = document.getElementById('lbFsTitle');
+  const fsCounter   = document.getElementById('lbFsCounter');
+  const fsClose     = document.getElementById('lbFsClose');
+  const fsPrev      = document.getElementById('lbFsPrev');
+  const fsNext      = document.getElementById('lbFsNext');
+  const fsZoomBtn   = document.getElementById('lbFsZoomBtn');
+  const fsZoomText  = document.getElementById('lbFsZoomText');
+  const fsDirectBtn = document.getElementById('lbFsDirectBtn');
 
   const cards = Array.from(document.querySelectorAll('.gallery-card'));
   let currentTopicIdx = 0;
-  let currentSiteIdx  = 0;
-  let isMultiViewMode = true; // Default true if multi-item
+  let fsItems = [];
+  let fsCurIdx = 0;
+  let isZoomed = false;
 
-  function renderTopic(topicIdx, siteIdx = 0, multiView = null) {
+  // ── Render Modal Awal (Menampilkan Semua Foto & Narasi Lengkap) ──
+  function renderTopic(topicIdx) {
     if (topicIdx < 0) topicIdx = GALLERY_ITEMS_DATA.length - 1;
     if (topicIdx >= GALLERY_ITEMS_DATA.length) topicIdx = 0;
     currentTopicIdx = topicIdx;
@@ -1103,24 +1114,19 @@ function initLightbox() {
     const topic = GALLERY_ITEMS_DATA[topicIdx];
     if (!topic) return;
 
-    const items = topic.items || [];
-    if (siteIdx < 0) siteIdx = 0;
-    if (siteIdx >= items.length) siteIdx = items.length - 1;
-    currentSiteIdx = siteIdx;
+    const items = topic.items && topic.items.length > 0
+      ? topic.items
+      : [{ site: '', label: topic.title, img: topic.coverImg || '' }];
 
-    // Jika multiView tidak dispesifikasikan: jika items > 1 otomatis langsung multi-grid!
-    if (multiView === null) {
-      isMultiViewMode = items.length > 1;
-    } else {
-      isMultiViewMode = multiView;
-    }
+    // Siapkan daftar item untuk viewer layar penuh
+    fsItems = items.map(it => ({
+      img: it.img,
+      label: it.label || it.site || topic.title
+    }));
 
-    // Reset zoom state on new render
-    if (img) img.classList.remove('is-zoomed');
-
-    // 1. Header & Badges
+    // 1. Header Informasi
     if (badge) {
-      badge.innerHTML = topic.badge;
+      badge.innerHTML = topic.badge || 'Sertifikasi';
       badge.className = 'lightbox-badge ' + (topic.badgeClass || '');
     }
     if (multiTag) {
@@ -1131,249 +1137,223 @@ function initLightbox() {
         multiTag.style.display = 'none';
       }
     }
-    if (title) {
-      title.innerHTML = topic.title;
-    }
     if (counter) {
       counter.textContent = (topicIdx + 1) + ' / ' + GALLERY_ITEMS_DATA.length;
     }
-
-    // 2. Site Tabs Bar (muncul jika items > 1)
-    if (siteTabsBar) {
-      if (items.length > 1) {
-        let tabsHtml = '<span class="lb-tab-label">Tampilan:</span>';
-        const multiActiveClass = isMultiViewMode ? 'active' : '';
-        tabsHtml += `<button class="lb-site-tab tab-multiview ${multiActiveClass}" id="lbBtnMultiView">🖼️ Semua Gambar (${items.length} Site)</button>`;
-
-        items.forEach((it, sIdx) => {
-          const activeClass = (!isMultiViewMode && sIdx === currentSiteIdx) ? 'active' : '';
-          tabsHtml += `<button class="lb-site-tab ${activeClass}" data-site-idx="${sIdx}">🏢 ${it.site}</button>`;
-        });
-
-        siteTabsBar.innerHTML = tabsHtml;
-        siteTabsBar.style.display = 'flex';
-
-        siteTabsBar.querySelectorAll('.lb-site-tab[data-site-idx]').forEach(tabBtn => {
-          tabBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const sIdx = parseInt(tabBtn.getAttribute('data-site-idx'), 10);
-            renderTopic(currentTopicIdx, sIdx, false);
-          });
-        });
-
-        const btnMulti = document.getElementById('lbBtnMultiView');
-        if (btnMulti) {
-          btnMulti.addEventListener('click', (e) => {
-            e.stopPropagation();
-            renderTopic(currentTopicIdx, currentSiteIdx, true);
-          });
-        }
-      } else {
-        siteTabsBar.innerHTML = '';
-        siteTabsBar.style.display = 'none';
-      }
+    if (title) {
+      title.innerHTML = topic.title;
     }
 
-    // 3. Media Area Rendering (Multi-Grid Default vs Single View Full)
-    if (isMultiViewMode && items.length > 1) {
-      // MULTI-GRID MODE (Langsung tampil semua gambar saat masuk)
-      if (singleView) singleView.style.display = 'none';
-      if (thumbStrip) thumbStrip.style.display = 'none';
-      if (multiGridView) {
-        const gridColClass = items.length === 2 ? 'multigrid-2' : (items.length === 3 ? 'multigrid-3' : 'multigrid-4');
-        let gridHtml = '';
-        items.forEach((it, sIdx) => {
-          gridHtml += `
-            <div class="lb-grid-card" data-focus-idx="${sIdx}" title="Klik untuk perbesar penuh ${it.label}">
-              <div class="lb-grid-card-media">
-                <img src="${it.img}" alt="${it.label}" loading="lazy" />
-              </div>
-              <div class="lb-grid-card-footer">
-                <span class="lb-grid-site-title">🏢 ${it.label}</span>
-                <span class="lb-grid-zoom-hint">&#x1F50D; Perbesar Penuh</span>
+    // 2. Render Media Grid (Semua gambar tampil rapi & tidak terpotong)
+    if (multiGridView) {
+      const count = items.length;
+      let gridClass = 'multigrid-single';
+      if (count === 2) gridClass = 'multigrid-2';
+      else if (count === 3) gridClass = 'multigrid-3';
+      else if (count >= 4) gridClass = 'multigrid-4';
+
+      let gridHtml = '';
+      items.forEach((it, sIdx) => {
+        gridHtml += `
+          <div class="lb-grid-card" data-focus-idx="${sIdx}" title="Klik untuk membuka sertifikat satu layar penuh">
+            <div class="lb-grid-card-media">
+              <img src="${it.img}" alt="${it.label}" loading="lazy" />
+              <div class="lb-grid-card-overlay-hint">
+                <span>🔍 Tampilan Penuh</span>
               </div>
             </div>
-          `;
-        });
-        multiGridView.className = 'lightbox-multigrid-view ' + gridColClass;
-        multiGridView.innerHTML = gridHtml;
-        multiGridView.style.display = 'grid';
-
-        // Klik salah satu kartu grid untuk masuk ke mode perbesar penuh (tidak terpotong)
-        multiGridView.querySelectorAll('.lb-grid-card').forEach(gCard => {
-          gCard.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const focusIdx = parseInt(gCard.getAttribute('data-focus-idx'), 10);
-            renderTopic(currentTopicIdx, focusIdx, false);
-          });
-        });
-      }
-    } else {
-      // SINGLE VIEW MODE (Perbesar Penuh, Tidak Terpotong)
-      if (multiGridView) multiGridView.style.display = 'none';
-      if (singleView) {
-        singleView.style.display = 'flex';
-      }
-
-      const currentItem = items[currentSiteIdx] || { img: topic.coverImg, label: topic.title };
-
-      // Pasang tombol kontrol single view jika belum ada
-      let controlsEl = document.getElementById('lbSingleControls');
-      if (!controlsEl && singleView) {
-        controlsEl = document.createElement('div');
-        controlsEl.className = 'lb-single-controls';
-        controlsEl.id = 'lbSingleControls';
-        singleView.insertBefore(controlsEl, singleView.firstChild);
-      }
-
-      if (controlsEl) {
-        let controlsHtml = '';
-        if (items.length > 1) {
-          controlsHtml += `<button class="lb-action-btn lb-back-btn" id="lbBackToGrid">⬅ Kembali ke Semua Gambar (${items.length} Site)</button>`;
-        }
-        controlsHtml += `
-          <div style="display:flex; gap:8px; margin-left:auto;">
-            <button class="lb-action-btn" id="lbZoomBtn" title="Klik untuk perbesar/perkecil tampilan sertifikat">🔍 <span id="lbZoomText">Perbesar Penuh</span></button>
-            <a class="lb-action-btn" id="lbOpenDirect" href="${currentItem.img}" target="_blank" rel="noopener" title="Buka gambar resolusi asli di tab baru">↗ Buka File Asli</a>
+            <div class="lb-grid-card-footer">
+              <span class="lb-grid-site-title">🏢 ${it.label}</span>
+              <span class="lb-grid-zoom-hint">&#x1F50D; Buka Layar Penuh</span>
+            </div>
           </div>
         `;
-        controlsEl.innerHTML = controlsHtml;
+      });
 
-        const backBtn = document.getElementById('lbBackToGrid');
-        if (backBtn) {
-          backBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            renderTopic(currentTopicIdx, currentSiteIdx, true);
-          });
-        }
+      multiGridView.className = 'lightbox-multigrid-view ' + gridClass;
+      multiGridView.innerHTML = gridHtml;
+      multiGridView.style.display = 'grid';
 
-        const zoomBtn = document.getElementById('lbZoomBtn');
-        if (zoomBtn && img) {
-          zoomBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleZoom();
-          });
-        }
-      }
-
-      function toggleZoom() {
-        if (!img) return;
-        const isZoomed = img.classList.toggle('is-zoomed');
-        const zoomText = document.getElementById('lbZoomText');
-        if (zoomText) zoomText.textContent = isZoomed ? 'Ukuran Normal' : 'Perbesar Penuh';
-      }
-
-      if (img) {
-        img.style.opacity = '0';
-        img.src = currentItem.img;
-        img.alt = currentItem.label || topic.title;
-        img.onload = () => { img.style.opacity = '1'; };
-
-        // Klik gambar langsung juga bisa toggle zoom
-        img.onclick = (e) => {
+      // Event klik foto untuk masuk ke tampilan foto layar penuh (tanpa narasi)
+      multiGridView.querySelectorAll('.lb-grid-card').forEach(gCard => {
+        gCard.addEventListener('click', (e) => {
           e.stopPropagation();
-          toggleZoom();
-        };
-      }
-
-      if (sitePill) {
-        if (items.length > 1 && currentItem.label) {
-          sitePill.innerHTML = `<span>🏢</span> ${currentItem.label}`;
-          sitePill.style.display = 'flex';
-        } else {
-          sitePill.style.display = 'none';
-        }
-      }
-
-      // Thumbnail Strip di Single View
-      if (thumbStrip) {
-        if (items.length > 1) {
-          let thumbHtml = '';
-          items.forEach((it, sIdx) => {
-            const activeClass = sIdx === currentSiteIdx ? 'active' : '';
-            thumbHtml += `
-              <div class="lb-thumb-item ${activeClass}" data-thumb-idx="${sIdx}" title="${it.label}">
-                <img src="${it.img}" alt="${it.label}" />
-              </div>
-            `;
-          });
-          thumbStrip.innerHTML = thumbHtml;
-          thumbStrip.style.display = 'flex';
-
-          thumbStrip.querySelectorAll('.lb-thumb-item').forEach(th => {
-            th.addEventListener('click', (e) => {
-              e.stopPropagation();
-              const sIdx = parseInt(th.getAttribute('data-thumb-idx'), 10);
-              renderTopic(currentTopicIdx, sIdx, false);
-            });
-          });
-        } else {
-          thumbStrip.innerHTML = '';
-          thumbStrip.style.display = 'none';
-        }
-      }
+          const focusIdx = parseInt(gCard.getAttribute('data-focus-idx'), 10);
+          openFullscreenPhoto(focusIdx);
+        });
+      });
     }
 
-    // 4. Structured General Narasi
+    // 3. Render Narasi Lengkap & Terstruktur (Di bawah grid gambar)
     if (desc) {
-      let html = '<p class="lb-summary">' + topic.summary + '</p>';
-      if (topic.points && topic.points.length > 0) {
-        html += '<div class="lb-points-card">';
-        html += '  <div class="lb-points-title">';
-        html += '    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
-        html += '    <span>Poin Kunci &amp; Standarisasi Menyeluruh</span>';
-        html += '  </div>';
-        html += '  <ul class="lb-points-list">';
-        topic.points.forEach(pt => {
-          html += '    <li>' + pt + '</li>';
-        });
-        html += '  </ul>';
-        html += '</div>';
+      let descHtml = '';
+      if (topic.summary) {
+        descHtml += '<p class="lb-summary">' + topic.summary + '</p>';
       }
-      desc.innerHTML = html;
+      if (topic.points && topic.points.length > 0) {
+        descHtml += '<div class="lb-points-card">';
+        descHtml += '  <div class="lb-points-title">';
+        descHtml += '    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
+        descHtml += '    <span>Poin Kunci &amp; Standarisasi Menyeluruh</span>';
+        descHtml += '  </div>';
+        descHtml += '  <ul class="lb-points-list">';
+        topic.points.forEach(pt => {
+          descHtml += '    <li>' + pt + '</li>';
+        });
+        descHtml += '  </ul>';
+        descHtml += '</div>';
+      }
+      desc.innerHTML = descHtml;
     }
   }
 
-  // Event listener per gallery card on page:
-  // Ketika kartu diklik, langsung panggil renderTopic dengan default multiView (otomatis menampilkan semua gambar jika > 1)
+  // ── Mode Fullscreen Photo (Hanya Gambar Penuh, Tanpa Narasi) ──
+  function openFullscreenPhoto(idx) {
+    if (!fsOverlay || !fsImg || fsItems.length === 0) return;
+    fsCurIdx = idx;
+    resetFsZoom();
+    updateFsPhoto();
+    fsOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateFsPhoto() {
+    if (!fsImg || !fsItems[fsCurIdx]) return;
+    const cur = fsItems[fsCurIdx];
+
+    fsImg.style.opacity = '0';
+    fsImg.src = cur.img;
+    fsImg.alt = cur.label;
+    fsImg.onload = () => { fsImg.style.opacity = '1'; };
+
+    if (fsTitle) fsTitle.textContent = cur.label;
+    if (fsCounter) {
+      fsCounter.textContent = (fsCurIdx + 1) + ' / ' + fsItems.length;
+      fsCounter.style.display = fsItems.length > 1 ? 'inline-block' : 'none';
+    }
+    if (fsDirectBtn) fsDirectBtn.href = cur.img;
+
+    if (fsPrev) fsPrev.style.display = fsItems.length > 1 ? 'flex' : 'none';
+    if (fsNext) fsNext.style.display = fsItems.length > 1 ? 'flex' : 'none';
+  }
+
+  function toggleFsZoom() {
+    if (!fsImg || !fsWrapper) return;
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+      fsImg.classList.add('is-zoomed');
+      fsWrapper.classList.add('is-zoomed-wrapper');
+      if (fsZoomText) fsZoomText.textContent = 'Ukuran Pas';
+    } else {
+      resetFsZoom();
+    }
+  }
+
+  function resetFsZoom() {
+    isZoomed = false;
+    if (fsImg) fsImg.classList.remove('is-zoomed');
+    if (fsWrapper) {
+      fsWrapper.classList.remove('is-zoomed-wrapper');
+      fsWrapper.scrollTop = 0;
+      fsWrapper.scrollLeft = 0;
+    }
+    if (fsZoomText) fsZoomText.textContent = 'Perbesar';
+  }
+
+  function closeFullscreenPhoto() {
+    resetFsZoom();
+    if (fsOverlay) fsOverlay.classList.remove('active');
+  }
+
+  // Event Listeners Fullscreen Viewer
+  if (fsClose) fsClose.addEventListener('click', (e) => { e.stopPropagation(); closeFullscreenPhoto(); });
+  if (fsZoomBtn) fsZoomBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleFsZoom(); });
+  if (fsImg) fsImg.addEventListener('click', (e) => { e.stopPropagation(); toggleFsZoom(); });
+
+  // Klik backdrop fullscreen untuk kembali ke modal grid
+  if (fsOverlay) {
+    fsOverlay.addEventListener('click', (e) => {
+      if (e.target === fsOverlay || e.target === fsWrapper) {
+        closeFullscreenPhoto();
+      }
+    });
+  }
+
+  if (fsPrev) {
+    fsPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      resetFsZoom();
+      fsCurIdx = (fsCurIdx - 1 + fsItems.length) % fsItems.length;
+      updateFsPhoto();
+    });
+  }
+  if (fsNext) {
+    fsNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      resetFsZoom();
+      fsCurIdx = (fsCurIdx + 1) % fsItems.length;
+      updateFsPhoto();
+    });
+  }
+
+  // ── Event Modal Utama ──
   cards.forEach((card, index) => {
     card.addEventListener('click', () => {
-      renderTopic(index, 0, null); // null = auto detect multiView
+      renderTopic(index);
       if (modal) modal.classList.add('active');
       if (typeof lenis !== 'undefined' && lenis) lenis.stop();
       document.body.style.overflow = 'hidden';
     });
   });
 
-  // Navigasi Prev & Next (Pindah Topik)
-  function showPrevTopic() {
-    renderTopic(currentTopicIdx - 1, 0, null);
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      renderTopic(currentTopicIdx - 1);
+    });
   }
-  function showNextTopic() {
-    renderTopic(currentTopicIdx + 1, 0, null);
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      renderTopic(currentTopicIdx + 1);
+    });
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevTopic(); });
-  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNextTopic(); });
-
-  function closeLightbox() {
+  function closeModal() {
+    closeFullscreenPhoto();
     if (modal) modal.classList.remove('active');
     document.body.style.overflow = '';
     if (typeof lenis !== 'undefined' && lenis) lenis.start();
   }
 
-  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (modal) {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) closeLightbox();
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
     });
   }
 
-  document.addEventListener('keydown', e => {
-    if (!modal || !modal.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    else if (e.key === 'ArrowLeft') showPrevTopic();
-    else if (e.key === 'ArrowRight') showNextTopic();
+  // ── Keyboard Support ──
+  document.addEventListener('keydown', (e) => {
+    const fsActive = fsOverlay && fsOverlay.classList.contains('active');
+    const modalActive = modal && modal.classList.contains('active');
+
+    if (fsActive) {
+      if (e.key === 'Escape') closeFullscreenPhoto();
+      else if (e.key === 'ArrowLeft') {
+        resetFsZoom();
+        fsCurIdx = (fsCurIdx - 1 + fsItems.length) % fsItems.length;
+        updateFsPhoto();
+      } else if (e.key === 'ArrowRight') {
+        resetFsZoom();
+        fsCurIdx = (fsCurIdx + 1) % fsItems.length;
+        updateFsPhoto();
+      }
+    } else if (modalActive) {
+      if (e.key === 'Escape') closeModal();
+      else if (e.key === 'ArrowLeft') renderTopic(currentTopicIdx - 1);
+      else if (e.key === 'ArrowRight') renderTopic(currentTopicIdx + 1);
+    }
   });
 }
 
