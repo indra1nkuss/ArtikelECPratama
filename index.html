@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3.2.0" />
+  <link rel="stylesheet" href="style.css?v=3.3.0" />
 </head>
 
 <body>
@@ -51,13 +51,19 @@
   <div class="lightbox-overlay" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
     <div class="lightbox-content">
       <button class="lightbox-close" id="lightboxClose" title="Close (Esc)" aria-label="Close Preview">&times;</button>
-      
+
       <!-- NAVIGASI PREV & NEXT (Pindah Topik Galeri) -->
       <button class="lightbox-nav-btn lb-prev" id="lightboxPrev" title="Previous Topic (←)" aria-label="Previous Topic">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
       </button>
       <button class="lightbox-nav-btn lb-next" id="lightboxNext" title="Next Topic (→)" aria-label="Next Topic">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
       </button>
 
       <!-- LIGHTBOX TOP HEADER: Judul & Badge di Atas agar Tampilan Rapi & Jelas -->
@@ -104,19 +110,27 @@
         <button id="lbFsZoomBtn" class="lbfs-btn" title="Zoom in / out on document">
           <span id="lbFsZoomIcon">🔍</span> <span id="lbFsZoomText">Zoom In</span>
         </button>
-        <a id="lbFsDirectBtn" class="lbfs-btn" href="#" target="_blank" rel="noopener" title="Open Original Image File in New Tab">
+        <a id="lbFsDirectBtn" class="lbfs-btn" href="#" target="_blank" rel="noopener"
+          title="Open Original Image File in New Tab">
           ↗ Open Original
         </a>
-        <button id="lbFsClose" class="lbfs-btn lbfs-btn-close" title="Back to Gallery (Esc)" aria-label="Close Fullscreen">&times;</button>
+        <button id="lbFsClose" class="lbfs-btn lbfs-btn-close" title="Back to Gallery (Esc)"
+          aria-label="Close Fullscreen">&times;</button>
       </div>
     </div>
 
     <!-- Navigasi Gambar Fullscreen -->
     <button id="lbFsPrev" class="lbfs-nav lbfs-prev" title="Previous Image (←)" aria-label="Previous Image">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
     </button>
     <button id="lbFsNext" class="lbfs-nav lbfs-next" title="Next Image (→)" aria-label="Next Image">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
     </button>
 
     <!-- Canvas Gambar Fullscreen -->
@@ -230,18 +244,18 @@
           <div class="chapter-label">Strategic Initiatives</div>
           <div class="dept-intro">
             <div class="dept-dot"></div>
-            <p>The <strong>Energy Conservation</strong> Department is responsible for managing, controlling, and improving energy efficiency across the company.</p>
+            <p>The <strong>Energy Conservation</strong> Department is responsible for managing, controlling, and
+              improving energy efficiency across the company.</p>
           </div>
         </div>
 
         <!-- Adegan 04: Teks Pernyataan Besar per baris dari balik mask -->
         <div class="sx-statement-wrap">
           <blockquote class="big-quote sx-statement-quote">
-            <div class="sx-mask-line"><span class="sx-line-inner">&ldquo;Kami hadir untuk memastikan</span></div>
-            <div class="sx-mask-line"><span class="sx-line-inner">setiap kilowatt yang dikonsumsi</span></div>
-            <div class="sx-mask-line"><span class="sx-line-inner">memberi dampak positif &mdash;</span></div>
-            <div class="sx-mask-line"><span class="sx-line-inner highlight-orange">bagi bisnis dan bagi
-                bumi.&rdquo;</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner">&ldquo;We are here to ensure</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner">every kilowatt consumed</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner">makes a positive impact &mdash;</span></div>
+            <div class="sx-mask-line"><span class="sx-line-inner highlight-orange">for our business and our planet.&rdquo;</span></div>
           </blockquote>
         </div>
       </div>
@@ -250,8 +264,8 @@
       <div class="sx-layer sx-layer-panel">
         <div class="sx-panel" id="sxPanel">
           <div class="container-wide sx-panel-inner">
-            <div class="chapter-label">Fondasi Keberlanjutan</div>
-            <h3 class="chapter-heading sx-panel-heading">Tiga Pilar <em>Utama Inovasi</em></h3>
+            <div class="chapter-label">Sustainability Foundation</div>
+            <h3 class="chapter-heading sx-panel-heading">Three Pillars of <em>Clean Innovation</em></h3>
             <div class="sx-panel-cols">
               <!-- Kolom 1 (Offset vertikal: 0) -->
               <div class="pillar-card spotlight-card sx-panel-col col-1">
@@ -266,8 +280,7 @@
                 </div>
                 <div class="pillar-name">ISO 50001</div>
                 <div class="pillar-sub">Energy Management System</div>
-                <p class="pillar-desc">Sertifikasi manajemen energi berstandar internasional dengan surveillance audit
-                  tahunan yang konsisten.</p>
+                <p class="pillar-desc">Internationally recognized Energy Management System certification with consistent annual surveillance audits.</p>
               </div>
 
               <!-- Kolom 2 (Offset vertikal: 7vh) -->
@@ -281,7 +294,8 @@
                 </div>
                 <div class="pillar-name">REC PLN</div>
                 <div class="pillar-sub">Renewable Energy Certificate</div>
-                <p class="pillar-desc">100% clean electricity from verified renewable energy sources across all manufacturing plants.</p>
+                <p class="pillar-desc">100% clean electricity from verified renewable energy sources across all
+                  manufacturing plants.</p>
               </div>
 
               <!-- Kolom 3 (Offset vertikal: 14vh) -->
@@ -298,7 +312,8 @@
                 </div>
                 <div class="pillar-name">Solar PV Rooftop</div>
                 <div class="pillar-sub">6.2 MWp Installed Capacity</div>
-                <p class="pillar-desc">On-site rooftop solar photovoltaic power generation across manufacturing sites.</p>
+                <p class="pillar-desc">On-site rooftop solar photovoltaic power generation across manufacturing sites.
+                </p>
               </div>
             </div>
           </div>
@@ -318,7 +333,8 @@
       <div class="carbon-header">
         <div class="chapter-label">Chapter 02 &bull; Carbon Performance</div>
         <h2 class="chapter-heading">Continuously Decreasing <br /><em>Emissions Trajectory</em></h2>
-        <p class="carbon-intro">Our sustainable energy transformation delivers measurable carbon emission reductions. Every kilowatt of clean energy adopted directly accelerates industrial decarbonization.</p>
+        <p class="carbon-intro">Our sustainable energy transformation delivers measurable carbon emission reductions.
+          Every kilowatt of clean energy adopted directly accelerates industrial decarbonization.</p>
       </div>
 
       <!-- ABSOLUTE OF EMISSION TARGET TRACKING - Market Based Banner -->
@@ -328,12 +344,14 @@
             <span class="ctt-icon">&#x1F4CA;</span>
             <div>
               <h3 class="ctt-title">ABSOLUTE OF EMISSION TARGET TRACKING &mdash; Market Based</h3>
-              <span class="ctt-sub">Scope 1 &amp; Scope 2 Emission Accounting &bull; Period 2019 (Baseline) to 2025</span>
+              <span class="ctt-sub">Scope 1 &amp; Scope 2 Emission Accounting &bull; Period 2019 (Baseline) to
+                2025</span>
             </div>
           </div>
           <span class="ctt-tag">Market-Based Methodology</span>
         </div>
-        <p class="ctt-desc">Absolute greenhouse gas (GHG) emission target tracking transparently compares annual reduction pathways against actual verified emissions across all operational facilities.</p>
+        <p class="ctt-desc">Absolute greenhouse gas (GHG) emission target tracking transparently compares annual
+          reduction pathways against actual verified emissions across all operational facilities.</p>
       </div>
 
       <!-- Scope Selector Tabs -->
@@ -358,7 +376,8 @@
         <div class="ckpi-card">
           <div class="ckpi-icon">
             <svg viewBox="0 0 32 32" fill="none">
-              <path d="M16 4C9.37 4 4 9.37 4 16s5.37 12 12 12 12-5.37 12-12S22.63 4 16 4z" stroke="currentColor" stroke-width="1.8" />
+              <path d="M16 4C9.37 4 4 9.37 4 16s5.37 12 12 12 12-5.37 12-12S22.63 4 16 4z" stroke="currentColor"
+                stroke-width="1.8" />
               <path d="M16 10v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
             </svg>
           </div>
@@ -372,7 +391,8 @@
           <div class="ckpi-icon">
             <svg viewBox="0 0 32 32" fill="none">
               <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.8" />
-              <path d="M16 10v3l-3 3h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M16 10v3l-3 3h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
           <div class="ckpi-val" id="kpiCurrentVal" data-val="8662">8,662 tCO₂e</div>
@@ -384,7 +404,8 @@
         <div class="ckpi-card ckpi-hero">
           <div class="ckpi-icon">
             <svg viewBox="0 0 32 32" fill="none">
-              <path d="M6 26L14 14l5 6 4-8 7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M6 26L14 14l5 6 4-8 7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
           <div class="ckpi-val" id="kpiReductionVal" data-val="2747">-2,747 tCO₂e</div>
@@ -396,7 +417,8 @@
         <div class="ckpi-card ckpi-pct">
           <div class="ckpi-icon">
             <svg viewBox="0 0 32 32" fill="none">
-              <path d="M16 28V8M8 16l8-8 8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M16 28V8M8 16l8-8 8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
           <div class="ckpi-val" id="kpiPercentVal" data-val="24.1">-24.1%</div>
@@ -468,7 +490,7 @@
               <thead>
                 <tr>
                   <th>Year</th>
-                  <th>2019<br/><small>(Baseline)</small></th>
+                  <th>2019<br /><small>(Baseline)</small></th>
                   <th>2020</th>
                   <th>2021</th>
                   <th>2022</th>
@@ -524,7 +546,7 @@
               <thead>
                 <tr>
                   <th>Year</th>
-                  <th>2019<br/><small>(Baseline)</small></th>
+                  <th>2019<br /><small>(Baseline)</small></th>
                   <th>2020</th>
                   <th>2021</th>
                   <th>2022</th>
@@ -583,7 +605,8 @@
         <div class="chapter-label">Implementation Scope</div>
         <h2 class="chapter-heading">Green Energy <br /><em>Transformation Cycle</em></h2>
         <p class="sx-ops-intro">
-          Three integrated strategic pillars: securing 100% certified renewable energy, generating on-site solar power, and cutting consumption through production equipment electrification.
+          Three integrated strategic pillars: securing 100% certified renewable energy, generating on-site solar power,
+          and cutting consumption through production equipment electrification.
         </p>
       </div>
 
@@ -619,7 +642,9 @@
                   </div>
                 </figure>
                 <div class="scope-detail-body">
-                  <p class="scope-desc">All electricity consumed across Pratama Group is certified by <strong>100% Renewable Energy Certificates (REC)</strong> from PT PLN (Persero) Indonesia. Every kWh used is verified from renewable generation — an audited, official sustainability credential.</p>
+                  <p class="scope-desc">All electricity consumed across Pratama Group is certified by <strong>100%
+                      Renewable Energy Certificates (REC)</strong> from PT PLN (Persero) Indonesia. Every kWh used is
+                    verified from renewable generation — an audited, official sustainability credential.</p>
                   <div class="scope-sites">
                     <span class="scope-sites-label">Certification Scope</span>
                     <div class="scope-site-chips">
@@ -668,7 +693,9 @@
                   </div>
                 </figure>
                 <div class="scope-detail-body">
-                  <p class="scope-desc">Development of on-site rooftop solar photovoltaic power plants. Green electricity generated directly at factory facilities reduces grid dependency and accelerates manufacturing decarbonization.</p>
+                  <p class="scope-desc">Development of on-site rooftop solar photovoltaic power plants. Green
+                    electricity generated directly at factory facilities reduces grid dependency and accelerates
+                    manufacturing decarbonization.</p>
                   <div class="scope-metrics">
                     <div class="scope-metric">
                       <span class="sm-val">1,6</span><span class="sm-unit">MWp</span>
@@ -722,7 +749,9 @@
                   </div>
                 </figure>
                 <div class="scope-detail-body">
-                  <p class="scope-desc">Conversion of production line hydraulic presses from gas-fired heating to electric drive. This initiative directly eliminates combustion emissions, reduces energy intensity per pair, and lowers maintenance overhead.</p>
+                  <p class="scope-desc">Conversion of production line hydraulic presses from gas-fired heating to
+                    electric drive. This initiative directly eliminates combustion emissions, reduces energy intensity
+                    per pair, and lowers maintenance overhead.</p>
                   <div class="scope-convert">
                     <div class="scope-convert-side">
                       <span class="sc-kicker">Before</span>
@@ -762,7 +791,8 @@
       <div class="sx-ops-bridge">
         <span class="sx-ops-bridge-label">Performance Continuity</span>
         <h4 class="sx-ops-bridge-title">From Implementation Scope to <em>Tangible Evidence</em></h4>
-        <p class="sx-ops-bridge-desc">These three pillars establish a verified track record of certification, on-site renewables, and measurable equipment efficiency.</p>
+        <p class="sx-ops-bridge-desc">These three pillars establish a verified track record of certification, on-site
+          renewables, and measurable equipment efficiency.</p>
         <div class="sx-ops-bridge-cue">
           <span>Explore Achievement Timeline</span>
           <svg viewBox="0 0 24 24" fill="none">
@@ -797,7 +827,8 @@
                   stroke-linejoin="round" />
               </svg></div>
             <h4>ISO 50001</h4>
-            <p>International Energy Management System certification with annual surveillance, proving continuous performance improvement.</p>
+            <p>International Energy Management System certification with annual surveillance, proving continuous
+              performance improvement.</p>
             <div class="tl-tags"><span>International</span><span>Annual Surveillance</span></div>
           </div>
         </div>
@@ -813,7 +844,8 @@
                   stroke-linejoin="round" />
               </svg></div>
             <h4>FEM</h4>
-            <p>Implementation of Facility Environment Module ensuring manufacturing operations align with rigorous environmental standards.</p>
+            <p>Implementation of Facility Environment Module ensuring manufacturing operations align with rigorous
+              environmental standards.</p>
             <div class="tl-tags"><span>Environment</span><span>Facility</span></div>
           </div>
         </div>
@@ -828,7 +860,8 @@
                   stroke-linejoin="round" />
               </svg></div>
             <h4>MCAP</h4>
-            <p>Successfully completed the Manufacturing Climate Action Program — a structured framework for impactful industrial carbon reduction.</p>
+            <p>Successfully completed the Manufacturing Climate Action Program — a structured framework for impactful
+              industrial carbon reduction.</p>
             <div class="tl-tags"><span>Carbon Reduction</span><span>Manufacturing</span></div>
           </div>
         </div>
@@ -844,7 +877,8 @@
                   stroke-linecap="round" />
               </svg></div>
             <h4>POME</h4>
-            <p>Comprehensive Energy Management Reporting system ensuring regular energy intensity tracking and regulatory compliance.</p>
+            <p>Comprehensive Energy Management Reporting system ensuring regular energy intensity tracking and
+              regulatory compliance.</p>
             <div class="tl-tags"><span>Reporting</span><span>Compliance</span></div>
           </div>
         </div>
@@ -858,7 +892,8 @@
                   stroke-linejoin="round" />
               </svg></div>
             <h4>REC PLN</h4>
-            <p>Holder of Renewable Energy Certificates from PLN — official proof of 100% clean energy consumption accelerating national decarbonization.</p>
+            <p>Holder of Renewable Energy Certificates from PLN — official proof of 100% clean energy consumption
+              accelerating national decarbonization.</p>
             <div class="tl-tags"><span>PLN</span><span>Renewable Energy</span></div>
           </div>
         </div>
@@ -873,8 +908,10 @@
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg></div>
             <h4>Solar PV</h4>
-            <p>Rooftop Solar PV installed across two manufacturing sites — Pratama (IR) 1.6 MWp and Pratama (JX) 4.6 MWp — generating 6.2 MWp clean energy on-site.</p>
-            <div class="tl-tags tl-tags-gold"><span>1.6 MWp &bull; IR</span><span>4.6 MWp &bull; JX</span><span>6.2 MWp Total</span></div>
+            <p>Rooftop Solar PV installed across two manufacturing sites — Pratama (IR) 1.6 MWp and Pratama (JX) 4.6 MWp
+              — generating 6.2 MWp clean energy on-site.</p>
+            <div class="tl-tags tl-tags-gold"><span>1.6 MWp &bull; IR</span><span>4.6 MWp &bull; JX</span><span>6.2 MWp
+                Total</span></div>
           </div>
         </div>
       </div>
@@ -912,13 +949,17 @@
               alt="Plakat Green Energy Partnership PLN" loading="lazy" />
             <div class="gcard-badge badge-gold">&#x1F91D; Partnership Plaque</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Plaque &bull; Green Energy Partnership</span>
             <h4 class="gcard-title">PLN Green Energy Partnership Plaque</h4>
-            <p class="gcard-snippet">Appreciation from PLN to Pratama Serpong (IR) &amp; Sumber Masanda Jaya (PM) in accelerating green energy.</p>
+            <p class="gcard-snippet">Appreciation from PLN to Pratama Serpong (IR) &amp; Sumber Masanda Jaya (PM) in
+              accelerating green energy.</p>
           </div>
         </div>
 
@@ -929,22 +970,27 @@
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x26A1; 4 Manufacturing Sites</div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/plakat/REC%20by%20PLN%20IR.jpeg" alt="Plakat Renewable Energy Certificate dari PLN" loading="lazy" />
+            <img src="assets/plakat/REC%20by%20PLN%20IR.jpeg" alt="Renewable Energy Certificate (REC) Plaque from PLN"
+              loading="lazy" />
             <div class="gcard-badge badge-green">&#x26A1; PLN REC Plaque</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Plaque &bull; Renewable Energy Certificate</span>
             <h4 class="gcard-title">PLN Renewable Energy Certificate Plaque</h4>
-            <p class="gcard-snippet">Official proof of 100% clean electricity attributes at Pratama Serpong, Sukabumi &amp; Garut.</p>
+            <p class="gcard-snippet">Official proof of 100% clean electricity attributes at Pratama Serpong, Sukabumi
+              &amp; Garut.</p>
           </div>
         </div>
 
         <!-- KARTU 3: ISO 50001:2018 (Cert - IR, JX, JX2, PM) -->
-        <div class="gallery-card spotlight-card" data-category="cert" data-title="ISO 50001:2018 Certification (Multi-Site)"
-          data-badge="Certificate &bull; ISO 50001:2018"
+        <div class="gallery-card spotlight-card" data-category="cert"
+          data-title="ISO 50001:2018 Certification (Multi-Site)" data-badge="Certificate &bull; ISO 50001:2018"
           data-desc="All manufacturing facilities — Pratama Serpong (IR), Pratama Sukabumi (JX), Pratama Garut (JX2), and Sumber Masanda Jaya (PM) — are officially certified to international Energy Management System ISO 50001:2018 standard.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x2705; 4 Manufacturing Sites</div>
@@ -952,13 +998,17 @@
             <img src="assets/sertifikat/iso%2050001%20(IR).png" alt="Sertifikat ISO 50001:2018" loading="lazy" />
             <div class="gcard-badge">&#x2714; ISO 50001 Certified</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Certificate &bull; Energy Management System</span>
             <h4 class="gcard-title">ISO 50001:2018 Certification</h4>
-            <p class="gcard-snippet">Global PDCA energy management standard across Pratama Serpong, Sukabumi, Garut &amp; Sumber Masanda Jaya.</p>
+            <p class="gcard-snippet">Global PDCA energy management standard across Pratama Serpong, Sukabumi, Garut
+              &amp; Sumber Masanda Jaya.</p>
           </div>
         </div>
 
@@ -972,13 +1022,17 @@
             <img src="assets/sertifikat/mcap.jpeg" alt="Certificate of Completion MCAP" loading="lazy" />
             <div class="gcard-badge">&#x1F30D; MCAP Completed</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Certificate &bull; Manufacturer Climate Action Program</span>
             <h4 class="gcard-title">MCAP Certificate of Completion</h4>
-            <p class="gcard-snippet">Completion of global manufacturing climate action program (October 2024 &ndash; March 2026).</p>
+            <p class="gcard-snippet">Completion of global manufacturing climate action program (October 2024 &ndash;
+              March 2026).</p>
           </div>
         </div>
 
@@ -992,13 +1046,17 @@
             <img src="assets/sertifikat/pome%202025%20(IR).png" alt="Sertifikat POME" loading="lazy" />
             <div class="gcard-badge">&#x1F4DC; POME Multi-Site</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Certificate &bull; Energy Management</span>
             <h4 class="gcard-title">POME Multi-Site Certificate</h4>
-            <p class="gcard-snippet">Regulatory reporting compliance &amp; energy efficiency achievements in Serpong, Sukabumi, Garut, and SMJ.</p>
+            <p class="gcard-snippet">Regulatory reporting compliance &amp; energy efficiency achievements in Serpong,
+              Sukabumi, Garut, and SMJ.</p>
           </div>
         </div>
 
@@ -1010,16 +1068,21 @@
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x1F393; 4 Competency Certificates</div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/sertifikat/uk-pact%20energy%20audit-billy.png" alt="Sertifikat Pelatihan UK-PACT EnB dan EnPI" loading="lazy" />
+            <img src="assets/sertifikat/uk-pact%20energy%20audit-billy.png"
+              alt="UK-PACT EnB and EnPI Training Certificate" loading="lazy" />
             <div class="gcard-badge badge-blue">&#x1F1EC;&#x1F1E7; UK-PACT Certified</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Certificate &bull; UK-PACT Energy Transition</span>
             <h4 class="gcard-title">UK-PACT Program (Audit &amp; EnPI)</h4>
-            <p class="gcard-snippet">Detailed energy audit &amp; team competency development in energy baselines and EnPI.</p>
+            <p class="gcard-snippet">Detailed energy audit &amp; team competency development in energy baselines and
+              EnPI.</p>
           </div>
         </div>
 
@@ -1031,36 +1094,46 @@
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x1F331; 6 Capacity Building Certificates</div>
           <div class="gcard-img-wrap is-doc">
-            <img src="assets/sertifikat/SETI%20Capacity%20Building-energy%20transition-alfi.png" alt="Sertifikat Capacity Building Program SETI" loading="lazy" />
+            <img src="assets/sertifikat/SETI%20Capacity%20Building-energy%20transition-alfi.png"
+              alt="Sertifikat Capacity Building Program SETI" loading="lazy" />
             <div class="gcard-badge badge-green">&#x1F331; SETI Certified</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Certificate &bull; SETI Capacity Building</span>
             <h4 class="gcard-title">SETI Program (Capacity Building)</h4>
-            <p class="gcard-snippet">Competency certifications in Energy Transition, EE &amp; RE, and Measurement &amp; Verification (M&amp;V).</p>
+            <p class="gcard-snippet">Competency certifications in Energy Transition, EE &amp; RE, and Measurement &amp;
+              Verification (M&amp;V).</p>
           </div>
         </div>
 
         <!-- KARTU 8: FORUM GREEN ENERGY PARTNERSHIP PLN (Activity - DIPISAH SESUAI PERMINTAAN USER) -->
-        <div class="gallery-card spotlight-card" data-category="activity" data-title="PLN Green Energy Partnership Forum"
-          data-badge="Activity &bull; PLN Partnership Forum"
+        <div class="gallery-card spotlight-card" data-category="activity"
+          data-title="PLN Green Energy Partnership Forum" data-badge="Activity &bull; PLN Partnership Forum"
           data-desc="Corporate delegation documentation from PT Pratama Abadi Industri (Pratama Serpong) and PT Sumber Masanda Jaya participating in the Green Energy Partnership forum hosted by PT PLN (Persero).">
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x1F91D; PLN Partnership Forum</div>
           <div class="gcard-img-wrap">
-            <img src="assets/kegiatan/Forum%20Green%20Energy%20Partnership%20by%20PLN.jpeg" alt="Forum Green Energy Partnership PLN" loading="lazy" />
+            <img src="assets/kegiatan/Forum%20Green%20Energy%20Partnership%20by%20PLN.jpeg"
+              alt="Forum Green Energy Partnership PLN" loading="lazy" />
             <div class="gcard-badge badge-gold">&#x1F91D; Forum PLN</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Activity &bull; PLN Partnership Forum</span>
             <h4 class="gcard-title">PLN Green Energy Partnership Forum</h4>
-            <p class="gcard-snippet">Synergy with PLN accelerating renewable energy adoption for sustainable manufacturing.</p>
+            <p class="gcard-snippet">Synergy with PLN accelerating renewable energy adoption for sustainable
+              manufacturing.</p>
           </div>
         </div>
 
@@ -1071,56 +1144,97 @@
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x1F50D; Pratama Sukabumi (JX)</div>
           <div class="gcard-img-wrap">
-            <img src="assets/kegiatan/SETI%20(JX).jpeg" alt="Audit Energi Program SETI di Pratama Sukabumi" loading="lazy" />
+            <img src="assets/kegiatan/SETI%20(JX).jpeg" alt="Audit Energi Program SETI di Pratama Sukabumi"
+              loading="lazy" />
             <div class="gcard-badge">&#x1F50D; SETI Energy Audit</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Activity &bull; SETI Program Energy Audit</span>
             <h4 class="gcard-title">SETI Program Energy Audit</h4>
-            <p class="gcard-snippet">On-site energy audit at Pratama Sukabumi (JX) identifying thermal and electrical efficiency opportunities.</p>
+            <p class="gcard-snippet">On-site energy audit at Pratama Sukabumi (JX) identifying thermal and electrical
+              efficiency opportunities.</p>
           </div>
         </div>
 
         <!-- KARTU 10: KOORDINASI PENAMBAHAN DAYA PLN (Activity - Pratama Garut JX2) -->
-        <div class="gallery-card spotlight-card" data-category="activity" data-title="PLN Power Capacity Upgrade Coordination"
-          data-badge="Activity &bull; PLN UP3 Garut"
+        <div class="gallery-card spotlight-card" data-category="activity"
+          data-title="PLN Power Capacity Upgrade Coordination" data-badge="Activity &bull; PLN UP3 Garut"
           data-desc="Technical coordination session with PT PLN (Persero) UP3 Garut regarding the electrical power capacity upgrade at PT Pratama Abadi Industri Pratama Garut (JX2) from 2,770 kVA to 3,465 kVA.">
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x26A1; Pratama Garut (JX2)</div>
           <div class="gcard-img-wrap">
-            <img src="assets/kegiatan/kordinasi%20penambahan%20daya%20(JX).jpeg" alt="Koordinasi Penambahan Daya PLN di Pratama Garut" loading="lazy" />
+            <img src="assets/kegiatan/kordinasi%20penambahan%20daya%20(JX).jpeg"
+              alt="Koordinasi Penambahan Daya PLN di Pratama Garut" loading="lazy" />
             <div class="gcard-badge badge-gold">&#x26A1; 3,465 kVA Capacity</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Activity &bull; Utility &amp; Power Reliability</span>
             <h4 class="gcard-title">PLN Power Capacity Upgrade Coordination</h4>
-            <p class="gcard-snippet">Coordination with PLN UP3 Garut upgrading power capacity from 2,770 &rarr; 3,465 kVA at Pratama Garut (JX2).</p>
+            <p class="gcard-snippet">Coordination with PLN UP3 Garut upgrading power capacity from 2,770 &rarr; 3,465
+              kVA at Pratama Garut (JX2).</p>
           </div>
         </div>
 
         <!-- KARTU 11: TRAINING ENERGY AWARENESS (Activity - 6 Sesi di 4 Site) -->
-        <div class="gallery-card spotlight-card" data-category="activity" data-title="Energy Awareness &amp; Refreshment Training"
+        <div class="gallery-card spotlight-card" data-category="activity"
+          data-title="Energy Awareness &amp; Refreshment Training"
           data-badge="Activity &bull; Energy Conservation Culture"
           data-desc="Corporate energy conservation education and awareness programs conducted consistently across all manufacturing facilities: Pratama Serpong (IR), Pratama Sukabumi (JX), Pratama Garut (JX2), and Sumber Masanda Jaya (PM).">
           <div class="spotlight-overlay"></div>
           <div class="gcard-sites-pill">&#x1F393; 6 Sessions across 4 Sites</div>
           <div class="gcard-img-wrap">
-            <img src="assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg" alt="Training Energy Awareness Multi-Site" loading="lazy" />
+            <img src="assets/kegiatan/Training%20Energy%20Awereness%20(IR).jpeg"
+              alt="Training Energy Awareness Multi-Site" loading="lazy" />
             <div class="gcard-badge">&#x1F393; Training &amp; Education</div>
             <div class="gcard-zoom-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
           </div>
           <div class="gcard-content">
             <span class="gcard-meta">Activity &bull; Energy Conservation Culture</span>
             <h4 class="gcard-title">Energy Awareness &amp; Refreshment Training</h4>
-            <p class="gcard-snippet">Regular training covering onboarding, production teams, and promotion tracks across all plants.</p>
+            <p class="gcard-snippet">Regular training covering onboarding, production teams, and promotion tracks across
+              all plants.</p>
+          </div>
+        </div>
+
+        <!-- KARTU 12: AUDIT ENERGI PROGRAM UK-PACT (Activity) -->
+        <div class="gallery-card spotlight-card" data-category="activity"
+          data-title="UK-PACT Energy Audit Activity"
+          data-badge="Activity &bull; UK-PACT Energy Audit"
+          data-desc="Field documentation of the comprehensive industrial energy audit conducted under the UK-PACT (Partnering for Accelerated Climate Transitions) program to identify energy conservation measures and evaluate factory utility systems.">
+          <div class="spotlight-overlay"></div>
+          <div class="gcard-sites-pill">&#x1F1EC;&#x1F1E7; UK-PACT Energy Audit</div>
+          <div class="gcard-img-wrap">
+            <img src="assets/kegiatan/Audit%20UK-Pact.jpeg"
+              alt="UK-PACT Industrial Energy Audit" loading="lazy" />
+            <div class="gcard-badge badge-blue">&#x1F1EC;&#x1F1E7; UK-PACT Audit</div>
+            <div class="gcard-zoom-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="gcard-content">
+            <span class="gcard-meta">Activity &bull; UK-PACT Energy Audit</span>
+            <h4 class="gcard-title">UK-PACT Energy Audit</h4>
+            <p class="gcard-snippet">On-site technical energy audit assessing electrical and thermal utility systems to accelerate industrial decarbonization.</p>
           </div>
         </div>
 
@@ -1134,7 +1248,8 @@
     <div class="container-wide">
       <div class="chapter-label jo-item" style="color:rgba(255,255,255,0.6)">Measurable Impact</div>
       <h2 class="chapter-heading white-heading jo-item">Numbers that <br /><em>Speak</em></h2>
-      <p class="numbers-intro jo-item">Concrete operational metrics reflecting our green energy transition across Pratama Group.</p>
+      <p class="numbers-intro jo-item">Concrete operational metrics reflecting our green energy transition across
+        Pratama Group.</p>
       <div class="numbers-grid">
         <div class="number-block jo-item" data-delay="0">
           <div class="num-value num-gold" data-target="6.2" data-decimals="1" data-sep="," data-suffix=" MWp"><span
@@ -1176,30 +1291,35 @@
           <svg id="logo" viewBox="0 0 240 240" role="img" aria-label="Logo Energy Conservation">
             <defs>
               <radialGradient id="halo-grad">
-                <stop offset="0" stop-color="var(--gold-hi)" stop-opacity=".55"/>
-                <stop offset="1" stop-color="var(--gold-hi)" stop-opacity="0"/>
+                <stop offset="0" stop-color="var(--gold-hi)" stop-opacity=".55" />
+                <stop offset="1" stop-color="var(--gold-hi)" stop-opacity="0" />
               </radialGradient>
-              <filter id="blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter>
+              <filter id="blur" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="7" />
+              </filter>
             </defs>
 
-            <circle id="halo" cx="120" cy="120" r="112" fill="url(#halo-grad)" opacity="0"/>
-            <circle id="ring-track" class="s" cx="120" cy="120" r="100" fill="none" stroke="var(--line)" stroke-width="1.2"/>
-            <circle id="ring-inner" class="s" cx="120" cy="120" r="90" fill="none" stroke="var(--line)" stroke-width=".6"/>
-            <circle id="ring-arc" class="s" cx="120" cy="120" r="100" fill="none" stroke="var(--gold)" stroke-width="2.2"
-                    pathLength="100" stroke-dasharray="78 22" transform="rotate(-90 120 120)"/>
+            <circle id="halo" cx="120" cy="120" r="112" fill="url(#halo-grad)" opacity="0" />
+            <circle id="ring-track" class="s" cx="120" cy="120" r="100" fill="none" stroke="var(--line)"
+              stroke-width="1.2" />
+            <circle id="ring-inner" class="s" cx="120" cy="120" r="90" fill="none" stroke="var(--line)"
+              stroke-width=".6" />
+            <circle id="ring-arc" class="s" cx="120" cy="120" r="100" fill="none" stroke="var(--gold)"
+              stroke-width="2.2" pathLength="100" stroke-dasharray="78 22" transform="rotate(-90 120 120)" />
             <circle id="flow" class="s" cx="120" cy="120" r="100" fill="none" stroke="var(--gold-hi)" stroke-width="4"
-                    pathLength="100" stroke-dasharray="5 95" opacity="0" transform="rotate(-90 120 120)"/>
-            <circle id="spark" cx="21.8" cy="101.3" r="4" fill="var(--gold-hi)"/>
+              pathLength="100" stroke-dasharray="5 95" opacity="0" transform="rotate(-90 120 120)" />
+            <circle id="spark" cx="21.8" cy="101.3" r="4" fill="var(--gold-hi)" />
 
             <polygon id="bolt-glow" fill="var(--gold-hi)" opacity="0" filter="url(#blur)"
-                     points="130,56 92,126 118,126 108,184 150,108 124,108"/>
-            <polygon id="bolt" class="s" fill="var(--gold-hi)" fill-opacity="0" stroke="var(--gold)" stroke-width="2.2" pathLength="100"
-                     points="130,56 92,126 118,126 108,184 150,108 124,108"/>
+              points="130,56 92,126 118,126 108,184 150,108 124,108" />
+            <polygon id="bolt" class="s" fill="var(--gold-hi)" fill-opacity="0" stroke="var(--gold)" stroke-width="2.2"
+              pathLength="100" points="130,56 92,126 118,126 108,184 150,108 124,108" />
 
             <g id="leaf-group">
-              <path id="leaf" class="s" fill="var(--leaf)" fill-opacity="0" stroke="var(--leaf)" stroke-width="2.2" pathLength="100"
-                    d="M138 170 C136 146 156 134 176 134 C176 158 160 174 138 170 Z"/>
-              <path id="leaf-vein" class="s" fill="none" stroke="var(--leaf)" stroke-width="1.6" pathLength="100" d="M141 167 L166 143"/>
+              <path id="leaf" class="s" fill="var(--leaf)" fill-opacity="0" stroke="var(--leaf)" stroke-width="2.2"
+                pathLength="100" d="M138 170 C136 146 156 134 176 134 C176 158 160 174 138 170 Z" />
+              <path id="leaf-vein" class="s" fill="none" stroke="var(--leaf)" stroke-width="1.6" pathLength="100"
+                d="M141 167 L166 143" />
             </g>
           </svg>
           <div class="closing-brand-title" id="wordmark">Energy Conservation</div>
@@ -1210,7 +1330,8 @@
           <span class="closing-accent">Sustainable Energy</span><br />
           Future
         </h2>
-        <p class="closing-sub jo-item">The Energy Conservation Department is dedicated to advancing energy efficiency innovations, global sustainability standards, and accelerated industrial decarbonization every single day.</p>
+        <p class="closing-sub jo-item">The Energy Conservation Department is dedicated to advancing energy efficiency
+          innovations, global sustainability standards, and accelerated industrial decarbonization every single day.</p>
       </div>
     </div>
   </section>
@@ -1220,7 +1341,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <script src="script.js?v=3.2.0"></script>
+  <script src="script.js?v=3.3.0"></script>
 </body>
 
 </html>

@@ -1213,6 +1213,29 @@ const GALLERY_ITEMS_DATA = [
       "Fosters a proactive, company-wide culture of daily energy efficiency and conservation.",
       "Continuous curriculum delivered across all manufacturing sites and career levels."
     ]
+  },
+
+  // 12. AUDIT ENERGI PROGRAM UK-PACT (Activity)
+  {
+    id: "uk-pact-audit",
+    title: "UK-PACT Energy Audit Activity",
+    badge: "Activity &bull; UK-PACT Energy Audit",
+    badgeClass: "badge-blue",
+    categoryBadge: "UK-PACT Energy Audit",
+    coverImg: "assets/kegiatan/Audit%20UK-Pact.jpeg",
+    items: [
+      {
+        site: "UK-PACT Audit",
+        label: "UK-PACT Industrial Energy Audit",
+        img: "assets/kegiatan/Audit%20UK-Pact.jpeg",
+        desc: "Execution of detailed on-site industrial energy audit under the UK-PACT transition program."
+      }
+    ],
+    summary: "Field documentation of the detailed industrial energy audit conducted as part of the UK-PACT (Partnering for Accelerated Climate Transitions) initiative funded by the UK Government. The comprehensive assessment evaluates primary factory electrical and thermal utility systems, establishes rigorous energy baseline indicators, and identifies actionable energy conservation measures to drive low-carbon industrial manufacturing.",
+    points: [
+      "Rigorous diagnostic walkthrough and data logging across factory electrical and thermal utility systems.",
+      "Identification of concrete energy conservation measures and emissions reduction pathways aligned with international standards."
+    ]
   }
 ];
 
