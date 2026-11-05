@@ -1215,26 +1215,26 @@ const GALLERY_ITEMS_DATA = [
     ]
   },
 
-  // 12. AUDIT ENERGI PROGRAM UK-PACT (Activity)
+  // 12. AUDIT ENERGI PROGRAM UK-PACT (Activity - Pratama Garut JX2)
   {
     id: "uk-pact-audit",
-    title: "UK-PACT Energy Audit Activity",
+    title: "UK-PACT Energy Audit Activity (JX2 Garut)",
     badge: "Activity &bull; UK-PACT Energy Audit",
     badgeClass: "badge-blue",
-    categoryBadge: "UK-PACT Energy Audit",
+    categoryBadge: "Pratama Garut (Site JX2)",
     coverImg: "assets/kegiatan/Audit%20UK-Pact.jpeg",
     items: [
       {
-        site: "UK-PACT Audit",
-        label: "UK-PACT Industrial Energy Audit",
+        site: "Pratama Garut (JX2)",
+        label: "Pratama Garut (Site JX2) — UK-PACT Energy Audit",
         img: "assets/kegiatan/Audit%20UK-Pact.jpeg",
-        desc: "Execution of detailed on-site industrial energy audit under the UK-PACT transition program."
+        desc: "Execution of detailed on-site industrial energy audit under the UK-PACT transition program at PT Pratama Abadi Industri Garut (Site JX2)."
       }
     ],
-    summary: "Field documentation of the detailed industrial energy audit conducted as part of the UK-PACT (Partnering for Accelerated Climate Transitions) initiative funded by the UK Government. The comprehensive assessment evaluates primary factory electrical and thermal utility systems, establishes rigorous energy baseline indicators, and identifies actionable energy conservation measures to drive low-carbon industrial manufacturing.",
+    summary: "Field documentation of the detailed industrial energy audit conducted as part of the UK-PACT (Partnering for Accelerated Climate Transitions) initiative funded by the UK Government, hosted at PT Pratama Abadi Industri Garut (Site JX2). The comprehensive assessment evaluates primary factory electrical and thermal utility systems, establishes rigorous energy baseline indicators, and identifies actionable energy conservation measures to drive low-carbon industrial manufacturing.",
     points: [
-      "Rigorous diagnostic walkthrough and data logging across factory electrical and thermal utility systems.",
-      "Identification of concrete energy conservation measures and emissions reduction pathways aligned with international standards."
+      "Rigorous diagnostic walkthrough and data logging across factory electrical, motor, and thermal systems at Pratama Garut (JX2).",
+      "Detailed scoping study and energy efficiency roadmap supporting the company's commitment to industrial decarbonization."
     ]
   }
 ];
