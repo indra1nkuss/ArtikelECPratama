@@ -420,6 +420,74 @@ function initOpsSectionAnimations() {
 }
 
 /* ════════════════════════════════════════════════
+   5.1. SCOPE IMPLEMENTASI MULTI-PHOTO GALLERY & VIEWER
+   ════════════════════════════════════════════════ */
+function initScopePhotoGallery() {
+  const SCOPE_DATA = {
+    0: [
+      { img: 'assets/scopeimplementasi/energysource/Agreement%20REC.jpeg', label: '100% REC Official Agreement — PT PLN (Persero)' },
+      { img: 'assets/scopeimplementasi/energysource/agrement%20rec.jpeg', label: 'Renewable Energy Certificate Handover Ceremony' },
+      { img: 'assets/scopeimplementasi/energysource/agrement%20rec2.jpeg', label: 'REC Partnership Documentation' },
+      { img: 'assets/scopeimplementasi/energysource/agrementrec3.jpeg', label: 'Clean Energy Transition Strategic Partnership' }
+    ],
+    1: [
+      { img: 'assets/scopeimplementasi/solarpvrooftop/Agreement%20Solar%20PV.jpg', label: 'Solar PV Rooftop Power Purchase Agreement' },
+      { img: 'assets/scopeimplementasi/solarpvrooftop/agrement%20solar%20pv.png', label: 'Solar PV Rooftop Installation & Roof Inspection' },
+      { img: 'assets/scopeimplementasi/solarpvrooftop/penandatanganan%20solar%20pv..png', label: 'Solar PV Partnership Official Signing Ceremony' },
+      { img: 'assets/scopeimplementasi/solarpvrooftop/penandatanganan%20solar%20pv.png', label: 'Solar PV Management & Stakeholder Signing Event' },
+      { img: 'assets/scopeimplementasi/solarpvrooftop/solar%20pv.jpeg', label: 'Rooftop Solar PV Operational Array (6.2 MWp)' }
+    ],
+    2: [
+      { img: 'assets/scopeimplementasi/efisiensiprogram/tdl-elektrik.jpeg', label: 'Hydraulic Press Electric TDL Conversion (Gas to Electric)' }
+    ]
+  };
+
+  const activeIndices = { 0: 0, 1: 0, 2: 0 };
+
+  // Main media clicks -> open fullscreen on currently active photo
+  document.querySelectorAll('.scope-detail-media[data-pilar-idx]').forEach(media => {
+    media.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const pIdx = parseInt(media.getAttribute('data-pilar-idx'), 10);
+      const items = SCOPE_DATA[pIdx];
+      if (!items || !items.length) return;
+      const cur = activeIndices[pIdx] || 0;
+      if (typeof window.openCustomFullscreenPhoto === 'function') {
+        window.openCustomFullscreenPhoto(items, cur);
+      }
+    });
+  });
+
+  // Thumb clicks -> update main photo preview AND open in fullscreen
+  document.querySelectorAll('.scope-thumb-strip[data-pilar-idx]').forEach(strip => {
+    const pIdx = parseInt(strip.getAttribute('data-pilar-idx'), 10);
+    const thumbs = Array.from(strip.querySelectorAll('.scope-thumb'));
+    const mainImg = document.getElementById(`scopeMainImg-${pIdx}`);
+
+    thumbs.forEach((thumb, idx) => {
+      thumb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        thumbs.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+        activeIndices[pIdx] = idx;
+
+        const items = SCOPE_DATA[pIdx];
+        if (items && items[idx]) {
+          if (mainImg) {
+            mainImg.style.opacity = '0.5';
+            mainImg.src = items[idx].img;
+            mainImg.onload = () => { mainImg.style.opacity = '1'; };
+          }
+          if (typeof window.openCustomFullscreenPhoto === 'function') {
+            window.openCustomFullscreenPhoto(items, idx);
+          }
+        }
+      });
+    });
+  });
+}
+
+/* ════════════════════════════════════════════════
    6. FIXED UI: Scroll Counter & Global Indicators
    ════════════════════════════════════════════════ */
 function initScrollUI() {
@@ -1431,7 +1499,23 @@ function initLightbox() {
   function closeFullscreenPhoto() {
     resetFsZoom();
     if (fsOverlay) fsOverlay.classList.remove('active');
+    if (!modal || !modal.classList.contains('active')) {
+      document.body.style.overflow = '';
+      if (typeof lenis !== 'undefined' && lenis) lenis.start();
+    }
   }
+
+  // Expose global helper to open fullscreen viewer for custom photo sets (e.g. Scope Pillars)
+  window.openCustomFullscreenPhoto = function(customItems, startIndex = 0) {
+    if (!fsOverlay || !fsImg || !customItems || !customItems.length) return;
+    fsItems = customItems;
+    fsCurIdx = Math.max(0, Math.min(startIndex, customItems.length - 1));
+    resetFsZoom();
+    updateFsPhoto();
+    fsOverlay.classList.add('active');
+    if (typeof lenis !== 'undefined' && lenis) lenis.stop();
+    document.body.style.overflow = 'hidden';
+  };
 
   // Event Listeners Fullscreen Viewer
   if (fsClose) fsClose.addEventListener('click', (e) => { e.stopPropagation(); closeFullscreenPhoto(); });
@@ -2232,6 +2316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initGalleryFilters();
   initLightbox();
+  initScopePhotoGallery();
   initFloatingNav();
   initHeroBgParallax();
   initClosingEnergyLogo();
