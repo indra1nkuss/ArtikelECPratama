@@ -425,8 +425,8 @@ function initOpsSectionAnimations() {
 function initScopePhotoGallery() {
   const SCOPE_DATA = {
     0: [
-      { img: 'assets/scopeimplementasi/energysource/Agreement%20REC.jpeg', label: '100% REC Official Agreement — PT PLN (Persero)' },
       { img: 'assets/scopeimplementasi/energysource/agrement%20rec.jpeg', label: 'Renewable Energy Certificate Handover Ceremony' },
+      { img: 'assets/scopeimplementasi/energysource/Agreement%20REC.jpeg', label: '100% REC Official Agreement — PT PLN (Persero)' },
       { img: 'assets/scopeimplementasi/energysource/agrement%20rec2.jpeg', label: 'REC Partnership Documentation' },
       { img: 'assets/scopeimplementasi/energysource/agrementrec3.jpeg', label: 'Clean Energy Transition Strategic Partnership' }
     ],
