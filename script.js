@@ -431,8 +431,8 @@ function initScopePhotoGallery() {
       { img: 'assets/scopeimplementasi/energysource/agrementrec3.jpeg', label: 'Clean Energy Transition Strategic Partnership' }
     ],
     1: [
-      { img: 'assets/scopeimplementasi/solarpvrooftop/Agreement%20Solar%20PV.jpg', label: 'Solar PV Rooftop Power Purchase Agreement' },
       { img: 'assets/scopeimplementasi/solarpvrooftop/agrement%20solar%20pv.png', label: 'Solar PV Rooftop Installation & Roof Inspection' },
+      { img: 'assets/scopeimplementasi/solarpvrooftop/Agreement%20Solar%20PV.jpg', label: 'Solar PV Rooftop Power Purchase Agreement' },
       { img: 'assets/scopeimplementasi/solarpvrooftop/penandatanganan%20solar%20pv..png', label: 'Solar PV Partnership Official Signing Ceremony' },
       { img: 'assets/scopeimplementasi/solarpvrooftop/penandatanganan%20solar%20pv.png', label: 'Solar PV Management & Stakeholder Signing Event' },
       { img: 'assets/scopeimplementasi/solarpvrooftop/solar%20pv.jpeg', label: 'Rooftop Solar PV Operational Array (6.2 MWp)' }
